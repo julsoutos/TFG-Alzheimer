@@ -8,6 +8,6 @@ Tutor/a: Domínguez Mayo, Francisco José
 Cotutor/a: Mejías Risoto, Manuel
 
 Estudiantes: Rodríguez Garrido, Pablo
-Soult Toscano, Julia
+             Soult Toscano, Julia
 
 Curso 2020/2021
