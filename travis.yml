@@ -1,0 +1,31 @@
+dist: xenial
+
+services:
+  - postgresql
+addons:
+  postgresql: "9.4"
+before_script:
+  - psql -U postgres -c "create user cognitya password 'cognitya'"
+  - psql -U postgres -c "create database cognitya_db owner cognitya"
+  - psql -U postgres -c "ALTER USER cognitya CREATEDB"
+language: python
+python:
+  - "3.6"
+install:
+  - pip install -r requirements.txt
+  
+notifications:
+  email:
+    recipients:
+      - julsoutos@alum.us.es
+      - pabrodgar9@alum.us.es     
+    on_success: change
+    on_failure: always
+deploy:
+  provider: heroku
+  app: cognitya-app
+  strategy: git
+  api_key: <your apikey>>
+    secure: 
+  on:
+    branch: develop
