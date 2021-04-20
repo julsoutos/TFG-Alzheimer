@@ -11,8 +11,13 @@ before_script:
 language: python
 python:
   - "3.6"
+script:
+  - coverage run --branch --source=. ./manage.py test --keepdb 
+  - coverage xml
+  - python-codacy-coverage -r coverage.xml
 install:
   - pip install -r requirements.txt
+  - pip install codacy-coverage
   
 notifications:
   email:

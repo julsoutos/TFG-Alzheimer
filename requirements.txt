@@ -1,6 +1,8 @@
 Django==2.0
-djangorestframework==3.7.7
-django-cors-headers==2.1.0
-requests==2.18.4
+djangorestframework
+django-cors-headers
+requests
+psycopg2-binary==2.8.4
+coverage
 django-heroku
 gunicorn
