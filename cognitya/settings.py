@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'principal.User'
 
 # Application definition
 
@@ -38,14 +39,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'principal'
+    'principal',
+    'authentication',
+    'administrator',
+    'rest_framework.authtoken'
 ]
 
 
 MODULES = [
     'principal',
-    
+    'authentication',
+    'administrator'
+
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,7 +164,9 @@ except ImportError:
 BASEURL = 'https://cognitya-app.herokuapp.com/'
 
 APIS = {
-    'principal': BASEURL
+    'principal': BASEURL,
+    'authentication': BASEURL,
+    'administrator': BASEURL
 }
 
 

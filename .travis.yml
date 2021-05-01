@@ -32,4 +32,4 @@ deploy:
   strategy: git
   api_key:  $HEROKU_AUTH_TOKEN
   on:
-    branch: feature-issue#15
+    branch: develop

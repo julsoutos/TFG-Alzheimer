@@ -169,6 +169,8 @@ section {
   transition: all 0.5s;
   z-index: 997;
   padding: 20px 0;
+ 
+ 
 }
 
 .header.header-scrolled {
@@ -2380,6 +2382,7 @@ section {
 .footer{
   position: relative;
   top:200px;
+  background: none;
 }
 
 .row{

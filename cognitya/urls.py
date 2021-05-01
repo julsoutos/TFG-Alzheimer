@@ -16,15 +16,19 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from principal import views
 
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.inicio,  name="inicio"),
 ]
 
+
 for module in settings.MODULES:
+
     urlpatterns += [
         path('{}/'.format(module), include('{}.urls'.format(module)))
     ]
