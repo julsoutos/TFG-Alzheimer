@@ -9,7 +9,7 @@ class User(AbstractUser):
     is_patient = models.BooleanField(default=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    birth_date = models.DateField(max_length=100)
+    birth_date = models.DateField(max_length=101)
     comments = models.CharField(max_length=400)
 
 
