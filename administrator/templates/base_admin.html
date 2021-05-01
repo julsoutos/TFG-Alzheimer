@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Cognitya</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+ 
+  <link href="{% static 'assets/img/Imagen1.png' %}" rel="icon">
+  <link href="{% static 'assets_profile/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets_profile/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_profile/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_profile/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_profile/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_profile/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_profile/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+ 
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_profile/css/style.css' %}" rel="stylesheet">
+
+   {% block css %}
+  
+  {% endblock %}
+</head>
+<body>
+  <section>
+    {% block contenido %}{% endblock %}
+  </section>
+  {% block pie %}
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+     
+      <div class="copyright">
+        &copy; Copyright <strong><span>Cognitya</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: [license-url] -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+  <div id="preloader"></div>
+  {% endblock %} 
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets_profile/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/typed.js/typed.min.js' %}"></script>
+  <script src="{% static 'assets_profile/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets_profile/js/main.js' %}"></script>
+
+
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/purecounter/purecounter.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>
