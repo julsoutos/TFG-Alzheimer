@@ -3,26 +3,6 @@
 {% load static %}
 
 {% block contenido %}
-
-<header id="header" class="header fixed-top">
-  <div class="container-fluid container-xl d-flex align-items-center justify-content-between"  >
-
-    <a href="{% url 'inicio' %}" class="logo d-flex align-items-center">
-      <img src="{% static 'assets/img/Imagen1.png' %}" alt="">
-      <span>Cognitya</span>
-    </a>
-    
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto active" href="{% url 'inicio' %}">Inicio</a></li>
-        <li><a class="nav-link scrollto" href="{% url 'about' %}">Sobre nosotros</a></li>
-        <li><a class="nav-link scrollto"  href="{% url 'login_form' %}">Iniciar Sesión</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-
-  </div>
-</header><!-- End Header -->
   
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero d-flex align-items-center" style="position: relative;">

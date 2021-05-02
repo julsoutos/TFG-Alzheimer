@@ -9,6 +9,11 @@ import logging
 
 # Create your views here.
 
+def admin_home(request):
+    return render(request, "admin_home.html")
+
+
+
 def form_doctor(request):
     form  = CreateDoctorForm()
     if request.method == 'POST':
