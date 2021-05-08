@@ -1,0 +1,72 @@
+{% extends 'base_patient.html' %}
+ 
+{% load static %}
+
+{% block contenido %}
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services" style="position: relative; top: 120px;">
+
+    <div class="container" data-aos="fade-up">
+
+      <header class="section-header">
+        <h2>Categorías</h2>
+        <p>Selecciona una categoría de actividades</p>
+      </header>
+
+      <div class="row gy-4" >
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-box blue">
+            <img src="https://img.icons8.com/bubbles/64/000000/brain.png"/>         
+                    <h3>Memoria</h3>
+            <p>Entrenamiento creado con el objetivo de reforzar el área cerebral relacionada con la memoria a través de actividades de esta categoría.</p>
+            <a href="{% url 'memory' %}" class="read-more"><span>Seleccionar</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-box orange">
+            <img src="https://img.icons8.com/dusk/64/000000/spam.png"/>          
+              <h3>Atención</h3>
+              <p>Entrenamiento creado con el objetivo de reforzar el área cerebral relacionada con la atención a través de actividades de esta categoría.</p>
+              <a href="#" class="read-more"><span>Seleccionar</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-box green">
+            <img src="https://img.icons8.com/cute-clipart/64/000000/plus-minus.png"/>       
+                 <h3>Cálculo</h3>
+                 <p>Entrenamiento creado con el objetivo de reforzar el área cerebral relacionada con el cálculo a través de actividades de esta categoría.</p>
+                 <a href="#" class="read-more"><span>Seleccionar</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-box purple">
+            <img src="https://img.icons8.com/dusk/64/000000/mental-state.png"/>       
+            <h3>Percepción</h3>
+            <p>Entrenamiento creado con el objetivo de reforzar el área cerebral relacionada con la percepción a través de actividades de esta categoría.</p>
+            <a href="#" class="read-more"><span>Seleccionar</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-box pink">
+            <img src="https://img.icons8.com/plasticine/64/000000/language.png"/>
+                        <h3>Lenguaje</h3>
+                        <p>Entrenamiento creado con el objetivo de reforzar el área cerebral relacionada con el lenguaje a través de actividades de esta categoría.</p>
+                        <a href="#" class="read-more"><span>Seleccionar</span> <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- End Services Section -->
+
+
+{% endblock %}

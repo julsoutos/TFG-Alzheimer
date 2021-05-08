@@ -1,0 +1,45 @@
+{% extends 'base_patient.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+
+
+
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <label>{{activity.activity.name}}</label>
+    <input name={{activity.name}}>
+    <button type="submit">Enviar</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

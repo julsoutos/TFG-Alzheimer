@@ -47,3 +47,14 @@ def get_user_token(user):
     except:
         token = None
     return token
+
+
+def get_user_by_token(request):
+    user = None
+    cookie = request.COOKIES.get('cognitya')
+    try:
+        tk = get_object_or_404(Token, key=cookie)
+        user = tk.user 
+    except:
+        pass
+    return user

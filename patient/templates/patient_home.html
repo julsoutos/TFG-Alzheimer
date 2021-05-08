@@ -17,7 +17,8 @@
       <div class="row">
        
         <div class="col-lg-4 mt-4 mt-lg-0">
-            <a href="profile.html">
+         
+            <a href="{% url 'patient_profile' %}">
             <div class="box" data-aos="fade-right" data-aos-delay="50">
               <img src="{% static 'assets/img/profile.png' %}" class="img-fluid ds" alt="">
               <h3 >Perfil</h3>
@@ -26,7 +27,7 @@
           </div>
           
           <div class="col-lg-4 mt-4 mt-lg-0">
-            <a href="activities.html">
+            <a href="{% url 'activities' %}">
             <div class="box" data-aos="fade-up" data-aos-delay="50">
               <img src="{% static 'assets/img/activities.png' %}" class="img-fluid ds" alt="">
               <h3>Actividades</h3>

@@ -40,17 +40,18 @@
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
   
-      <a href="doctor_home.html" class="logo d-flex align-items-center">
+      <a href="{% url 'patient_home' %}" class="logo d-flex align-items-center">
         <img src=" {% static 'assets/img/Imagen1.png' %}" alt="">       
          <span>Cognitya</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="profile.html">Perfil</a></li>
-          <li><a class="nav-link scrollto" href="activities.html">Actividades</a></li>
-          <li><a class="nav-link scrollto" href="entrenamiento.html">Entrenamiento</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'user_logout' %}">Cerrar sesión</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'patient_home' %}">Inicio</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'patient_profile' %}">Perfil</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'activities' %}">Actividades</a></li>
+          <li><a class="nav-link scrollto " href="entrenamiento.html">Entrenamiento</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'user_logout' %}">Cerrar sesión</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

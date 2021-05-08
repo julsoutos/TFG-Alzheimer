@@ -43,10 +43,14 @@
                   <div class="form-group">
                     <label for="exampleInputPassword1">Fecha de nacimiento:</label>
                     {{form.birth_date}}
+                    {% if form.errors.birth_date %}
+                      <p>Tiene errores</p>
+                    {% endif %}
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Correo electrónico:</label>
                     {{form.email}}
+                    
                   </div>
                  
                  
