@@ -2408,4 +2408,23 @@ section {
   color: #ffffff;
 }
 
+.colors{
+  background: white;
+  min-height: 300px; 
+  min-width: 200px;
+  border-width: 1px;
+  border-color: #012970;
+  border-radius: 10px;
+}
 
+@media (max-width: 800px) {
+  .colors{
+    background: white;
+    box-shadow: 1px; 
+    min-height: 50px; 
+    min-width: 50px;
+    border-width: 1px;
+    border-radius: 10px;
+
+  }
+}

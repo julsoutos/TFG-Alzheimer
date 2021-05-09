@@ -47,8 +47,8 @@ class Interceptor:
             tk = get_object_or_404(Token, key=request.COOKIES.get("cognitya"))
             n = datetime.utcnow().replace(tzinfo=pytz.UTC) - tk.created
             print(n.total_seconds())
-            if n.total_seconds() >= 36000 and not "/authentication/logout/" in request.path and request.user.save_session == False:
-                response = redirect(to="/authentication/logout/")
+            if n.total_seconds() >= 36000 and not "/authentication/logout" in request.path and request.user.save_session == False:
+                response = redirect(to="/authentication/logout")
                 return response
 
         

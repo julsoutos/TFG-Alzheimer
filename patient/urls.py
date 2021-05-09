@@ -1,20 +1,26 @@
 from django.urls import include, path
 from . import views
 from . import memory
+from . import training
 
 
 
 urlpatterns = [
-      path('patient_home/', views.patient_home, name="patient_home"),
-      path('patient_profile/', views.patient_profile, name="patient_profile"),
-      path('activities/', views.activities, name="activities"),
 
-      #Activities
-      path('memory/', memory.memory, name="memory"),
-      path('init_activity/', memory.init_activity, name="init_activity"),
-      path('load_activity/', memory.load_activity, name="load_activity"),
+      path('patient_home', views.patient_home, name="patient_home"),
+      path('patient_profile', views.patient_profile, name="patient_profile"),
+      path('activities', views.activities, name="activities"),
 
-      path('prueba/', memory.prueba, name="prueba")
+      #Activities 
+            
+            #Memory
+            path('memory', memory.memory, name="memory"),
+            path('init_memory', memory.init_memory, name="init_memory"),
+            path('load_memory', memory.load_memory, name="load_memory"),
+
+            #Attention
+            
+      path('prueba/', training.prueba, name="prueba")
 
 
 ]
