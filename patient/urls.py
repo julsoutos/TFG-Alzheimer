@@ -1,6 +1,6 @@
 from django.urls import include, path
 from . import views
-from . import memory
+from . import activity
 from . import training
 
 
@@ -13,14 +13,18 @@ urlpatterns = [
 
       #Activities 
             
-            #Memory
-            path('memory', memory.memory, name="memory"),
-            path('init_memory', memory.init_memory, name="init_memory"),
-            path('load_memory', memory.load_memory, name="load_memory"),
+            path('activity', activity.activity, name="activity"),
+            path('init_activity', activity.init_activity, name="init_activity"),
+            path('load_activity', activity.load_activity, name="load_activity"),
 
-            #Attention
-            
-      path('prueba/', training.prueba, name="prueba")
+      
+
+      #Trainings
+            path('list_trainings', training.list_trainings, name="list_trainings"),
+
+            path('init_training', training.init_training, name="init_training"),
+
+            path('load_training', training.load_training, name="load_training")
 
 
 ]

@@ -11,10 +11,9 @@ def get_solution(request, activity):
 
 
 
-def evaluate(request, solution):
+def evaluate(request, solution, name):
 
     expected_solution = list(Solution.objects.filter(name = solution))[0] 
-    answer = request.POST['answer']
-    print(answer)
+    answer = request.POST[name]
     return True if expected_solution.solution == answer else False
      

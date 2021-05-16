@@ -1,0 +1,74 @@
+{% extends 'base_patient.html' %}
+
+{% load static %}
+
+{%block contenido%}
+
+{% if not start %}
+<section id="hero" class="hero d-flex align-items-center" style="position: relative;">
+    
+    <div class="container" data-aos="fade-left">
+
+        
+      <header class="section-header">
+        <h2>Entrenamientos disponibles</h2>
+      </header>
+        <div class="list-group">
+
+            {% for item in trainings %}
+ 
+            <a href="{% url 'list_trainings' %}?training={{item.pk}}" class="list-group-item list-group-item-action flex-column align-items-start training">
+              <div class="d-flex w-100 justify-content-between">
+                <h2 class="mb-1">{{item.training.name}}</h2>
+                <small class="text-muted">Actividades completadas {{completed_activities}} / {{num_activities}}</small>
+              </div>
+              <p class="mb-1">{{item.training.description}}</p>
+            </a>
+
+            
+           
+
+            {% endfor %}
+          </div>
+          
+
+</div>
+</section>
+
+{% else %}
+
+<section id="pricing" class="pricing">
+
+    <div class="container" data-aos="fade-down" style="position: relative; top: 80px;">
+
+      <header class="section-header">
+       
+        <p>Comenzar entrenamiento</p>
+      </header>
+
+      <div class="row gy-4" data-aos="fade-up" style="position: relative; top: 60px;">
+
+        <div  data-aos="zoom-in" data-aos-delay="100">
+          <div class="box">
+            <h3 style="color: #07d5c0;">{{training.training.name}}</h3>
+         
+            <img src="https://img.icons8.com/bubbles/200/000000/brain.png"/>
+            <ul>
+            
+            </ul>
+            <a href="{% url 'init_training' %}?training={{training.pk}}" class="btn-buy">Comenzar</a>
+          </div>
+        </div>
+
+      
+
+      </div>
+
+    </div>
+
+  </section><!-- End Pricing Section -->
+
+
+{% endif %}
+
+{% endblock %}

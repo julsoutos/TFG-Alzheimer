@@ -9,7 +9,7 @@
 
         <form>
             <fieldset>
-              <legend>{{user.username}}</legend>
+              <legend>{{user.first_name}} {{user.last_name}}</legend>
               
               <div class="form-group">
                 <label for="exampleInputEmail1">Nombre:</label>
@@ -36,7 +36,7 @@
               <div class="count-box">
                 <i class="bi bi-emoji-smile"></i>
                 <div>
-                  <span data-purecounter-start="500" data-purecounter-end="30" data-purecounter-duration="1" class="purecounter"></span>
+                  <span data-purecounter-start="500" data-purecounter-end="{{trainings}}" data-purecounter-duration="1" class="purecounter"></span>
                   <p>Entrenamientos realizados</p>
                 </div>
               </div>
@@ -46,7 +46,7 @@
               <div class="count-box">
                 <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
                 <div>
-                  <span data-purecounter-start="500" data-purecounter-end="2" data-purecounter-duration="1" class="purecounter"></span>
+                  <span data-purecounter-start="500" data-purecounter-end="{{not_completed}}" data-purecounter-duration="1" class="purecounter"></span>
                   <p>Entrenamientos pendientes</p>
                 </div>
               </div>
@@ -56,7 +56,7 @@
               <div class="count-box">
                 <i class="bi bi-emoji-smile"></i>
                 <div>
-                  <span data-purecounter-start="500" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
+                  <span data-purecounter-start="500" data-purecounter-end="{{activities}}" data-purecounter-duration="1" class="purecounter"></span>
                   <p>Actividades Realizadas</p>
                 </div>
               </div>

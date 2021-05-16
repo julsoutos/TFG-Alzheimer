@@ -1,7 +1,24 @@
 
-
 $(document).ready(function(){
 
+
+    if(document.getElementById("load").innerHTML == "False"){
+
+    
+        var audio1 = new Audio('../../static/assets/audios/secuencia.mp3');
+
+        audio1.play();
+
+        console.log(document.getElementById("continue"))
+        setTimeout(() => {document.getElementById("continue").click()}, 6000)
+
+
+    }
+
+
+    if(document.getElementById("load").innerHTML == "True"){
+        
+    
     
     if(document.getElementById("variant").innerHTML == "Color Order 1"){
             colors = ["pink", "red", "yellow", "purple", "green", "blue"]
@@ -41,7 +58,7 @@ $(document).ready(function(){
     }  
 
     setTimeout(() => {enableButtons(), document.getElementById("title").innerHTML="Introduce la secuencia generada"}, 11200)
-
+    }
   
   });
 
@@ -69,11 +86,7 @@ function enableButtons(){
 function set(value){
     id = value.id
     document.getElementById(id).style.background = colors[id-1]
-    setTimeout(() => {    document.getElementById(id).style.background = "white" }, 200)
+    setTimeout(() => {    document.getElementById(id).style.background = "white" }, 50)
     document.getElementById("answer").value = document.getElementById("answer").value != undefined ? document.getElementById("answer").value + id : id
 }
 
-function reset(){
-    document.getElementById("answer").value = ""
-
-}
