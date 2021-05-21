@@ -1,9 +1,8 @@
 from patient import training
 from django.shortcuts import render
-import urllib.request
 from principal.models import User, Activity_Result, Patient, Patient_training
-from datetime import datetime
 from principal.utils import get_user_by_token
+from .utils import birth
 # Create your views here.
 
 
@@ -31,5 +30,4 @@ def patient_profile(request):
 def activities(request):
     return render(request, 'activities.html')
 
-def birth(birth_date):
-    return int((datetime.now().date() - birth_date).days / 365.25)
+

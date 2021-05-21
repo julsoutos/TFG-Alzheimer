@@ -1,6 +1,6 @@
-from principal.models import Activity, Solution
+from principal.models import Solution
 import random
-import urllib.request
+from datetime import datetime
 
 
 def get_solution(request, activity):
@@ -17,3 +17,5 @@ def evaluate(request, solution, name):
     answer = request.POST[name]
     return True if expected_solution.solution == answer else False
      
+def birth(birth_date):
+    return int((datetime.now().date() - birth_date).days / 365.25)

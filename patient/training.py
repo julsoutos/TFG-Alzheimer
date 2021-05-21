@@ -6,7 +6,6 @@ from principal.utils import get_user_by_token
 path_activity = 'activities/'
 
 
-
 def list_trainings(request):
 
     user = User.objects.get(username=get_user_by_token(request))

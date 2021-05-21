@@ -27,6 +27,7 @@ class Doctor(models.Model):
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     sickness = models.CharField(max_length=300)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.user.username
@@ -55,6 +56,8 @@ class Solution(models.Model):
 class Training(models.Model):
     name = models.CharField(max_length=300)
     description = models.TextField(default="Training")
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True)
+ 
 
     def __str__(self):
         return self.name

@@ -46,8 +46,17 @@ function set(element){
 
     id = element.id
     document.getElementById(id).style.background = "#81D3D4"
-    setTimeout(() => {    document.getElementById(id).style.background = "white" }, 50)
     document.getElementById("answer").value = element.innerHTML   
 
 }
 
+
+function reset(){
+
+    document.getElementById("answer").value = ""    
+    letters = document.getElementsByName('letter')
+    for (let index = 0; index < letters.length; index++) {
+        letters[index].style.background = "white"        
+    }
+
+}

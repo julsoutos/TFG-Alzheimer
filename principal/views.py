@@ -1,5 +1,4 @@
 from django.shortcuts import render
-import urllib.request
 from .utils import isLogged
 # Create your views here.
 
