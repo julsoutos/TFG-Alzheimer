@@ -2408,4 +2408,116 @@ section {
   color: #ffffff;
 }
 
+.colors{
+  background: white;
+  min-height: 300px; 
+  min-width: 200px;
+  border-width: 1px;
+  border-color: #012970;
+  border-radius: 10px;
+}
+
+.letters{
+  background: white;
+  width: 50px;
+  height: 50px;
+  border-width: 1px;
+  border-color: #012970;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.letter-container{
+  width: 329px; 
+  position: relative; 
+  left: 500px;
+}
+
+.prices{
+  position: relative;
+  bottom: 400px;
+  max-width: 50vw;
+  width:  40vw;
+  left: 320px;
+}
+
+.price-btn{
+  
+  display: inline-block;
+  padding: 8px 40px 10px 40px;
+  border-radius: 50px;
+  color: #ffffff;
+  transition: none;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+  background-color: #e88d83;
+  border: 1px solid #4154f1;
+  margin: 10px;
+  width:  120px;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+
+  .letter-container{
+    width: 329px; 
+
+    position: relative; 
+    left: 200px;
+ 
+  }
+  .colors{
+    background: white;
+    box-shadow: 1px; 
+    min-height: 50px; 
+    min-width: 50px;
+    border-width: 1px;
+    border-radius: 10px;
+
+  }
+
+  .prices{
+    position: relative;
+    bottom: 400px;
+    max-width: 100vw;
+    width:  40vw;
+    left: 200px;
+  }
+
+}
+
+@media (max-width:800px) {
+  .colors{
+    background: white;
+    box-shadow: 1px; 
+    min-height: 50px; 
+    min-width: 50px;
+    border-width: 1px;
+    border-radius: 10px;
+
+  }
+
+  .letter-container{
+    width: 329px; 
+    position: relative; 
+    left: 30px;
+ 
+  }
+
+  .prices{
+    position: relative;
+    bottom: 400px;
+    max-width: none;
+    width: 90vw;
+    left: 30px;
+}
+  }
+
+
+
+
+
 

@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import urllib.request
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from principal.models import User
 from rest_framework.authtoken.models import Token
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -11,32 +12,63 @@ from rest_framework.authtoken.models import Token
 def login_form(request):
     return render(request, 'login.html')
 
-import logging
+
 def account(request):
     response = HttpResponse('Login Error')
-    response = render(request, 'index.html')
+    response = redirect(to="inicio")
 
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        # new_user = User.objects.create_user(username)
-        # new_user.set_password(password)
-        # new_user.save()
+       
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
-            login(request, user)        
+            login(request, user) 
+            try: 
+                if get_object_or_404(Token, user=user):
+                    tk = get_object_or_404(Token, user=user)
+                    tk.delete() 
+            except:
+               pass
+
             token = Token.objects.create(user=user)
             response = HttpResponse('Login Sucessfully')
-            response = render(request, 'prueba.html')
-            response.set_cookie('cognitya', token, max_age=36000)
-            
+            response = redirect(to=type_user(user))
+            response.set_cookie('cognitya', token)
             if(request.POST.get('save_session')):
-                response.set_cookie('cognitya', token)
+                token.user.save_session = True
+                token.user.save()
 
             
     return response
 
-def prueba(request):
-    logging.warning(request.COOKIES.get('cognitya'))
-    return render(request, 'prueba.html')
+def type_user(user):
+    if user.is_patient:
+        return "patient_home"
+    if user.is_medic:
+        return "doctor_home"
+    else:
+        return "admin_home"
+
+
+
+
+
+def user_logout(request):
+
+    response = HttpResponse('Logout')
+  
+    key = request.COOKIES.get("cognitya")
+    tk = get_object_or_404(Token, key=key)
+    user = tk.user
+    tk.user.save_session = False
+    tk.user.save()
+   
+    tk.delete()
+    logout(request)
+    
+    response = redirect(to="inicio")
+    response.delete_cookie('cognitya')
+
+    return response

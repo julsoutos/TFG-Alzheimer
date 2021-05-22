@@ -1,0 +1,42 @@
+
+  {% extends 'base_doctor.html' %}
+
+  {% load static %}
+  
+  {% block contenido %}
+  
+ <!-- ======= Mobile nav toggle button ======= -->
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+  <main id="main">
+    <section id="about" class="about" data-aos="fade-up" >
+        <div class="container">
+    
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre Paciente</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                    {% for item in patients %}
+                        <tr>
+                            <th scope="row">{{item.user.first_name}} {{item.user.last_name}}</th>
+                            <td>{{age}} años</td>
+                            <td><a href="expediente.html"class="btn btn-outline-primary">Expediente</a></td>
+                        </tr>
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
+    
+        </div>
+      </section><!-- End About Section -->
+    
+   
+  </main><!-- End #main -->
+
+  {% endblock %}

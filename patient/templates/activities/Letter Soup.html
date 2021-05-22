@@ -1,0 +1,155 @@
+{% extends 'base_patient.html' %}
+
+{% load static %}
+
+{% block css %}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="{% static 'assets/js/activities.js' %}"></script>
+<script src="{% static 'assets/js/soup_letter.js' %}"></script>
+
+
+
+{% endblock %}
+
+{% block contenido %}
+
+{% if not load %}
+<section id="portfolio" class="portfolio"  style="position: relative; top: 120px;">
+
+    <div class="container" data-aos="fade-up">
+
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <header class="section-header">
+        
+            <p>Encuentre la palabra mostrada</p>
+
+          </header>
+        </div>
+      </div>
+
+      <section id="services" class="services">
+
+        <div class="container" data-aos="fade-up">
+  
+  
+          <div class="row gy-4">
+  
+            <div style="position: relative; bottom: 100px;" data-aos="fade-up" data-aos-delay="700">
+              <div class="service-box blue j">
+                
+                <h2>{{solution.solution}}</h2>
+             
+                
+              </div>
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </section><!-- End Services Section -->
+  
+
+
+      
+      <section id="pricing" class="pricing"  style="position: relative; bottom: 300px; display: none;">
+
+        <div class="container">
+          <header id="init" class="section-header" >
+            <p id="load" style="display: none;" >{{load}}</p>
+            <p id="variant" >{{solution.solution}}</p>
+
+            {% if training == False  %}
+              <a id="continue" href="{% url 'load_activity' %}?activity={{solution.name}}&&name={{activity.name}}" class="btn-buy">Continuar</a>
+
+           {% else %}
+              <a id="continue"  href="{% url 'load_training' %}?activity={{solution.name}}&&name={{activity.name}}&&training={{pk}}" class="btn-buy">Continuar</a>
+           {% endif %}
+          
+          </header>
+    
+        
+    
+        </div>
+    
+      </section><!-- End Pricing Section -->
+      
+
+    </div>
+
+  </section><!-- End Portfolio Section -->
+{% else %}
+ 
+
+<section id="services" class="services" >
+
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <p id="load" style="display: none;" >{{load}}</p>
+
+      <p id="title">Encuentre la palabra indicada<p>
+      <p id="variant" >{{solution.solution}}</p>
+    </header>
+
+
+    <div class="row gy-4 letter-container" >
+
+      {% for i in '111111111111111111111111111111' %}
+
+              <button name="letter" type="button" id={{forloop.counter}} onclick="set(this)"  class="col-lg-4 col-md-6 letters">
+
+                <div   class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                  
+                </div>
+                
+                </button>
+
+      {% endfor %}
+        
+
+      
+      </div>
+
+  </div>
+
+</section><!-- End Services Section -->
+
+    
+    <section id="pricing" class="pricing"  style="position: relative; bottom: 150px;">
+
+      <div class="container">
+  
+        <header class="section-header">
+         
+          {% if training == False %}
+          <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="answer" name="answer" value="">
+            <button type="  submit" class="btn-buy">Continuar</button>
+          </form>
+          {% else %}
+          <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="answer" name="{{activity_training}}" value="">
+            <button type="submit" style="background-color: none!important;" class="btn-buy">Continuar</button>
+          </form>
+          {% endif %}
+
+          <button onclick="reset()" style="background: none; margin-top: 10px;" class="btn-buy">Resetear Solución</button>
+
+
+        </header>
+  
+      
+  
+      </div>
+  
+    </section><!-- End Pricing Section -->
+
+{%endif%}
+
+
+
+{% endblock %}

@@ -9,6 +9,11 @@ import logging
 
 # Create your views here.
 
+def admin_home(request):
+    return render(request, "admin_home.html")
+
+
+
 def form_doctor(request):
     form  = CreateDoctorForm()
     if request.method == 'POST':
@@ -22,6 +27,7 @@ def form_doctor(request):
             comments = doctor_form.cleaned_data['comments']
             specialty = doctor_form.cleaned_data['specialty']
             email = doctor_form.cleaned_data['email']
+
             
             user = User.objects.create(username=username, password=password , first_name=first_name, last_name=last_name, birth_date=birth_date, comments=comments, is_medic=True, email=email)
             user.set_password(password)

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'principal',
     'authentication',
     'administrator',
+    'doctor',
+    'patient',
     'rest_framework.authtoken'
 ]
 
@@ -49,7 +51,9 @@ INSTALLED_APPS = [
 MODULES = [
     'principal',
     'authentication',
-    'administrator'
+    'administrator',
+    'doctor',
+    'patient'
 
 ]
 
@@ -60,6 +64,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'principal.middleware.Interceptor',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

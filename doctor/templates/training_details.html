@@ -1,0 +1,55 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+{% block contenido %}
+ <!-- ======= Mobile nav toggle button ======= -->
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+
+ 
+<main id="main">
+    <section id="admin"  style="position: relative; ">
+        <div class="container">
+    
+            <form>
+                <fieldset>
+                  <legend>Entrenamiento de Memoria</legend>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre entrenamiento:</label>
+                    <input type="text" class="form-control"  value="Entrenamiento de Memoria">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Categoría:</label>
+                    <input type="text" class="form-control"  value="Memoria">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleTextarea">Fecha de creación:</label>
+                    <input class="form-control"  value="28/03/2021" ></textarea>
+                  </div>
+                                       
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Fecha de finalización:</label>
+                    <input type="text" class="form-control"  value="29/03/2021">
+                  </div>
+                 
+                 
+                 
+                  <div class="form-group">
+                    <label for="exampleTextarea">Observaciones</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3" ></textarea>
+                  </div>
+                  <a href="doctor_entrenamiento_activity_list.html"class="btn btn-outline-primary">Actividades del entrenamiento</a> <a href="doctor_entrenamiento_activity_list.html"class="btn btn-outline-primary">Pacientes asignados</a>        
+
+                 
+              </form>
+    
+        </div>
+    
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}

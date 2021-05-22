@@ -1,9 +1,9 @@
 from django.shortcuts import render
-import urllib.request
+from .utils import isLogged
 # Create your views here.
+
 def inicio(request):
-    asd = "123"
-    return render(request, 'index.html')
+    return render(request, 'index.html', isLogged(request))
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'about.html', isLogged(request))

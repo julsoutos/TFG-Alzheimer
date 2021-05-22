@@ -7,25 +7,6 @@
   <!-- ======= Mobile nav toggle button ======= -->
   <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex flex-column justify-content-center">
-
-    <nav class="nav-menu">
-      <ul>
-        <li class="active"><a href="admin_home.html"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-        <li><a href="admin_users.html"><i class="bx bx-user"></i> <span>Usuarios</span></a></li>
-        
-        <li><a href="index.html"><i class="bx bi-arrow-right"></i> <span>Cerrar Sesión</span></a></li>
-
-
-      </ul>
-    </nav><!-- .nav-menu -->
-
-  </header><!-- End Header -->
-
- 
-
-
   <main id="main">
     <section id="admin"  style="position: relative; ">
         <div class="container">
@@ -65,14 +46,14 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Correo electrónico:</label>
-                    <input type="text" class="form-control" name="email" >
+                    {{form.email}}
                   </div>
                  
                  
                  
                   <div class="form-group">
                     <label for="exampleTextarea">Observaciones</label>
-                    <textarea class="form-control" id="exampleTextarea" name="comments" rows="3" ></textarea>
+                    {{form.comments}}
                   </div>
                   <td><button type="submit" class="btn btn-outline-primary">Confirmar</button></td>           
 
