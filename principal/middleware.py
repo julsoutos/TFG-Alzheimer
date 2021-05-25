@@ -20,6 +20,7 @@ class Interceptor:
         response = HttpResponse("User Permissions")
         path = request.path_info.lstrip("/")
 
+
         #Si el usuario es anónimo e intenta acceder a urls de usuario autenticado, se redige a la página de inicio
         if isLogged(request)["logged"] == False and path and not "authentication" in path and not "principal" in path :        
             response = redirect(to="inicio")

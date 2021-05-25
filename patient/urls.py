@@ -2,7 +2,7 @@ from django.urls import include, path
 from . import views
 from . import activity
 from . import training
-
+from . import mental_test
 
 
 urlpatterns = [
@@ -21,10 +21,11 @@ urlpatterns = [
 
       #Trainings
             path('list_trainings', training.list_trainings, name="list_trainings"),
-
             path('init_training', training.init_training, name="init_training"),
+            path('load_training', training.load_training, name="load_training"),
 
-            path('load_training', training.load_training, name="load_training")
+      
+      path('isaac_test', mental_test.isaac_test, name="isaac_test")
 
 
 ]

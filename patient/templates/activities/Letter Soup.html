@@ -132,8 +132,9 @@
           {% else %}
           <form action="" method="POST">
             {% csrf_token %}
-            <input type="hidden" id="answer" name="{{activity_training}}" value="">
-            <button type="submit" style="background-color: none!important;" class="btn-buy">Continuar</button>
+            <input type="hidden" id="answer" name="answer" value="">
+            <input type="hidden"  name="activity" value="{{activity_training.pk}}">
+            <button type="submit" class="btn-buy">Continuar</button>
           </form>
           {% endif %}
 

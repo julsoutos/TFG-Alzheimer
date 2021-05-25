@@ -2427,6 +2427,22 @@ section {
   text-align: center;
 }
 
+.words{
+  background: white;
+  width: 110px;
+  height: 50px;
+  border-width: 1px;
+  border-color: #012970;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.words-container{
+  width: 350px; 
+  position: relative; 
+  left: 500px;
+}
+
 .letter-container{
   width: 329px; 
   position: relative; 
@@ -2479,6 +2495,12 @@ section {
 
   }
 
+  .words-container{
+    width: 350px; 
+    position: relative; 
+    left: 200px;
+  }
+
   .prices{
     position: relative;
     bottom: 400px;
@@ -2514,6 +2536,13 @@ section {
     width: 90vw;
     left: 30px;
 }
+
+.words-container{
+  width: 350px; 
+  position: relative; 
+  left:12px;
+}
+
   }
 
 

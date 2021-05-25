@@ -2,136 +2,201 @@
 
 {% load static %}
 
+
+{% block css %}
+<script src="{% static 'assets_profile/js/create_training.js' %}"></script>
+
+{% endblock %}
+
+
 {% block contenido %}
+
+
  <!-- ======= Mobile nav toggle button ======= -->
  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
-<main id="main">
+
+
+ 
+ <div class="modal " id="patients">
+  <div class="modal-dialog"    >
+    <div class="modal-content"  >
+    
+      <div class="modal-header">
+        <h4 class="modal-title">Mis pacientes</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <div class="modal-body" >
+        
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre Paciente</th>
+                  <th scope="col">Edad</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  {% for item in patients %}
+                      <tr>
+                          <th scope="row">{{item.user.first_name}} {{item.user.last_name}}</th>
+                          <td>{{age}} años</td>
+                          <td><button type="button" id="{{item.user.username}}" onclick="add(this, 'addedPatient')" class="btn btn-outline-primary">Añadir</button></td>
+                      </tr>
+                  {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="addedActivities">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Actividades añadidas</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Actividad</th>
+
+            </tr>
+          </thead>
+          <tbody id="addedActivity" >
+
+            
+          </tbody>
+        </table>
+
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="addedPatients">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Pacientes añadidos</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Paciente</th>
+
+            </tr>
+          </thead>
+          <tbody id="addedPatient" >
+
+            
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="activities" >
+  <div class="modal-dialog"   >
+    <div class="modal-content"  >
+    
+ 
+
+
+      <div class="modal-header">
+        <h4 class="modal-title">Lista de actividades</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+  
+        
+      </div>
+      
+      <div class="modal-body" >
+          <header class="section-header">
+
+          
+            
+            </header>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre Actividad</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  {% for item in activities %}
+                      <tr>
+                          <th scope="row">{{item.name}}</th>
+                          <td>{{item.category}}</td>
+                          <td><button type="button" id="{{item.name}}" onclick="add(this, 'addedActivity')" class="btn btn-outline-primary">Añadir</button></td>
+                      </tr>
+                  {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<main id="main" data-aos="fade-up">
 
     
          
-          <div class="modal " id="patients">
-            <div class="modal-dialog"    >
-              <div class="modal-content"  >
-              
-                <div class="modal-header">
-                  <h4 class="modal-title">Mis pacientes</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                
-                <div class="modal-body" >
-                  
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Nombre Paciente</th>
-                            <th scope="col">Edad</th>
-                            <th scope="col"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
         
-                            {% for item in patients %}
-                                <tr>
-                                    <th scope="row">{{item.user.first_name}} {{item.user.last_name}}</th>
-                                    <td>{{age}} años</td>
-                                    <td><button type="button" id="{{item.pk}}" onclick="" class="btn btn-outline-primary">Añadir</button></td>
-                                </tr>
-                          {% endfor %}
-                          
-                        </tbody>
-                      </table>
 
-
-                </div>
-                
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
-                </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <div class="modal" id="addedActivities">
-            <div class="modal-dialog">
-              <div class="modal-content">
-              
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Actividades añadidas</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <span>Memoriza el orden de las imágenes</span>
-                </div>
-                
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-      
-
-          <div class="modal" id="activities" >
-            <div class="modal-dialog"   >
-              <div class="modal-content"  >
-              
-           
-
-
-                <div class="modal-header">
-                  <h4 class="modal-title">Lista de actividades</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-            
-                  
-                </div>
-                
-                <div class="modal-body" >
-                    <header class="section-header">
-
-                    
-                      
-                      </header>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Nombre Actividad</th>
-                            <th scope="col">Categoría</th>
-                            <th scope="col"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-        
-                            {% for item in activities %}
-                                <tr>
-                                    <th scope="row">{{item.name}}</th>
-                                    <td>{{item.category}}</td>
-                                    <td><button type="button" id="{{item.pk}}" class="btn btn-outline-primary">Añadir</button></td>
-                                </tr>
-                            {% endfor %}
-                          
-                        </tbody>
-                      </table>
-
-
-                </div>
-                
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
-                </div>
-                
-              </div>
-            </div>
-          </div>
+          
 
 
 
@@ -153,9 +218,9 @@
                     <textarea class="form-control" name="description" id="exampleTextarea" rows="3" ></textarea>
                   </div>
 
-                  <input type="hidden" name="patients" class="form-control"  value="">
+                  <input type="hidden" name="inputPatients" id="inputPatients" class="form-control">
 
-                  <input type="hidden" name="activities" class="form-control"  value="">
+                  <input type="hidden" name="inputActivities" id="inputActivities" class="form-control">
 
 
                   <table class="table">
@@ -166,7 +231,7 @@
 
                         <td>
                             
-                            <button type="submit" class="btn btn-outline-primary create" style="color: rgb(182, 66, 66); border-color:rgb(182, 66, 66);">Confirmar</button>  
+                            <button type="submit" class="btn btn-outline-primary create" style="color: rgb(182, 66, 66); border-color:rgb(182, 66, 66);" onclick="send()">Confirmar</button>  
                             
                         </td>
                         <td>
@@ -181,11 +246,17 @@
 
                         </td>
                         <td>
-                            <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedActivities">
+                              <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedActivities">
                                 Actividades añadidas
                               </button>
                              
                         </td>
+                        <td>
+                          <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedPatients">
+                                Pacientes añadidos
+                          </button>
+                         
+                    </td>
                     </tr>
                  
                     </tbody>

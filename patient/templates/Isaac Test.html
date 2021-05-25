@@ -1,0 +1,183 @@
+{% extends 'base_patient.html' %}
+
+{% load static %}
+
+{% block css %}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="{% static 'assets/js/isaac_test.js' %}"></script>
+
+
+
+
+{% endblock %}
+
+{% block contenido %}
+
+    
+<section id="services" class="services" >
+
+    <div class="container" data-aos="fade-up">
+  
+      <header class="section-header">
+  
+        <p id="title">Seleccione todos los elementos que sean animales<p>
+      </header>
+  
+  
+      <div class="row gy-4 words-container" >
+  
+        {% for i in '111111111111111111111' %}
+  
+                <button name="animal" type="button" id={{forloop.counter}} onclick="setAnimal(this)"  class="col-lg-4 col-md-6 words">
+  
+                  <div   class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    
+                  </div>
+                  
+                  </button>
+  
+        {% endfor %}
+          
+  
+        
+        </div>
+  
+    </div>
+  
+  </section><!-- End Services Section -->
+  
+
+  <section id="pricing" class="pricing"  style="position: relative; bottom: 150px;">
+  
+    <div class="container">
+
+      <header class="section-header">
+ 
+
+        <button id="animal" onclick="reset(this)" style="background: none; margin-top: 10px;" class="btn-buy">Resetear Solución</button>
+
+
+      </header>
+
+    
+
+    </div>
+
+  </section><!-- End Pricing Section -->
+
+      
+<section id="services" class="services" >
+
+    <div class="container" data-aos="fade-up">
+  
+      <header class="section-header">
+  
+        <p id="title">Seleccione todos los elementos que sean colores<p>
+      </header>
+  
+  
+      <div class="row gy-4 words-container" >
+  
+        {% for i in '111111111111111111111' %}
+  
+                <button name="color" type="button" id={{forloop.counter}} onclick="setColor(this)"  class="col-lg-4 col-md-6 words">
+  
+                  <div   class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    
+                  </div>
+                  
+                  </button>
+  
+        {% endfor %}
+          
+  
+        
+        </div>
+  
+    </div>
+  
+  </section><!-- End Services Section -->
+
+    
+  <section id="pricing" class="pricing"  style="position: relative; bottom: 150px;">
+  
+    <div class="container">
+
+      <header class="section-header">
+ 
+
+        <button id="color" onclick="reset(this)" style="background: none; margin-top: 10px;" class="btn-buy">Resetear Solución</button>
+
+
+      </header>
+
+    
+
+    </div>
+
+  </section><!-- End Pricing Section -->
+
+
+  <section id="services" class="services" >
+
+    <div class="container" data-aos="fade-up">
+  
+      <header class="section-header">
+  
+        <p id="title">Seleccione todos los elementos que sean frutas<p>
+      </header>
+  
+  
+      <div class="row gy-4 words-container" >
+  
+        {% for i in '111111111111111111111' %}
+  
+                <button name="fruta" type="button" id={{forloop.counter}} onclick="setFruta(this)"  class="col-lg-4 col-md-6 words">
+  
+                  <div   class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    
+                  </div>
+                  
+                  </button>
+  
+        {% endfor %}
+          
+  
+        
+        </div>
+  
+    </div>
+  
+  </section><!-- End Services Section -->
+  
+      
+      <section id="pricing" class="pricing"  style="position: relative; bottom: 150px;">
+  
+        <div class="container">
+    
+          <header class="section-header">
+
+            <button id="fruta" onclick="reset(this)" style="background: none; margin: 10px;" class="btn-buy">Resetear Solución</button>
+
+            <form method="POST">
+              {% csrf_token %}
+              <input type="hidden" id="animals" name="answer1" value="">
+              <input type="hidden" id="colors" name="answer2" value="">
+              <input type="hidden" id="frutas" name="answer3" value="">
+
+              <button type="  submit" class="btn-buy">Continuar</button>
+            </form>
+     
+  
+  
+  
+          </header>
+    
+        
+    
+        </div>
+    
+      </section><!-- End Pricing Section -->
+  
+
+{% endblock %}

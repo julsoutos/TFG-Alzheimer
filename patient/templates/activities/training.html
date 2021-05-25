@@ -1,21 +1,21 @@
 
+
+
+
 {% extends 'base_patient.html' %}
+
 
 {% load static %}
 
 {% block contenido %}
 
 {% if not next %}
-<form action="" method="POST">
-
-    {% csrf_token %}
-
 
      {% include page %}
     <p> {{load}}</p>
 
-</form>
 {% else %}
+
 
 <section id="pricing" class="pricing">
 
