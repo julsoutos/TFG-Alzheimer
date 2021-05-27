@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+import datetime
 # Create your models here.
 
 class User(AbstractUser):
@@ -37,10 +37,13 @@ class Activity(models.Model):
     title = models.CharField(default="Title", max_length=100)
     ACTIVITY_CATEGORY = (
     ('None','None'),    
-    ('Memory','Memory'),
-    ('Attention','Attention'),
-    ('Calculus','Calculus'),
+    ('Memory','Memoria'),
+    ('Attention','Atencion'),
+    ('Calculus','Cálculo'),
+    ('Perception','Percepción'),
+    ('Language','Lenguaje'),
     )
+    description = models.TextField(default="Activity")
     category = models.CharField( max_length=10,choices=ACTIVITY_CATEGORY, default="None")
     def __str__(self):
         return self.name
@@ -69,6 +72,8 @@ class Activity_Result(models.Model):
     is_correct = models.BooleanField(default=False)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     is_completed = models.BooleanField(default=False)
+    end_date = models.DateField(blank=True, null=True)
+
 
     def __str__(self):
         return self.solution.name
@@ -78,7 +83,8 @@ class Patient_training(models.Model):
     training = models.ForeignKey(Training, on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     is_completed = models.BooleanField(default=False)
-    
+    end_date = models.DateField(blank=True, null=True)
+
     def __str__(self):
         return self.patient.user.username + ' - ' + self.training.name
 
@@ -89,6 +95,7 @@ class Activity_Training(models.Model):
     patient_training = models.ForeignKey(Patient_training, on_delete=models.CASCADE, null=True)
     is_completed = models.BooleanField(default=False)
     is_correct = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.activity.name + " - " + self.patient_training.training.name
