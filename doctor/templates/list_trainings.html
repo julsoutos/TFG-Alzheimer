@@ -17,6 +17,8 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripción</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -25,6 +27,8 @@
                     <td>{{item.name}}</td>
                     <td>{{item.description}}</td>
                     <td><a href="{% url 'training_details' %}?training={{item.pk}}"class="btn btn-outline-primary">Detalles</a></td>
+                    <td><a style="color: rgb(182, 66, 66); border-color:rgb(182, 66, 66);" href="{% url 'delete_training' %}?training={{item.pk}}"class="btn btn-outline-primary danger">Eliminar</a></td>
+
                 </tr>
                 {% endfor %}
                   <tr>              

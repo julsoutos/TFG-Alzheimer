@@ -61,6 +61,19 @@ def training_details(request):
 
 
 
+def delete_training(request):
+
+    try:
+        training = Training.objects.get(pk=request.GET['training'])
+        training.delete()
+        return redirect(to=trainings)
+
+    except:
+        return redirect(to=trainings)
+    
+
+
+
 def create_training(request):
     
  

@@ -53,6 +53,7 @@ def load_activity(request):
         user = User.objects.get(username=get_user_by_token(request))
         patient = Patient.objects.get(user=user)
         answer = evaluate(request, solution, 'answer')
+        print(request.POST['answer'])
         activity_result = Activity_Result.objects.create(solution=solution, is_correct=answer, patient=patient, is_completed=True, end_date=date.today())
         activity_result.save()
         

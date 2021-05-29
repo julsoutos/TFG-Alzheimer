@@ -22,6 +22,8 @@ urlpatterns = [
 
       path('training_details', views.training_details, name="training_details"),
 
+      path('delete_training', views.delete_training, name="delete_training"),
+
       path('create_training', views.create_training, name="create_training")
 
 
