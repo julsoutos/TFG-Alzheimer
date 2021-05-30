@@ -106,13 +106,15 @@
   <script src="{% static 'assets_profile/vendor/aos/aos.js' %}"></script>
 
   <!-- Template Main JS File -->
+  
   <script src="{% static 'assets_profile/js/main.js' %}"></script>
   
+
   {% if chart %}
   <script src="{% static 'assets_profile/js/charts.js' %}"></script>
   {% endif %}
 
-
+  {% if not day %}
     <!-- Vendor JS Files -->
     <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
     <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
@@ -123,7 +125,9 @@
     <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
   
     <!-- Template Main JS File -->
+    
     <script src="{% static 'assets/js/main.js' %}"></script>
+  {% endif %}
 
 </body>
 </html>

@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .utils import get_solution, evaluate
 from principal.utils import get_user_by_token
 from datetime import date
+from .mental_test import mental_test
 
 path_activity = 'activities/'
 
@@ -40,10 +41,8 @@ def init_training(request):
 
     if not activities:
 
-        patient_training.is_completed = True
-        patient_training.end_date = date.today()
-        patient_training.save()
-        return redirect(to="patient_home")
+        context = {"patient_training": patient_training}
+        return render(request, "mental_test.html", context)
 
 
     context = { 'page': path_activity + activities[0].activity.name + '.html', 'activity': activities[0].activity, 'solution': get_solution(request, activities[0].activity), 'training': True, 'load': False, 'pk':  patient_training.pk  }

@@ -99,3 +99,9 @@ class Activity_Training(models.Model):
 
     def __str__(self):
         return self.activity.name + " - " + self.patient_training.training.name
+
+# class Mental_Test(models.Model):
+#     pass
+
+# class Test_Result(models.Model):
+#     pass

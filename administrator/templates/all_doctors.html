@@ -1,0 +1,48 @@
+{% extends 'base_admin.html' %}
+
+{% load static %}
+
+{% block contenido %}
+ <!-- ======= Mobile nav toggle button ======= -->
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+ 
+ <main id="main">
+    <section id="admin"  style="position: relative; ">
+        <div class="container">
+    
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Especialidad</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for item in doctors %}
+
+                  <tr>
+                    <td>{{item.user.first_name}}</td>
+                    <td>{{item.user.last_name}}</td>
+                    <td>{{item.specialty}}</td>
+                    <td><a href="admin_doctor_detail.html"class="btn btn-outline-primary">Editar</a> <a href="{% url 'delete_user' %}?user={{item.user.pk}}"class="btn btn-outline-primary">Eliminar</a></td>
+                  </tr>
+            
+                  <tr>              
+                </tr>
+
+                    {% endfor %}
+                    <a href="{% url 'form_doctor' %}"class="btn btn-outline-primary" style="position: relative; bottom: 20px; ">Crear nuevo médico/a</a> 
+
+                </tbody>
+              </table>
+    
+        </div>
+    
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}

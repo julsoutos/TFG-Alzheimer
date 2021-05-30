@@ -15,14 +15,15 @@
   
        
   
-        <div class="row" data-aos="fade-up" >
+        <div class="row" >
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
 
               {% if day %}
 
-              <li data-filter=".opcion-1" class="filter-active" >Diario</li>
-              <li data-filter=".opcion-2">Últimos 7 días</li>
+              <li class="filter-active">Todo</li>
+              <li data-filter=".opcion-1" >Diario</li>
+              <li data-filter=".opcion-2" >Últimos 7 días</li>
               <li data-filter=".opcion-3">Últimos 28 días</li>
 
               {% endif %}
@@ -35,7 +36,7 @@
   
           <!-- Diario -->
 
-            <section id="pricing" class="pricing portfolio-item filter-web  opcion-1" style="margin-bottom: -200px; ">
+            <section id="pricing" class="pricing portfolio-item filter-card  opcion-1" style="margin-bottom: -200px; ">
     
                 <div class="container" data-aos="fade-down">
             
@@ -91,7 +92,7 @@
 
 
 
-            <section id="pricing" class="pricing portfolio-item filter-web opcion-1" style="margin-bottom: -590px;">
+            <section id="pricing" class="pricing portfolio-item filter-card  opcion-1" style="margin-bottom: -590px;">
     
               <div class="container"   >
           
@@ -100,7 +101,7 @@
                   <h5>Actividades</h5>
                 </header>
           
-                <div class="row gy-4" data-aos="fade-up" style="position: relative; bottom:100px;">        
+                <div class="row gy-4" style="position: relative; bottom:100px;">        
                   <div  data-aos="zoom-in" >
                     <div class="box">
 
@@ -148,8 +149,8 @@
                 </div>
 
 
-                <div class="row gy-4" data-aos="fade-up" style="position: relative; bottom: 300px;">        
-                  <div  data-aos="zoom-in" data-aos-delay="50">
+                <div class="row gy-4" style="position: relative; bottom: 300px;">        
+                  <div  data-aos="zoom-in" >
                     <div class="box">
 
                       <form>
@@ -171,7 +172,7 @@
                 </div>
 
                 <div class="row gy-4" style="position: relative; bottom: 400px;">        
-                  <div  data-aos="zoom-in" data-aos-delay="50">
+                  <div  data-aos="zoom-in" >
                     <div class="box">
 
                       <form>
@@ -193,7 +194,7 @@
                 </div>
 
                 <div class="row gy-4" style="position: relative; bottom: 500px;">        
-                  <div  data-aos="zoom-in" data-aos-delay="50">
+                  <div  data-aos="zoom-in" >
                     <div class="box">
 
                       <form>
@@ -220,36 +221,6 @@
           
           
 
-          <section id="pricing" class="pricing portfolio-item filter-web  opcion-1" style="position: relative; bottom: 500px; padding-left: 40px; padding-right: 30px;">
-    
-            <div class="container" data-aos="fade-down">
-        
-              <header class="section-header">
-              
-                <legend>Test Mental Abreviado de Hodkinson</legend>
-              </header>
-        
-              <div class="row gy-4" data-aos="fade-up" >        
-                <div  data-aos="zoom-in" data-aos-delay="100">
-                  <div class="box">
-                    <h5>Total puntos obtenidos: 8 puntos - Deterioro Leve</h5>
-                    <div class="chart-container" style="width: 100%; height: 40vh;" >
-
-                    <canvas id="test"></canvas>
-
-                        
-                  </div>
-                  </div>
-                </div>
-        
-              
-        
-              </div>
-        
-            </div>
-            
-        </section>
-
 
 
 
@@ -266,10 +237,16 @@
 
 
       <!-- Semanal -->
+      
 
    
-      <section id="pricing" class="pricing portfolio-item filter-web  opcion-2" style="margin-bottom: -200px;">
+      <section id="pricing" class="pricing portfolio-item filter-card opcion-2" style="margin-bottom: -200px;">
     
+        <header class="section-header">
+                
+          <h4>Semanal</h4>
+
+        </header>
         <div class="container" >
     
           <header class="section-header">
@@ -316,25 +293,7 @@
 
                
          
-            <div class="box" style="padding-left: auto; padding-right: auto;">
-              <header class="section-header">
-              
-                <h5>Tests de Evaluación</h5>
-              </header>
-              <div class="chart-container" style="width: 100%; height: 40vh;" >
-
-                  <canvas id="testSemanal" ></canvas>
-                </div>
-
-            
-              </div>
-        
-    
-          
-    
-          
-    
-        </div>
+           
         
     </section>
 
@@ -351,8 +310,12 @@
 
       <!-- Mensual -->
   
-      <section id="pricing" class="pricing portfolio-item filter-web  opcion-3" style="margin-bottom: -200px; padding-left: auto; padding-right: auto;">
-    
+      <section id="pricing" class="pricing portfolio-item filter-card opcion-3" style="margin-bottom: -200px; padding-left: auto; padding-right: auto;">
+        <header class="section-header">
+                
+          <h4>Mensual</h4>
+
+        </header>
         <div class="container" >
     
           <header class="section-header">
@@ -398,22 +361,7 @@
 
 
                
-          <div class="row gy-4"  >   
-            <div class="box" style="padding-left: auto; padding-right: auto;">
-              <header class="section-header">
-              
-                <h5>Tests de Evaluación</h5>
-              </header>
-              <div class="chart-container" style="width: 100%; height: 40vh;" >
-
-                  <canvas id="testMensual" ></canvas>
-                </div>
-
-            
-              </div>
-        
-    
-            </div>
+         
     
             {% endif %}
 

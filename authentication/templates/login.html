@@ -33,17 +33,24 @@
 
   <div class="wrapper" data-aos="fade-up" style="margin-bottom: 110px;" >
     <div class="title">Iniciar sesión</div>
-    <form method="POST" action="{% url 'account' %}">
+    <form method="POST" action="">
       {% csrf_token %}
             <div class="field">
-                <input type="text" name="username" required >
+              {{form.username}}
+
                 <label>Usuario</label>
+
             </div>
             <div class="field">
-                    <input type="password" name="password" required >
+                    {{form.password}}
+                    
+                   
                     <label>Contraseña</label>
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                 </div>
-            <div class="content">
+            <div class="content" style="position: relative; top: 15px;">
                     <div class="checkbox">
                     <input type="checkbox" name="save_session">
                     <label for="remember-me">Recuérdame</label>

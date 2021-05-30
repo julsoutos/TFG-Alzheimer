@@ -209,19 +209,29 @@
                   {% csrf_token %}
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nombre:</label>
-                    <input type="text" name="name" class="form-control"  value="">
-
+                    {{form.name}}
+                    {% for error in form.name.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                     
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Descripción:</label>
-                    <textarea class="form-control" name="description" id="exampleTextarea" rows="3" ></textarea>
+                    {{form.description}}
+                    {% for error in form.description.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
 
-                  <input type="hidden" name="inputPatients" id="inputPatients" class="form-control">
+                  {{form.inputPatients}}
+                  {% for error in form.error.errors %}
+                    <span style="color: red;">{{error}}</span>
+                  {% endfor %}
 
-                  <input type="hidden" name="inputActivities" id="inputActivities" class="form-control">
-
+                  {{form.inputActivities}}
+                  {% for error in form.inputActivities.errors %}
+                    <span style="color: red;">{{error}}</span>
+                  {% endfor %}
 
                   <table class="table">
                     
@@ -247,13 +257,13 @@
                         </td>
                         <td>
                               <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedActivities">
-                                Actividades añadidas
+                                Actividades añadidas <p id="totalActivities">0</p>
                               </button>
                              
                         </td>
                         <td>
                           <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedPatients">
-                                Pacientes añadidos
+                                Pacientes añadidos <p id="totalPatients">0</p>
                           </button>
                          
                     </td>

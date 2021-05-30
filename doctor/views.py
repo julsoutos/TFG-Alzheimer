@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from principal.models import  Patient_training, User, Doctor, Patient, Training, Activity, Activity_Training
 from principal.utils import  get_user_by_token
 from patient.utils import birth
+from .forms import CreateTrainingForm
 # Create your views here.
 
 def doctor_home(request):
@@ -80,19 +81,21 @@ def create_training(request):
     user = User.objects.get(username=get_user_by_token(request))
 
     if request.method == 'POST':
+        create_training_form = CreateTrainingForm(request.POST, "form")
+        if create_training_form.is_valid():
+            name = create_training_form.cleaned_data['name']
+            description = create_training_form.cleaned_data['description']
+            doctor = Doctor.objects.get(user=user)
+            training = Training.objects.create(name=name, description=description, doctor=doctor)
+            training.save()
 
-        name = request.POST['name']
-        description = request.POST['description']
-        doctor = Doctor.objects.get(user=user)
-        training = Training.objects.create(name=name, description=description, doctor=doctor)
-        training.save()
+            create_activity_trainings(request, training, create_training_form)
 
-        create_activity_trainings(request, training)
+            return redirect(to=trainings)
+    else:
+        create_training_form = CreateTrainingForm()
 
-        return redirect(to=trainings)
-
-
-    context = {'patients': get_patients(request),  'age': birth(user.birth_date), 'activities': get_all_activities() }
+    context = {'patients': get_patients(request),  'age': birth(user.birth_date), 'activities': get_all_activities(), "form": create_training_form }
 
     return render(request, "create_training.html", context)
 
@@ -111,11 +114,11 @@ def get_all_activities():
     return Activity.objects.all()
 
 
-def create_activity_trainings(request, training):
+def create_activity_trainings(request, training, create_training_form):
+    patients =  create_training_form.cleaned_data['inputPatients'].split(",")
+    activities = create_training_form.cleaned_data['inputActivities'].split(",")
 
-    patients = request.POST['inputPatients'].split(",")
-    activities = request.POST['inputActivities'].split(",")
-
+   
     for username in patients:
         
         user = User.objects.get(username=username)

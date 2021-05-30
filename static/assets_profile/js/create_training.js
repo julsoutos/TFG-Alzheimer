@@ -2,17 +2,7 @@ function add(value, type){
 
     if(type == "addedPatient" || type == "addedActivity" ){
 
-            if(type == "addedPatient"){
-
-                value.innerHTML = "Paciente Añadido"
-
-            }
-
-            if(type == "addedActivity"){
-
-                value.innerHTML = "Actividad Añadida"
-
-            }
+          
 
             value.disabled = true
 
@@ -35,7 +25,18 @@ function add(value, type){
 
 
                 document.getElementById(type).appendChild(fila)
-                
+
+                if(type == "addedPatient"){
+
+                    value.innerHTML = "Paciente Añadido"
+                    addedPatients()
+                }
+    
+                if(type == "addedActivity"){
+    
+                    value.innerHTML = "Actividad Añadida"
+                    addedActivities()
+                }
     }   
 
 
@@ -53,8 +54,8 @@ function del(added, element){
 
 function send(){
     
-    inputPatients = document.getElementById("inputPatients")
-    inputActivities = document.getElementById("inputActivities")
+    inputPatients = document.getElementById("id_inputPatients")
+    inputActivities = document.getElementById("id_inputActivities")
 
     patients = document.getElementsByName("patient")
     activities = document.getElementsByName("activity")
@@ -70,5 +71,14 @@ function send(){
         inputActivities.value  = inputActivities.value == ""? activities[index].innerHTML : inputActivities.value  + ","  +  activities[index].innerHTML
         
     }
+
+}
+
+function addedActivities(){
+ document.getElementById("totalActivities").innerHTML =  document.getElementsByName("activity").length
+}
+
+function addedPatients(){
+    document.getElementById("totalPatients").innerHTML =  document.getElementsByName("patient").length
 
 }

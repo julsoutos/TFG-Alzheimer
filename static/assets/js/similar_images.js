@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     
 
-        types = ["triangles", "circle", "star"]
+        types = ["triangles", "circles", "stars"]
         types = types.sort(() => Math.random() - 0.5)
 
         initImage = getImages(path, types[0]).sort(() => Math.random() - 0.5)[0].split(",")[1]

@@ -25,7 +25,8 @@ urlpatterns = [
             path('load_training', training.load_training, name="load_training"),
 
       
-      path('isaac_test', mental_test.isaac_test, name="isaac_test")
+      path('mental_test', mental_test.mental_test, name="mental_test"),
+      path('load_mental_test', mental_test.load_mental_test, name="load_mental_test")
 
 
 ]

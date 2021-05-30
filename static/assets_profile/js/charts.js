@@ -1,4 +1,3 @@
-
 function setDay(value){
 
     document.getElementById("sendDay").click()
@@ -6,7 +5,14 @@ function setDay(value){
 }
 
 
+
+
+
+
 if(document.getElementById("day").value != ""){
+
+
+    
 
 var comparativaSemanal = document.getElementById('comparativaSemanal').getContext('2d');
 var comparativaSemanal = new Chart(comparativaSemanal, {
@@ -155,45 +161,45 @@ var comparativaSemana2 = new Chart(comparativaSemana2, {
 //Gráfica tests
 
 
-var testSemanal = document.getElementById('testSemanal').getContext('2d');
+// var testSemanal = document.getElementById('testSemanal').getContext('2d');
 
-var testSemanal = new Chart(testSemanal, {
-    type: 'line',
-    data: {
-        labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5', 'Día 6' ,'Día 7'],
-        datasets: [{
-            label: 'Puntos por día',
-            data: [8,5,7,6,8,6,7],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
+// var testSemanal = new Chart(testSemanal, {
+//     type: 'line',
+//     data: {
+//         labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5', 'Día 6' ,'Día 7'],
+//         datasets: [{
+//             label: 'Puntos por día',
+//             data: [8,5,7,6,8,6,7],
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
 
                 
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
+//             ],
+//             borderColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
                
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio:false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         maintainAspectRatio:false,
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     }
+// });
 
 
 
@@ -341,45 +347,45 @@ var comparativaMensual2 = new Chart(comparativaMensual2, {
 
 
 
-var testMensual = document.getElementById('testMensual').getContext('2d');
+// var testMensual = document.getElementById('testMensual').getContext('2d');
 
-var testMensual = new Chart(testMensual, {
-    type: 'line',
-    data: {
-        labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
-        datasets: [{
-            label: 'Puntos por semana',
-            data: [10,11,12,13],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
+// var testMensual = new Chart(testMensual, {
+//     type: 'line',
+//     data: {
+//         labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+//         datasets: [{
+//             label: 'Puntos por semana',
+//             data: [10,11,12,13],
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
 
                 
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
+//             ],
+//             borderColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
                
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio:false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         maintainAspectRatio:false,
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     }
+// });
 
 
 
@@ -437,7 +443,7 @@ var atencion = new Chart(atencion, {
         labels: ['Correctas', 'Incorrectas'],
         datasets: [{
             label: '# of Votes',
-            data: [diary['correct_attention'], diary['correct_attention']],
+            data: [diary['correct_attention'], diary['incorrect_attention']],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -573,44 +579,44 @@ var lenguaje = new Chart(lenguaje, {
 });
 
 
-var test = document.getElementById('test').getContext('2d');
+// var test = document.getElementById('test').getContext('2d');
 
-var test = new Chart(test, {
-    type: 'line',
-    data: {
-        labels: ['Pregunta 1', 'Pregunta 2', 'Pregunta 3', 'Pregunta 4'],
-        datasets: [{
-            label: 'Puntos por pregunta',
-            data: [1, 3, 2, 2],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
+// var test = new Chart(test, {
+//     type: 'line',
+//     data: {
+//         labels: ['Pregunta 1', 'Pregunta 2', 'Pregunta 3', 'Pregunta 4'],
+//         datasets: [{
+//             label: 'Puntos por pregunta',
+//             data: [1, 3, 2, 2],
+//             backgroundColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
 
                 
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
+//             ],
+//             borderColor: [
+//                 'rgba(255, 99, 132, 0.2)',
+//                 'rgba(54, 162, 235, 0.2)',
+//                 'rgba(255, 206, 86, 0.2)',
+//                 'rgba(75, 192, 192, 0.2)',
                
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio:false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+//             ],
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         responsive: true,
+//         maintainAspectRatio:false,
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     }
+// });
 
 }
