@@ -3,6 +3,7 @@ from principal.models import User, Activity_Result, Activity, Solution, Patient
 from principal.utils import get_user_by_token
 from .utils import get_solution, evaluate
 import json
+from datetime import date
 # Create your views here.
 
 path_activity = 'activities/'
@@ -52,7 +53,8 @@ def load_activity(request):
         user = User.objects.get(username=get_user_by_token(request))
         patient = Patient.objects.get(user=user)
         answer = evaluate(request, solution, 'answer')
-        activity_result = Activity_Result.objects.create(solution=solution, is_correct=answer, patient=patient, is_completed=True)
+        print(request.POST['answer'])
+        activity_result = Activity_Result.objects.create(solution=solution, is_correct=answer, patient=patient, is_completed=True, end_date=date.today())
         activity_result.save()
         
         return render(request, "patient_home.html")

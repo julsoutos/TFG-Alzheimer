@@ -20,6 +20,7 @@ class Interceptor:
         response = HttpResponse("User Permissions")
         path = request.path_info.lstrip("/")
 
+
         #Si el usuario es anónimo e intenta acceder a urls de usuario autenticado, se redige a la página de inicio
         if isLogged(request)["logged"] == False and path and not "authentication" in path and not "principal" in path :        
             response = redirect(to="inicio")
@@ -46,7 +47,6 @@ class Interceptor:
         if valid_token(request.user, request.COOKIES.get("cognitya")):
             tk = get_object_or_404(Token, key=request.COOKIES.get("cognitya"))
             n = datetime.utcnow().replace(tzinfo=pytz.UTC) - tk.created
-            print(n.total_seconds())
             if n.total_seconds() >= 36000 and not "/authentication/logout" in request.path and request.user.save_session == False:
                 response = redirect(to="/authentication/logout")
                 return response

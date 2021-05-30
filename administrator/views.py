@@ -1,10 +1,7 @@
-from django.shortcuts import render
-import urllib.request
-from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect, render
 from principal.models import User, Doctor, Patient
 from .forms import CreateDoctorForm, CreatePatientForm
-import logging
+
 
 
 # Create your views here.
@@ -12,10 +9,8 @@ import logging
 def admin_home(request):
     return render(request, "admin_home.html")
 
-
-
 def form_doctor(request):
-    form  = CreateDoctorForm()
+
     if request.method == 'POST':
         doctor_form = CreateDoctorForm(request.POST,"form")
         if doctor_form.is_valid():
@@ -36,12 +31,16 @@ def form_doctor(request):
             doctor = Doctor.objects.create(user=user ,specialty=specialty)
             doctor.save()
 
-    context = {'form':form}
+            return redirect(to=all_doctors)
+
+    else:
+        doctor_form  = CreateDoctorForm()
+
+    context = {'form': doctor_form}
 
     return render(request, 'create_doctor.html', context)
 
 def form_patient(request):
-    form  = CreatePatientForm()
     if request.method == 'POST':
         patient_form = CreatePatientForm(request.POST,"form")
         if patient_form.is_valid():
@@ -60,7 +59,56 @@ def form_patient(request):
 
             patient = Patient.objects.create(user=user ,sickness=sickness)
             patient.save()
+            
+            return redirect(to=all_patients)
+    else:
+        patient_form = CreatePatientForm()
 
-    context = {'form':form}
+
+    context = {'form':patient_form}
 
     return render(request, 'create_patient.html', context)
+
+def user_types(request):
+    return render(request, 'user_types.html')
+
+def all_patients(request):
+    patients = Patient.objects.all()
+
+    context = {'patients': patients}
+
+    return render(request, 'all_patients.html', context)
+
+
+def all_doctors(request):
+    doctors = Doctor.objects.all()
+
+    context = {'doctors': doctors}
+
+    return render(request, 'all_doctors.html', context)
+
+def delete_user(request):
+    try:
+        
+      is_doctor = True  
+      user = User.objects.get(pk=request.GET['user'])
+
+      if(user.is_patient):
+          is_doctor = False
+
+      user.delete()
+
+      if(is_doctor):
+          return redirect(to=all_doctors)
+      else:
+          return redirect(to=all_patients)
+
+
+    except:
+        return redirect(to=admin_home)
+
+def update_patient(request):
+    pass
+
+def update_doctor(request):
+    pass

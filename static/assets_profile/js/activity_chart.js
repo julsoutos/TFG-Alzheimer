@@ -1,4 +1,6 @@
 
+
+
 var memoria = document.getElementById('memoria').getContext('2d');
 
 var memoria = new Chart(memoria, {

@@ -96,24 +96,22 @@
     </header>
 
 
-    <div class="row gy-4 letter-container" >
+    <div class="row gy-4" >
 
-     
-        <section id="services" class="services">
+         
+          <section id="services" class="services">
 
             <div class="container" data-aos="fade-up">
       
       
               <div class="row gy-4">
       
-                <div style="position: relative; top: 30px;" data-aos="fade-up" data-aos-delay="700">
+                <div style="position: relative; bottom: 50px;" data-aos="fade-up" data-aos-delay="200">
                   <div class="service-box blue j">
                     
-                    <h2 id="money" >0€</h2>
-                 
+                    <h2 id="money" >0€</h2>                 
                     
                   </div>
-                 
                 </div>
       
               </div>
@@ -121,30 +119,28 @@
             </div>
       
           </section><!-- End Services Section -->
-
-         
         
     
       </div>
   
-      <div class="center prices" >
-            
-        <button id="1"  name="prices" type="button" onclick="set(this)" class="price-btn">€</button>
-        <button id="2"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-        <button id="3"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-        <button id="4"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-        <button id="5"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-        <button id="6"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-        <button id="7"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-        <button id="8"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-        <button id="9"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-        <button id="10"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
-
-
-      </div>
+     
 
   </div>
+  <div class="center prices" >
+            
+    <button id="1"  name="prices" type="button" onclick="set(this)" class="price-btn">€</button>
+    <button id="2"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
+    <button id="3"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
+    <button id="4"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
+    <button id="5"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
+    <button id="6"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
+    <button id="7"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
+    <button id="8"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
+    <button id="9"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
+    <button id="10"  name="prices" type="button"  onclick="set(this)" class="price-btn">€</button>
 
+
+  </div>
 </section><!-- End Services Section -->
 
     
@@ -163,8 +159,9 @@
           {% else %}
           <form action="" method="POST">
             {% csrf_token %}
-            <input type="hidden" id="answer" name="{{activity_training}}" value="">
-            <button type="submit" class="btn-buy" style="background-color: white!important;" >Continuar</button>
+            <input type="hidden" id="answer" name="answer" value="">
+            <input type="hidden"  name="activity" value="{{activity_training.pk}}">
+            <button type=" submit" class="btn-buy">Continuar</button>
           </form>
           {% endif %}
 

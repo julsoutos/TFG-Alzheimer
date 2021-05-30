@@ -50,8 +50,8 @@
 
     <nav class="nav-menu">
       <ul>
-        <li class="active"><a href="admin_home.html"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-        <li><a href="admin_users.html"><i class="bx bx-user"></i> <span>Usuarios</span></a></li>
+        <li class="active"><a href="{% url 'admin_home' %}"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
+        <li><a href="{% url 'user_types' %}"><i class="bx bx-user"></i> <span>Usuarios</span></a></li>
         
         <li><a href="{% url 'user_logout' %}"><i class="bx bi-arrow-right"></i> <span>Cerrar Sesión</span></a></li>
 

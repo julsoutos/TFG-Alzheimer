@@ -2,6 +2,8 @@ from principal.models import Activity_Training, Activity, Solution, User, Patien
 from django.shortcuts import render, redirect
 from .utils import get_solution, evaluate
 from principal.utils import get_user_by_token
+from datetime import date
+from .mental_test import mental_test
 
 path_activity = 'activities/'
 
@@ -39,9 +41,8 @@ def init_training(request):
 
     if not activities:
 
-        patient_training.is_completed = True
-        patient_training.save()
-        return redirect(to="patient_home")
+        context = {"patient_training": patient_training}
+        return render(request, "mental_test.html", context)
 
 
     context = { 'page': path_activity + activities[0].activity.name + '.html', 'activity': activities[0].activity, 'solution': get_solution(request, activities[0].activity), 'training': True, 'load': False, 'pk':  patient_training.pk  }
@@ -53,44 +54,38 @@ def init_training(request):
 
 def load_training(request):
 
-    try:
-        user = User.objects.get(username=get_user_by_token(request))
-        patient = Patient.objects.get(user=user)
-        patient_training = Patient_training.objects.get(pk=request.GET['training'], is_completed=False, patient=patient)
-        activities = Activity_Training.objects.filter(patient_training=patient_training, is_completed=False)
+    user = User.objects.get(username=get_user_by_token(request))
+    patient = Patient.objects.get(user=user)
+    patient_training = Patient_training.objects.get(pk=request.GET['training'], is_completed=False, patient=patient)
+    activities = Activity_Training.objects.filter(patient_training=patient_training, is_completed=False)
 
-        if request.method == 'POST':
+    if request.method == 'POST':
 
-            n = request.POST
-            activity = list(n.items())[1]
-            a = Activity_Training.objects.get(name = activity[0])
-            a.is_completed = True
-            solution = Solution.objects.get(name = request.GET['activity'])
-            answer = evaluate(request, solution, activity[0])
-            a.is_correct = answer
-            a.save()
+        a = Activity_Training.objects.get(pk = request.POST['activity'])
+        a.is_completed = True
+        solution = Solution.objects.get(name = request.GET['activity'])
+        answer = evaluate(request, solution, 'answer')
+        a.is_correct = answer
+        a.save()
 
+    
+        all_activities = Activity_Training.objects.filter(patient_training=patient_training)
+
+        context = {'training': patient_training.pk, 'num_activities': all_activities.count(), 'next': True, 'activities': all_activities.count() - activities.count()}
+
+        return render(request, path_activity + 'training.html', context)    
+
+    else:
+    
+        activity = Activity.objects.get(name = request.GET['name'])
+        solution = Solution.objects.get(name = request.GET['activity'])
         
-            all_activities = Activity_Training.objects.filter(patient_training=patient_training)
-
-            context = {'training': patient_training.pk, 'num_activities': all_activities.count(), 'next': True, 'activities': all_activities.count() - activities.count()}
-
-            return render(request, path_activity + 'training.html', context)    
-
-        else:
         
-            activity = Activity.objects.get(name = request.GET['name'])
-            solution = Solution.objects.get(name = request.GET['activity'])
-            
-            
-            context = { 'page': path_activity + activity.name + '.html', 'activity': activity, 'solution': solution, 'activity_training':  activities[0].name ,  'training': True, 'load': True }
+        context = { 'page': path_activity + activity.name + '.html', 'activity': activity, 'solution': solution, 'activity_training':  activities[0] ,  'training': True, 'load': True }
 
-        
-            return render(request, path_activity + 'training.html', context)
+    
+        return render(request, path_activity + 'training.html', context)
 
 
-    except:
-
-        return redirect(to="patient_home")
 
     

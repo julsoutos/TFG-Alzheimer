@@ -15,6 +15,13 @@
       </header>
         <div class="list-group">
 
+            {% if trainings.count == 0 %}
+
+              <p class="list-group-item list-group-item-action flex-column align-items-start training">No hay entrenamientos disponibles</p>
+
+            {% endif %}
+
+
             {% for item in trainings %}
  
             <a href="{% url 'list_trainings' %}?training={{item.pk}}" class="list-group-item list-group-item-action flex-column align-items-start training">
