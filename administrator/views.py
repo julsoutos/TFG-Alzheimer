@@ -1,13 +1,15 @@
 from django.shortcuts import redirect, render
 from principal.models import User, Doctor, Patient
 from .forms import CreateDoctorForm, CreatePatientForm
-
+from principal.utils import get_user_by_token
 
 
 # Create your views here.
 
 def admin_home(request):
-    return render(request, "admin_home.html")
+    user = User.objects.get(username=get_user_by_token(request))
+    context = {'admin': user}
+    return render(request, "admin_home.html", context)
 
 def form_doctor(request):
 
