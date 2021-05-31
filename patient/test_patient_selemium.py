@@ -137,7 +137,10 @@ class PatientTest(StaticLiveServerTestCase):
 
         self.driver.find_element(By.LINK_TEXT, "Siguiente").click()
         self.driver.find_element(By.ID, "continue").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".btn-buy:nth-child(7)").click()
+        time.sleep(3)
+
+        element = self.driver.find_element(By.CSS_SELECTOR, ".btn-buy:nth-child(7)")
+        self.driver.execute_script("arguments[0].click();", element)
         time.sleep(3)
 
         self.driver.find_element(By.LINK_TEXT, "Siguiente").click()
