@@ -26,6 +26,8 @@ class Doctor(models.Model):
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    address = models.CharField(max_length=100, blank=True)
+    city = models.CharField(max_length=100, blank=True)
     sickness = models.CharField(max_length=300)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True)
 
@@ -100,8 +102,18 @@ class Activity_Training(models.Model):
     def __str__(self):
         return self.activity.name + " - " + self.patient_training.training.name
 
-# class Mental_Test(models.Model):
-#     pass
+class Mental_Test(models.Model):
+    name = models.CharField(max_length=300)
+    description = models.TextField(default="Mental Test") 
 
-# class Test_Result(models.Model):
-#     pass
+    def __str__(self):
+        return self.name
+
+class Test_Result(models.Model):
+    patient_training = models.ForeignKey(Patient_training, on_delete=models.CASCADE, null=True)
+    puntuation = models.IntegerField(default=0)
+    mental_Test = models.ForeignKey(Mental_Test, on_delete=models.CASCADE, null=True)
+    is_completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.mental_Test.name + " " + self.patient_training.training.name

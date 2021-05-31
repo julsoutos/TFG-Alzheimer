@@ -1,6 +1,7 @@
 
+from patient.mental_test import mental_test
 from django.shortcuts import redirect, render
-from principal.models import  Patient_training, User, Doctor, Patient, Training, Activity, Activity_Training
+from principal.models import  Mental_Test, Patient_training, Test_Result, User, Doctor, Patient, Training, Activity, Activity_Training
 from principal.utils import  get_user_by_token
 from patient.utils import birth
 from .forms import CreateTrainingForm
@@ -95,7 +96,7 @@ def create_training(request):
     else:
         create_training_form = CreateTrainingForm()
 
-    context = {'patients': get_patients(request),  'age': birth(user.birth_date), 'activities': get_all_activities(), "form": create_training_form }
+    context = {'patients': get_patients(request),  'age': birth(user.birth_date), 'activities': get_all_activities(), "form": create_training_form, 'tests': Mental_Test.objects.all() }
 
     return render(request, "create_training.html", context)
 
@@ -117,7 +118,7 @@ def get_all_activities():
 def create_activity_trainings(request, training, create_training_form):
     patients =  create_training_form.cleaned_data['inputPatients'].split(",")
     activities = create_training_form.cleaned_data['inputActivities'].split(",")
-
+    tests = create_training_form.cleaned_data['inputTests'].split(",")
    
     for username in patients:
         
@@ -132,6 +133,15 @@ def create_activity_trainings(request, training, create_training_form):
             
             activity_training = Activity_Training.objects.create(name="", activity=activity, patient_training=patient_training, is_completed=False, is_correct=False)
             activity_training.save()
+
+        for test in tests:
+            mental_test = Mental_Test.objects.get(name=test)
+            
+            mental_result = Test_Result.objects.create(patient_training=patient_training, mental_Test=mental_test, is_completed=False)
+            mental_result.save()
+
+
+
 
 def activities(request):
 

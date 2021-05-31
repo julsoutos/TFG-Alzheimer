@@ -11,7 +11,6 @@ $(document).ready(function(){
 
     audio1.play();
 
-    setTimeout(() => {document.getElementById("continue").click()}, 5000)
 
     }
 

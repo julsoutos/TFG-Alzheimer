@@ -53,12 +53,12 @@
 
 
       
-      <section id="pricing" class="pricing"  style="position: relative; bottom: 300px; display: none;">
+      <section id="pricing" class="pricing"  style="position: relative; bottom: 300px;">
 
         <div class="container">
           <header id="init" class="section-header" >
             <p id="load" style="display: none;" >{{load}}</p>
-            <p id="variant" >{{solution.solution}}</p>
+            <p id="variant" style="display: none;" >{{solution.solution}}</p>
 
             {% if training == False  %}
               <a id="continue" href="{% url 'load_activity' %}?activity={{solution.name}}&&name={{activity.name}}" class="btn-buy">Continuar</a>

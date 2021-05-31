@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from .utils import get_solution, evaluate
 from principal.utils import get_user_by_token
 from datetime import date
-from .mental_test import mental_test
 
 path_activity = 'activities/'
 
@@ -41,7 +40,8 @@ def init_training(request):
 
     if not activities:
 
-        context = {"patient_training": patient_training}
+        context = {"patient_training": patient_training, "load": True}
+        
         return render(request, "mental_test.html", context)
 
 

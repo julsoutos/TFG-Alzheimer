@@ -26,7 +26,6 @@
         // var audio1 = new Audio('../../static/assets/audios/letter.mp3');   
         // audio1.play();
     
-            setTimeout(() => {document.getElementById("continue").click()}, 5000)
     
         }
     

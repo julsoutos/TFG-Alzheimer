@@ -10,7 +10,6 @@ $(document).ready(function(){
         audio1.play();
 
         console.log(document.getElementById("continue"))
-        setTimeout(() => {document.getElementById("continue").click()}, 6000)
 
 
     }

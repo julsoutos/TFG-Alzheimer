@@ -1,6 +1,7 @@
 function add(value, type){
 
-    if(type == "addedPatient" || type == "addedActivity" ){
+
+    if(type == "addedPatient" || type == "addedActivity" || type == "addedTest" ){
 
           
 
@@ -10,7 +11,26 @@ function add(value, type){
                 fila.setAttribute("id", "added " + value.id)
                 var head1 = document.createElement("th")
                 head1.setAttribute("scope", "row")
-                head1.setAttribute("name", type == "addedPatient" ? "patient" : "activity")
+
+                if(type == "addedPatient"){
+
+                    head1.setAttribute("name",  "patient")
+
+                }
+
+                if(type == "addedActivity"){
+
+                    head1.setAttribute("name", "activity")
+
+                }
+
+                if( type == "addedTest"){
+
+                    head1.setAttribute("name", "test")
+
+                }
+
+
                 head1.innerHTML = value.id
                 fila.appendChild(head1);
 
@@ -37,6 +57,11 @@ function add(value, type){
                     value.innerHTML = "Actividad Añadida"
                     addedActivities()
                 }
+                
+                if(type == 'addedTest'){
+                    value.innerHTML = "Test Añadido"
+                    addedTests()
+                }
     }   
 
 
@@ -56,9 +81,11 @@ function send(){
     
     inputPatients = document.getElementById("id_inputPatients")
     inputActivities = document.getElementById("id_inputActivities")
+    inputTests = document.getElementById("id_inputTests")
 
     patients = document.getElementsByName("patient")
     activities = document.getElementsByName("activity")
+    tests = document.getElementsByName("test")
 
     for (let index = 0; index < patients.length; index++) {
 
@@ -72,6 +99,12 @@ function send(){
         
     }
 
+    for (let index = 0; index < tests.length; index++) {
+    
+        inputTests.value  = inputTests.value == ""? tests[index].innerHTML : inputTests.value  + ","  +  tests[index].innerHTML
+        
+    }
+
 }
 
 function addedActivities(){
@@ -80,5 +113,10 @@ function addedActivities(){
 
 function addedPatients(){
     document.getElementById("totalPatients").innerHTML =  document.getElementsByName("patient").length
+
+}
+
+function addedTests(){
+    document.getElementById("totalTests").innerHTML =  document.getElementsByName("test").length
 
 }
