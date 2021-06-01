@@ -10,12 +10,12 @@ before_script:
   - psql -U postgres -c "create database cognitya_db owner cognitya"
   - psql -U postgres -c "ALTER USER cognitya CREATEDB"
 
-  - wget -N http://chromedriver.storage.googleapis.com/91.0.4472.19/chromedriver_linux64.zip -P ~/
-  - unzip ~/chromedriver_linux64.zip -d ~/
-  - rm ~/chromedriver_linux64.zip
-  - sudo mv -f ~/chromedriver /usr/local/share/
-  - sudo chmod +x /usr/local/share/chromedriver
-  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+  # - wget -N http://chromedriver.storage.googleapis.com/91.0.4472.19/chromedriver_linux64.zip -P ~/
+  # - unzip ~/chromedriver_linux64.zip -d ~/
+  # - rm ~/chromedriver_linux64.zip
+  # - sudo mv -f ~/chromedriver /usr/local/share/
+  # - sudo chmod +x /usr/local/share/chromedriver
+  # - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
 language: python
 python:
