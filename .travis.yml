@@ -10,20 +10,20 @@ before_script:
   - psql -U postgres -c "create database cognitya_db owner cognitya"
   - psql -U postgres -c "ALTER USER cognitya CREATEDB"
 
-  # - wget -N http://chromedriver.storage.googleapis.com/91.0.4472.19/chromedriver_linux64.zip -P ~/
-  # - unzip ~/chromedriver_linux64.zip -d ~/
-  # - rm ~/chromedriver_linux64.zip
-  # - sudo mv -f ~/chromedriver /usr/local/share/
-  # - sudo chmod +x /usr/local/share/chromedriver
-  # - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+  - wget -N http://chromedriver.storage.googleapis.com/91.0.4472.19/chromedriver_linux64.zip -P ~/
+  - unzip ~/chromedriver_linux64.zip -d ~/
+  - rm ~/chromedriver_linux64.zip
+  - sudo mv -f ~/chromedriver /usr/local/share/
+  - sudo chmod +x /usr/local/share/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
 language: python
 python:
   - "3.6"
 script:
-  # - coverage run --branch --source=. ./manage.py test --keepdb 
-  # - coverage xml
-  # - python-codacy-coverage -r coverage.xml
+  - coverage run --branch --source=. ./manage.py test --keepdb 
+  - coverage xml
+  - python-codacy-coverage -r coverage.xml
 install:
   - pip install -r requirements.txt
   - pip install codacy-coverage
