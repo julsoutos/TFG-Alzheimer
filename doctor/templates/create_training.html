@@ -4,6 +4,8 @@
 
 
 {% block css %}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
 <script src="{% static 'assets_profile/js/create_training.js' %}"></script>
 
 {% endblock %}
@@ -320,7 +322,12 @@
                   {{form.inputTests}}
                   {% for error in form.inputTests.errors %}
                     <span style="color: red;">{{error}}</span>
+                    
+                  <script>
+                    var error = "{{error}}"
+                  </script>
                   {% endfor %}
+
 
                   <table class="table">
                     

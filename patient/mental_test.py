@@ -88,7 +88,7 @@ def evaluate_test(request, test):
 
             count = count + 1
 
-        if(king == "Juan Carlos"):
+        if(king == "Felipe"):
             print("6")
 
             count = count + 1

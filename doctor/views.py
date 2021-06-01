@@ -1,6 +1,6 @@
 
 from patient.mental_test import mental_test
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, resolve_url
 from principal.models import  Mental_Test, Patient_training, Test_Result, User, Doctor, Patient, Training, Activity, Activity_Training
 from principal.utils import  get_user_by_token
 from patient.utils import birth
@@ -20,7 +20,7 @@ def patients(request):
     try:
         user = User.objects.get(username=get_user_by_token(request))
 
-        context = {'patients': get_patients(request), 'age': birth(user.birth_date) }
+        context = {'patients': get_patients(request) }
 
         return render(request, 'patients.html', context)
 
@@ -96,7 +96,7 @@ def create_training(request):
     else:
         create_training_form = CreateTrainingForm()
 
-    context = {'patients': get_patients(request),  'age': birth(user.birth_date), 'activities': get_all_activities(), "form": create_training_form, 'tests': Mental_Test.objects.all() }
+    context = {'patients': get_patients(request),  'activities': get_all_activities(), "form": create_training_form, 'tests': Mental_Test.objects.all() }
 
     return render(request, "create_training.html", context)
 
@@ -161,5 +161,23 @@ def activity_details(request):
     except:
         return redirect(to=doctor_home)
 
-        
 
+def trainings_completed(request):
+
+    try:
+        patient = Patient.objects.get(pk=request.GET['patient'])
+        patient_trainings = Patient_training.objects.filter(patient=patient, is_completed=True)
+
+        context = {"trainings": patient_trainings}
+
+        return render(request, "trainings_completed.html", context)
+
+
+    except:
+        return redirect(to=doctor_home)
+
+def tests(request):
+
+    context = {"tests": Mental_Test.objects.all()}
+
+    return render(request, "list_test.html", context)

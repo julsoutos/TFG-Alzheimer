@@ -1,3 +1,8 @@
+function setDay(value){
+
+    document.getElementById("sendDay").click()
+
+}
 
 
 
@@ -9,7 +14,7 @@ var memoria = new Chart(memoria, {
         labels: ['Correctas', 'Incorrectas'],
         datasets: [{
             label: '# of Votes',
-            data: [2, 3],
+            data: [diary['correct_memory'], diary['incorrect_memory']],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -24,6 +29,8 @@ var memoria = new Chart(memoria, {
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio:false,
         scales: {
             yAxes: [{
                 ticks: {
@@ -45,7 +52,7 @@ var atencion = new Chart(atencion, {
         labels: ['Correctas', 'Incorrectas'],
         datasets: [{
             label: '# of Votes',
-            data: [1, 2],
+            data: [diary['correct_attention'], diary['incorrect_attention']],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -60,6 +67,8 @@ var atencion = new Chart(atencion, {
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio:false,
         scales: {
             yAxes: [{
                 ticks: {
@@ -79,7 +88,7 @@ var percepcion = new Chart(percepcion, {
         labels: ['Correctas', 'Incorrectas'],
         datasets: [{
             label: '# of Votes',
-            data: [1, 1],
+            data: [diary['correct_perception'], diary['incorrect_perception']],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -94,6 +103,8 @@ var percepcion = new Chart(percepcion, {
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio:false,
         scales: {
             yAxes: [{
                 ticks: {
@@ -114,7 +125,7 @@ var calculo = new Chart(calculo, {
         labels: ['Correctas', 'Incorrectas'],
         datasets: [{
             label: '# of Votes',
-            data: [1, 0],
+            data: [diary['correct_calculus'], diary['incorrect_calculus']],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -129,6 +140,8 @@ var calculo = new Chart(calculo, {
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio:false,
         scales: {
             yAxes: [{
                 ticks: {
@@ -147,7 +160,7 @@ var lenguaje = new Chart(lenguaje, {
         labels: ['Correctas', 'Incorrectas'],
         datasets: [{
             label: '# of Votes',
-            data: [0, 0],
+            data: [diary['correct_language'], diary['incorrect_language']],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -162,6 +175,8 @@ var lenguaje = new Chart(lenguaje, {
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio:false,
         scales: {
             yAxes: [{
                 ticks: {
@@ -173,34 +188,35 @@ var lenguaje = new Chart(lenguaje, {
 });
 
 
-var test = document.getElementById('test').getContext('2d');
 
-var test = new Chart(test, {
-    type: 'line',
+if(diary['test_isaac'] != -1){
+
+
+
+var test_isaac = document.getElementById('test_isaac').getContext('2d');
+
+var test_isaac = new Chart(test_isaac, {
+    type: 'bar',
     data: {
-        labels: ['Pregunta 1', 'Pregunta 2', 'Pregunta 3', 'Pregunta 4'],
+        labels: ['Puntos totales'],
         datasets: [{
-            label: 'Puntos obtenidos por pregunta',
-            data: [1, 3, 2, 2],
+            label: 'Puntos obtenidos'  ,
+            data: [diary['test_isaac']],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-
+               
                 
             ],
             borderColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-               
+           
             ],
             borderWidth: 1
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio:false,
         scales: {
             yAxes: [{
                 ticks: {
@@ -210,3 +226,53 @@ var test = new Chart(test, {
         }
     }
 });
+
+    
+}else{
+
+    document.getElementById("isaac").style.display = "none"
+
+}
+
+if(diary['test_hodkinson'] != -1){
+
+
+
+    var test_hodkinson = document.getElementById('test_hodkinson').getContext('2d');
+    
+    var test_hodkinson = new Chart(test_hodkinson, {
+        type: 'bar',
+        data: {
+            labels: ['Puntos totales'],
+            datasets: [{
+                label: 'Puntos obtenidos'  ,
+                data: [diary['test_hodkinson']],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                   
+                    
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 0.2)',
+               
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio:false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    
+        
+    }else{
+        document.getElementById("hodkinson").style.display = "none"
+    }

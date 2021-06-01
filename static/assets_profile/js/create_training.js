@@ -1,3 +1,17 @@
+$(document).ready(function(){
+    
+   
+   if(error != undefined){
+       reset()
+   }
+
+
+});
+
+
+
+
+
 function add(value, type){
 
 
@@ -74,6 +88,11 @@ function del(added, element){
     document.getElementById(element).disabled = false
     document.getElementById(element).innerHTML = "Añadir"
     
+    addedPatients()
+    addedActivities()
+    addedTests()
+
+
 }
 
 
@@ -108,7 +127,7 @@ function send(){
 }
 
 function addedActivities(){
- document.getElementById("totalActivities").innerHTML =  document.getElementsByName("activity").length
+    document.getElementById("totalActivities").innerHTML =  document.getElementsByName("activity").length
 }
 
 function addedPatients(){
@@ -118,5 +137,13 @@ function addedPatients(){
 
 function addedTests(){
     document.getElementById("totalTests").innerHTML =  document.getElementsByName("test").length
+
+}
+
+function reset(){
+    document.getElementById("id_inputPatients").value = ""
+    document.getElementById("id_inputActivities").value = ""
+    document.getElementById("id_inputTests").value = ""
+
 
 }

@@ -1,5 +1,9 @@
-from django.shortcuts import render
-from principal.models import  Activity_Result, Activity_Training
+from doctor.views import doctor_home
+import doctor
+from patient.mental_test import mental_test
+from django.http import request
+from django.shortcuts import redirect, render
+from principal.models import  Activity_Result, Activity_Training, Test_Result
 import datetime
 import json
 
@@ -23,6 +27,15 @@ def patient_stats(request):
 
     return render(request, 'patient_stats.html', context)
 
+def training_stats(request):
+    try:
+        patient_training = request.GET['patient_training']
+        context = {"diary_stats": result_training_stats(patient_training) , "training": True}
+        
+        return render(request, 'training_stats.html', context)
+
+    except:
+        return redirect(to=doctor_home)
 
 def get_diary_activities(date, category, patient):
 
@@ -33,6 +46,31 @@ def get_diary_activities(date, category, patient):
                     Activity_Result.objects.filter(end_date = date, is_correct=False, is_completed=True,solution__activity__category = category, patient__pk=patient))
 
         return ( (correct[0].count() + correct[1].count()) , (incorrect[0].count() + incorrect[1].count()) )
+        
+    except:
+        return (0,0)
+
+
+def get_diary_activities_training(category, patient_training):
+
+    try:
+        correct = Activity_Training.objects.filter(is_correct=True, activity__category = category, patient_training__pk=patient_training)
+                   
+        incorrect = Activity_Training.objects.filter(is_correct=False, is_completed=True, activity__category = category, patient_training__pk=patient_training)
+
+        return ( correct.count() , incorrect.count())
+        
+    except:
+        return (0,0)
+
+def get_test_stats(patient_training):  
+
+    try:
+        test_hodkinson = Test_Result.objects.filter(patient_training__pk = patient_training, mental_Test__name="Hodkinson Test")
+
+        test_isaac = Test_Result.objects.filter(patient_training__pk = patient_training, mental_Test__name="Isaac Test")           
+
+        return ( -1 if len(test_hodkinson) == 0 else test_hodkinson[0].puntuation, -1 if len(test_isaac) == 0 else test_isaac[0].puntuation )
         
     except:
         return (0,0)
@@ -143,5 +181,26 @@ def get_monthly_stats(day, patient):
                 "correct_attention": json.dumps(month_attention_training[0]), "incorrect_attention": json.dumps(month_attention_training[1]),
                 "correct_perception": json.dumps(month_perception_training[0]), "incorrect_perception": json.dumps(month_perception_training[1]),
                 "correct_language": json.dumps(month_language_training[0]), "incorrect_language": json.dumps(month_language_training[1]), "week_days": get_days_activities(day, 28 ,patient)[1]}
+
+    return stats
+
+def result_training_stats(patient_training):
+
+    memory_training = get_diary_activities_training("Memory", patient_training)
+    calculus_training = get_diary_activities_training("Calculus", patient_training)
+    attention_training = get_diary_activities_training("Attention", patient_training)
+    perception_training = get_diary_activities_training("Perception", patient_training)
+    language_training = get_diary_activities_training("Language", patient_training)
+    tests = get_test_stats(patient_training)
+
+
+    stats = {"correct_memory": json.dumps(memory_training[0]), "incorrect_memory": json.dumps(memory_training[1]),
+                "correct_calculus": json.dumps(calculus_training[0]), "incorrect_calculus": json.dumps(calculus_training[1]),
+                "correct_attention": json.dumps(attention_training[0]), "incorrect_attention": json.dumps(attention_training[1]),
+                "correct_perception": json.dumps(perception_training[0]), "incorrect_perception": json.dumps(perception_training[1]),
+                "correct_language": json.dumps(language_training[0]), "incorrect_language": json.dumps(language_training[1]),
+                "test_isaac": json.dumps(tests[1]), "test_hodkinson":json.dumps(tests[0]) }
+
+    
 
     return stats

@@ -104,6 +104,7 @@ class Activity_Training(models.Model):
 
 class Mental_Test(models.Model):
     name = models.CharField(max_length=300)
+    title = models.CharField(max_length=300, blank=True)
     description = models.TextField(default="Mental Test") 
 
     def __str__(self):

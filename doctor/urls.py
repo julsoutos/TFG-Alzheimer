@@ -24,7 +24,14 @@ urlpatterns = [
 
       path('delete_training', views.delete_training, name="delete_training"),
 
-      path('create_training', views.create_training, name="create_training")
+      path('create_training', views.create_training, name="create_training"),
+
+      path('trainings_completed', views.trainings_completed, name="trainings_completed"),
+
+      path('training_stats', stats.training_stats, name="training_stats"),
+
+      path('list_test', views.tests, name="list_test"),
+
 
 
 ]

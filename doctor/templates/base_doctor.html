@@ -58,6 +58,8 @@
         <li><a href="{% url 'patients' %}"><i class="bx bx-user"></i> <span>Pacientes</span></a></li>
         <li><a href="{% url 'trainings' %}"><i class="bx bx-file-blank"></i> <span>Entrenamientos</span></a></li>
         <li><a href="{% url 'list_activities' %}"><i class="bx bx-file-blank"></i> <span>Listado de Actividades</span></a></li>
+        <li><a href="{% url 'list_test' %}"><i class="bx bx-file-blank"></i> <span>Listado de Tests Mentales</span></a></li>
+
         <li><a href="{% url 'user_logout' %}"><i class="bx bi-arrow-right"></i> <span>Cerrar Sesión</span></a></li>
 
 
@@ -113,6 +115,11 @@
   {% if chart %}
   <script src="{% static 'assets_profile/js/charts.js' %}"></script>
   {% endif %}
+
+  {% if training %}
+  <script src="{% static 'assets_profile/js/training_chart.js' %}"></script>
+  {% endif %}
+
 
   {% if not day %}
     <!-- Vendor JS Files -->
