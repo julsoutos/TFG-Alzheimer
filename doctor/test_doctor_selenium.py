@@ -54,22 +54,12 @@ class DoctorTest(StaticLiveServerTestCase):
         self.vars = {}
         settings.DEBUG = True
         options = webdriver.ChromeOptions()
-        options.headless = False
+        options.headless = True
         self.driver = webdriver.Chrome(options=options)
                 
         super().setUp()
 
-    def tearDown(self):
-        self.driver.quit()
-        self.user1.delete()
-        self.user2.delete()
 
-        self.patient.delete()
-        self.doctor.delete()
-        self.activity.delete()
-        self.test.delete()
-
-        super().tearDown()
     
     def test_create_training(self):
         self.driver.get(f'{self.live_server_url}/authentication/login_form')
@@ -133,3 +123,15 @@ class DoctorTest(StaticLiveServerTestCase):
         time.sleep(3)
         self.driver.find_element(By.CSS_SELECTOR, "legend").click()
         assert self.driver.find_element(By.CSS_SELECTOR, "legend").text == "patient"
+
+        def tearDown(self):
+            self.driver.quit()
+            self.user1.delete()
+            self.user2.delete()
+
+            self.patient.delete()
+            self.doctor.delete()
+            self.activity.delete()
+            self.test.delete()
+
+            super().tearDown()
