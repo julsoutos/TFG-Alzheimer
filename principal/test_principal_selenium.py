@@ -66,7 +66,7 @@ class LoginTest(StaticLiveServerTestCase):
         time.sleep(2)
         assert self.driver.find_element(By.CSS_SELECTOR, "h1").text == "ADMIN"
 
-    def test_login_admin(self):
+    def test_login_doctor(self):
         self.driver.get(f'{self.live_server_url}/authentication/login_form')
         self.driver.set_window_size(1166, 936)
         self.driver.find_element(By.CSS_SELECTOR, "form").click()

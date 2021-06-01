@@ -42,7 +42,7 @@ class CreateDoctorForm(forms.Form):
     )
     comments = forms.CharField(
         widget=forms.Textarea(attrs={'class': "form-control"}),
-         max_length=1000
+         max_length=400, required=False
     )
 
     def clean_birth_date(self):
@@ -76,6 +76,7 @@ class CreateDoctorForm(forms.Form):
         return data
 
 class CreatePatientForm(forms.Form):
+
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class': "form-control"}),
         required=True, max_length=50
@@ -94,7 +95,7 @@ class CreatePatientForm(forms.Form):
     )
     sickness = forms.CharField(
         widget=forms.TextInput(attrs={'class': "form-control"}),
-        required=True, max_length=1000
+        required=True, max_length=300
     )
     birth_date = forms.DateField(
         widget= DateInput(attrs={'class': "form-control"}),
@@ -104,9 +105,20 @@ class CreatePatientForm(forms.Form):
         widget=forms.EmailInput(attrs={'class': "form-control", 'placeholder': "example@gmail.com"}),
         required=True, max_length=100
     )
+    
+    address = forms.CharField(
+        widget=forms.TextInput(attrs={'class': "form-control"}),
+        required=True, max_length=200
+    )
+
+    city = forms.CharField(
+        widget=forms.TextInput(attrs={'class': "form-control"}),
+        required=True, max_length=200
+    )
+
     comments = forms.CharField(
         widget=forms.Textarea(attrs={'class': "form-control"}),
-        max_length=1000
+        max_length=400, required=False
     )
       
     def clean_birth_date(self):

@@ -25,7 +25,6 @@ class DoctorTest(StaticLiveServerTestCase):
         date1 = datetime.datetime.today().date()
         date2 = date1 - datetime.timedelta(days=20)
 
-        logging.warning(date2)
         self.user2 = User(username="test_patient", first_name="patient", is_patient=True, birth_date=date2)
         self.user2.set_password("test_patient")
         self.user2.save()
@@ -124,14 +123,14 @@ class DoctorTest(StaticLiveServerTestCase):
         self.driver.find_element(By.CSS_SELECTOR, "legend").click()
         assert self.driver.find_element(By.CSS_SELECTOR, "legend").text == "patient"
 
-        def tearDown(self):
-            self.driver.quit()
-            self.user1.delete()
-            self.user2.delete()
+    def tearDown(self):
+        self.driver.quit()
+        self.user1.delete()
+        self.user2.delete()
 
-            self.patient.delete()
-            self.doctor.delete()
-            self.activity.delete()
-            self.test.delete()
+        self.patient.delete()
+        self.doctor.delete()
+        self.activity.delete()
+        self.test.delete()
 
-            super().tearDown()
+        super().tearDown()

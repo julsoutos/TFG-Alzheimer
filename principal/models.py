@@ -10,7 +10,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     birth_date = models.DateField(max_length=100, null=True)
-    comments = models.CharField(max_length=400)
+    comments = models.TextField(max_length=400)
     save_session = models.BooleanField(default=False)
 
     def __str__(self):
@@ -26,8 +26,8 @@ class Doctor(models.Model):
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    address = models.CharField(max_length=100, blank=True)
-    city = models.CharField(max_length=100, blank=True)
+    address = models.CharField(max_length=200, blank=True)
+    city = models.CharField(max_length=200, blank=True)
     sickness = models.CharField(max_length=300)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True)
 

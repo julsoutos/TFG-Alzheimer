@@ -1,5 +1,5 @@
 from django.test import TestCase
-from principal.models import User, Doctor, Patient, Activity, Solution, Training, Activity_Result, Patient_training, Activity_Training
+from principal.models import Mental_Test, Test_Result, User, Doctor, Patient, Activity, Solution, Training, Activity_Result, Patient_training, Activity_Training
 
 class UserModelTest(TestCase):
 
@@ -228,5 +228,55 @@ class ActivityTrainingModelTest(TestCase):
         self.test_user2.delete()
         self.test_user1.delete()
 
+class MentalTetsModelTest(TestCase):
+
+    def setUp(self):
+        self.mental_test =  Mental_Test(name="Isaac Test",title="Test Mental de Isaac" , description="Mental Test")
+        self.mental_test.save()
+
+    def test_mental_test_creation(self):
+       test_mental = self.mental_test
+
+       self.assertEquals(test_mental.name, "Isaac Test")
+       self.assertEquals(test_mental.title, "Test Mental de Isaac")
+       self.assertEquals(test_mental.description, "Mental Test")
+
+
+    def tearDown(self):
+        self.mental_test.delete()
+
+class TestResultModelTest(TestCase):
+    
+    def setUp(self):
+
+        self.test_user1 =  User(is_medic = True, is_patient = False, username="username1", first_name = 'User Test', last_name = 'Model Test 1', comments = 'This is a test', save_session = False)
+        self.test_user1.save()
+        self.test_doctor = Doctor(user = self.test_user1, specialty = 'Cirujano')
+        self.test_doctor.save()
+        self.test_user2 =  User(is_medic = False, is_patient = True, username="username2", first_name = 'User Test', last_name = 'Model Test 2', comments = 'This is a test', save_session = False)
+        self.test_user2.save()
+        self.test_patient = Patient(doctor = self.test_doctor, user = self.test_user2, sickness = 'Alzheimer')    
+        self.test_patient.save()
+        self.test_training = Training(name = 'Training Test 1', description = 'This is a test', doctor = self.test_doctor)
+        self.test_training.save()
+        self.test_patient_training = Patient_training(patient = self.test_patient, training = self.test_training, is_completed = True)
+        self.test_patient_training.save()
+
+        self.mental_test =  Mental_Test(name="Isaac Test",title="Test Mental de Isaac" , description="Mental Test")
+        self.mental_test.save()
+        
+        self.test_result = Test_Result(patient_training=self.test_patient_training, puntuation=0, mental_Test=self.mental_test, is_completed=True)
+        self.test_result.save()
+
+    def test_test_result_creation(self):
+       test_result = self.test_result
+
+       self.assertEquals(test_result.patient_training, self.test_patient_training)
+       self.assertEquals(test_result.puntuation, 0)
+       self.assertEquals(test_result.mental_Test, self.mental_test)
+       self.assertEquals(test_result.is_completed, True)
+
+    def tearDown(self):
+        self.test_result.delete()
 
     

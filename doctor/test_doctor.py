@@ -37,7 +37,7 @@ class CreateTraningFormTestCase(TestCase):
 
         self.assertFalse(form.is_valid())
 
-    def test_create_training_no_test(self):
+    def test_create_training_no_mental_test(self):
 
         form_data = {'name': 'Training Test', 'description': 'Description Test',
                     'inputPatients': 'Test Patient', 'inputActivities': 'Test Activity', 'inputTests': ''}

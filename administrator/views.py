@@ -54,12 +54,14 @@ def form_patient(request):
             comments = patient_form.cleaned_data['comments']
             sickness = patient_form.cleaned_data['sickness']
             email = patient_form.cleaned_data['email']
+            address = patient_form.cleaned_data['address']
+            city = patient_form.cleaned_data['city']
             
             user = User.objects.create(username=username, password=password , first_name=first_name, last_name=last_name, birth_date=birth_date, comments=comments, is_patient=True, email=email)
             user.set_password(password)
             user.save()
 
-            patient = Patient.objects.create(user=user ,sickness=sickness)
+            patient = Patient.objects.create(user=user ,sickness=sickness, address=address, city=city)
             patient.save()
             
             return redirect(to=all_patients)
@@ -71,8 +73,10 @@ def form_patient(request):
 
     return render(request, 'create_patient.html', context)
 
+
 def user_types(request):
     return render(request, 'user_types.html')
+
 
 def all_patients(request):
     patients = Patient.objects.all()
