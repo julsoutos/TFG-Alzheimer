@@ -21,7 +21,7 @@ language: python
 python:
   - "3.6"
 script:
-  - coverage run --branch --source=. ./manage.py test --keepdb 
+  - coverage run --branch --source=. ./manage.py test principal --keepdb 
   - coverage xml
   - python-codacy-coverage -r coverage.xml
 install:
