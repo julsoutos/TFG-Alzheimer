@@ -1,3 +1,4 @@
+import logging
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -86,6 +87,7 @@ class AdminTestCreatePatient(StaticLiveServerTestCase):
         self.driver.execute_script("arguments[0].click();", element)
         
         time.sleep(8)
+        logging.warning(self.driver.current_url)
         assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").text == "test patient"
 
 
@@ -100,75 +102,75 @@ class AdminTestCreatePatient(StaticLiveServerTestCase):
         super().tearDown()
 
 
-class AdminTestCreateDoctor(StaticLiveServerTestCase):
+# class AdminTestCreateDoctor(StaticLiveServerTestCase):
 
-    def create_admin(self):
-        self.admin = User(username="test_admin", first_name="Admin", is_staff=True)
-        self.admin.set_password("test_admin")
-        self.admin.save()
+#     def create_admin(self):
+#         self.admin = User(username="test_admin", first_name="Admin", is_staff=True)
+#         self.admin.set_password("test_admin")
+#         self.admin.save()
 
 
-    def setUp(self):
+#     def setUp(self):
 
-        self.create_admin()
+#         self.create_admin()
 
-        self.vars = {}
-        settings.DEBUG = True
-        options = webdriver.ChromeOptions()
-        options.headless = True
-        self.driver = webdriver.Chrome(options=options)
+#         self.vars = {}
+#         settings.DEBUG = True
+#         options = webdriver.ChromeOptions()
+#         options.headless = True
+#         self.driver = webdriver.Chrome(options=options)
                 
-        super().setUp()
+#         super().setUp()
     
 
-    def test_create_doctor(self):
-        self.driver.get(f'{self.live_server_url}/authentication/login_form')
-        self.driver.set_window_size(1166, 936)
-        self.driver.find_element(By.ID, "id_username").click()
-        self.driver.find_element(By.ID, "id_username").send_keys("test_admin")
-        self.driver.find_element(By.ID, "id_password").send_keys("test_admin")
-        self.driver.find_element(By.ID, "id_password").send_keys(Keys.ENTER)
-        time.sleep(3)
-        self.driver.find_element(By.CSS_SELECTOR, ".bx-user").click()
-        time.sleep(3)
+#     def test_create_doctor(self):
+#         self.driver.get(f'{self.live_server_url}/authentication/login_form')
+#         self.driver.set_window_size(1166, 936)
+#         self.driver.find_element(By.ID, "id_username").click()
+#         self.driver.find_element(By.ID, "id_username").send_keys("test_admin")
+#         self.driver.find_element(By.ID, "id_password").send_keys("test_admin")
+#         self.driver.find_element(By.ID, "id_password").send_keys(Keys.ENTER)
+#         time.sleep(3)
+#         self.driver.find_element(By.CSS_SELECTOR, ".bx-user").click()
+#         time.sleep(3)
     
-        element = self.driver.find_element(By.CSS_SELECTOR, ".list-group-item:nth-child(2) .mb-1")
-        self.driver.execute_script("arguments[0].click();", element)
+#         element = self.driver.find_element(By.CSS_SELECTOR, ".list-group-item:nth-child(2) .mb-1")
+#         self.driver.execute_script("arguments[0].click();", element)
         
-        time.sleep(3)
+#         time.sleep(3)
 
-        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
-        self.driver.find_element(By.ID, "id_username").click()
-        self.driver.find_element(By.ID, "id_username").send_keys("test doctor")
-        self.driver.find_element(By.ID, "id_password").click()
-        self.driver.find_element(By.ID, "id_password").send_keys("test doctor")
-        self.driver.find_element(By.ID, "id_first_name").click()
-        self.driver.find_element(By.ID, "id_first_name").send_keys("test doctor")
-        self.driver.find_element(By.ID, "id_last_name").click()
-        self.driver.find_element(By.ID, "id_last_name").send_keys("test doctor")
-        self.driver.find_element(By.ID, "id_specialty").click()
-        self.driver.find_element(By.ID, "id_specialty").send_keys("test specialty")
-        self.driver.find_element(By.ID, "id_birth_date").click()
-        self.driver.find_element(By.ID, "id_birth_date").send_keys("29-03-1977")
-        self.driver.find_element(By.ID, "id_email").click()
-        self.driver.find_element(By.ID, "id_email").send_keys("prodriguezgarrido11@gmail.com")
-        self.driver.find_element(By.ID, "id_comments").click()
-        self.driver.find_element(By.ID, "id_comments").send_keys("test comments")
-        time.sleep(3)      
+#         self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
+#         self.driver.find_element(By.ID, "id_username").click()
+#         self.driver.find_element(By.ID, "id_username").send_keys("test doctor")
+#         self.driver.find_element(By.ID, "id_password").click()
+#         self.driver.find_element(By.ID, "id_password").send_keys("test doctor")
+#         self.driver.find_element(By.ID, "id_first_name").click()
+#         self.driver.find_element(By.ID, "id_first_name").send_keys("test doctor")
+#         self.driver.find_element(By.ID, "id_last_name").click()
+#         self.driver.find_element(By.ID, "id_last_name").send_keys("test doctor")
+#         self.driver.find_element(By.ID, "id_specialty").click()
+#         self.driver.find_element(By.ID, "id_specialty").send_keys("test specialty")
+#         self.driver.find_element(By.ID, "id_birth_date").click()
+#         self.driver.find_element(By.ID, "id_birth_date").send_keys("29-03-1977")
+#         self.driver.find_element(By.ID, "id_email").click()
+#         self.driver.find_element(By.ID, "id_email").send_keys("prodriguezgarrido11@gmail.com")
+#         self.driver.find_element(By.ID, "id_comments").click()
+#         self.driver.find_element(By.ID, "id_comments").send_keys("test comments")
+#         time.sleep(3)      
 
-        element = self.driver.find_element(By.CSS_SELECTOR, ".btn")
-        self.driver.execute_script("arguments[0].click();", element)
+#         element = self.driver.find_element(By.CSS_SELECTOR, ".btn")
+#         self.driver.execute_script("arguments[0].click();", element)
         
-        time.sleep(8)
-        assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").text == "test doctor test doctor"
+#         time.sleep(8)
+#         assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").text == "test doctor test doctor"
 
     
-    def tearDown(self):
-        self.driver.quit()
+#     def tearDown(self):
+#         self.driver.quit()
 
-        self.admin.delete()
+#         self.admin.delete()
        
-        super().tearDown()
+#         super().tearDown()
 
 
 # class AdminTestEditPatient(StaticLiveServerTestCase):
