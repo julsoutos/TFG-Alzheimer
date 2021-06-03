@@ -4,7 +4,6 @@
 
 
 {% block contenido %}
-  <!-- ======= Mobile nav toggle button ======= -->
   <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
   <main id="main">
@@ -19,34 +18,76 @@
                     <label for="exampleInputEmail1">Nombre de usuario:</label>
 
                     {{form.username}}
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Contraseña:</label>
                     {{form.password}}
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nombre:</label>
                     {{form.first_name}}
+                    {% for error in form.first_name.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Apellidos:</label>
                     {{form.last_name}}
+                    {% for error in form.last_name.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Dirección:</label>
+                    {{form.address}}
+                    {% for error in form.address.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
 
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Lugar de Nacimiento:</label>
+                    {{form.city}}
+                    {% for error in form.city.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
 
                   <div class="form-group">
                     <label for="exampleTextarea">Diagnóstico</label>
                     {{form.sickness}}
+                    {% for error in form.sickness.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Fecha de nacimiento:</label>
                     {{form.birth_date}}
+                    {% for error in form.birth_date.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Correo electrónico:</label>
                     {{form.email}}
+                    {% for error in form.email.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Usuario del médico asignado:</label>
+                    {{form.doctor}}
+                    {% for error in form.doctor.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
                  
                  
@@ -54,6 +95,9 @@
                   <div class="form-group">
                     <label for="exampleTextarea">Observaciones</label>
                     {{form.comments}}
+                    {% for error in form.comments.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
                   </div>
                   <td><button type="submit" class="btn btn-outline-primary">Confirmar</button></td>           
 
@@ -64,6 +108,6 @@
     
     </section>
 
-  </main><!-- End #main -->
+  </main>
 
 {% endblock %}

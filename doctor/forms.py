@@ -20,14 +20,19 @@ class CreateTrainingForm(forms.Form):
         max_length=1000, required=False
     )
 
-    def clean_inputActivities(self):
+    inputTests = forms.CharField(
+        widget=forms.TextInput(attrs={'class': "form-control", "type": "hidden"}),
+        max_length=1000, required=False
+    )
+
+    def clean_inputTests(self):
         
         data1 = self.cleaned_data['inputPatients']
         data2 = self.cleaned_data['inputActivities']
- 
-        if len(data1) < 1 or len(data2) < 1:
-            raise forms.ValidationError("Debe añadir al menos un paciente y una actividad.", "inputActivities")
-        return data2
+        data3 = self.cleaned_data['inputTests']
+        if len(data1) < 1 or len(data2) < 1 or len(data3) < 1:
+            raise forms.ValidationError("Debe añadir al menos un paciente, una actividad y un test mental.", "inputTests")
+        return data3
 
   
  

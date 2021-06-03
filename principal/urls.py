@@ -5,5 +5,8 @@ from . import views
 
 
 urlpatterns = [
-      path('about', views.about, name="about")
+      path('about', views.about, name="about"),
+      path('comeback', views.comeback, name="comeback")
+
+
 ]

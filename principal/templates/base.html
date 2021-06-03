@@ -38,13 +38,14 @@
   <section>
     <header id="header" class="header fixed-top">
       <div class="container-fluid container-xl d-flex align-items-center justify-content-between"  >
-    
+        {% if not error%}
         <a href="{% url 'inicio' %}" class="logo d-flex align-items-center">
           <img src="{% static 'assets/img/Imagen1.png' %}" alt="">
           <span>Cognitya</span>
         </a>
-        
+        {% endif %}
         <nav id="navbar" class="navbar">
+          {% if not error%}
           <ul>
             <li><a class="nav-link scrollto active" href="{% url 'inicio' %}">Inicio</a></li>
             <li><a class="nav-link scrollto" href="{% url 'about' %}">Sobre nosotros</a></li>
@@ -56,9 +57,10 @@
             <li><a class="nav-link scrollto"  href="{% url 'user_logout' %}">Cerrar Sesión</a></li>
             {% endif %}
           </ul>
+          {% endif %}
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-    
+        
       </div>
     </header><!-- End Header -->
     {% block contenido %}{% endblock %}
@@ -98,7 +100,6 @@
   
     <!-- Template Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
-    <script src="{% static 'assets/js/storage.js' %}"></script>
 
 </body>
 </html>

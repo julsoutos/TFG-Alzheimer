@@ -14,7 +14,7 @@
          <div class="row gy-4">
    
            <div class="container" data-aos="zoom-in" data-aos-delay="100" style="text-align: center;">
-               <h1>Pablo Rodríguez</h1>
+               <h1>{{admin.first_name}} {{admin.last_name}}</h1>
                <p><span class="typed" data-typed-items="Última actividad registrada en Cognitya, Empieza a gestionar tus usuarios."></span></p>
                
              </div>
@@ -22,7 +22,7 @@
              <div class="count-box " style="box-shadow: none; background: rgb(255, 249, 249);">
                
                <div>
-                 <span data-purecounter-start="-100" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
+                 <span data-purecounter-start="-100" data-purecounter-end="{{trainings}}" data-purecounter-duration="1" class="purecounter"></span>
                  <p>Entrenamientos realizados</p>
                </div>
              </div>
@@ -32,7 +32,7 @@
                <div class="count-box" style="box-shadow: none;  background: rgb(255, 249, 249);">
               
                <div>
-                 <span data-purecounter-start="-100" data-purecounter-end="100" data-purecounter-duration="1" class="purecounter"></span>
+                 <span data-purecounter-start="-100" data-purecounter-end="{{activities}}" data-purecounter-duration="1" class="purecounter"></span>
                  <p>Actividades realizadas</p>
                </div>
              </div>
@@ -42,7 +42,7 @@
                <div class="count-box" style="box-shadow: none;  background: rgb(255, 249, 249);">
             
                <div>
-                 <span data-purecounter-start="-100" data-purecounter-end="1" data-purecounter-duration="1" class="purecounter"></span>
+                 <span data-purecounter-start="-100" data-purecounter-end="{{num_doctors}}" data-purecounter-duration="1" class="purecounter"></span>
                  <p>Médicos registrados</p>
                </div>
              </div>
@@ -52,7 +52,7 @@
                <div class="count-box" style="box-shadow: none;  background: rgb(255, 249, 249);">
             
                <div>
-                 <span data-purecounter-start="-100" data-purecounter-end="1" data-purecounter-duration="1" class="purecounter"></span>
+                 <span data-purecounter-start="-100" data-purecounter-end="{{num_patients}}" data-purecounter-duration="1" class="purecounter"></span>
                  <p>Pacientes registrados</p>
                </div>
              </div>

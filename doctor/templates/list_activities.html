@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load filters %}
+
 {% block contenido %}
  <!-- ======= Mobile nav toggle button ======= -->
  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
@@ -23,7 +25,7 @@
                 {%for item in activities %}  
                 <tr>
                     <td>{{item.title}}</td>
-                    <td>{{item.category}}</td>
+                    <td>{{item.category | category}}</td>
                     <td><a href="{% url 'activity_details' %}?activity={{item.pk}}"class="btn btn-outline-primary">Detalles</a></td>
                 </tr>
                 {% endfor %}

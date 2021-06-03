@@ -1,0 +1,95 @@
+{% extends 'base_admin.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+  <main id="main">
+    <section id="admin"  style="position: relative; ">
+        <div class="container">
+            
+            <form method="POST" action="">
+                <fieldset>
+                  <legend>Actualizar Médico</legend>
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre de usuario:</label>
+
+                    {{form_user.username}}
+                    
+                    {% for error in form_user.username.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+     
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre:</label>
+                    {{form_user.first_name}}
+                    {% for error in form_user.first_name.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Apellidos:</label>
+                    {{form_user.last_name}}
+                    {% for error in form_user.last_name.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Especialidad:</label>
+                    {{form_user.specialty}}
+                    {% for error in form_user.specialty.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+            
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Fecha de nacimiento:</label>
+                    {{form_user.birth_date}}
+                    {% for error in form_user.birth_date.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Correo electrónico:</label>
+                    {{form_user.email}}
+                    {% for error in form_user.email.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+                             
+                  <div class="form-group">
+                    <label for="exampleTextarea">Observaciones</label>
+                    {{form_user.comments}}
+                    {% for error in form_user.comments.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+                  
+                           
+
+                  <table class="table">
+                    
+                    <tbody>
+                    
+                    <tr>
+
+                        <td><button type="submit" class="btn btn-outline-primary">Actualizar</button></td>  
+                        <td><a href="{% url 'update_password' %}?user={{user}}" class="btn btn-outline-primary">Cambiar contraseña</a></td>  
+
+                    </tr>
+                 
+                    </tbody>
+                  </table>
+              </form>
+    
+        </div>
+    
+    </section>
+
+  </main>
+
+{% endblock %}

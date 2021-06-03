@@ -57,7 +57,7 @@ def load_activity(request):
         activity_result = Activity_Result.objects.create(solution=solution, is_correct=answer, patient=patient, is_completed=True, end_date=date.today())
         activity_result.save()
         
-        return render(request, "patient_home.html")
+        return render(request, "end_activity.html")
 
 
     

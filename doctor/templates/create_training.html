@@ -2,8 +2,11 @@
 
 {% load static %}
 
+{% load filters %}
 
 {% block css %}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
 <script src="{% static 'assets_profile/js/create_training.js' %}"></script>
 
 {% endblock %}
@@ -42,8 +45,8 @@
                   {% for item in patients %}
                       <tr>
                           <th scope="row">{{item.user.first_name}} {{item.user.last_name}}</th>
-                          <td>{{age}} años</td>
-                          <td><button type="button" id="{{item.user.username}}" onclick="add(this, 'addedPatient')" class="btn btn-outline-primary">Añadir</button></td>
+                          <td>{{item.user.birth_date | age}} años</td>
+                          <td><button type="button" id="{{item.user.first_name}} {{item.user.last_name}},{{item.user.username}}" onclick="add(this, 'addedPatient')" class="btn btn-outline-primary">Añadir</button></td>
                       </tr>
                   {% endfor %}
                 
@@ -56,6 +59,89 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal " id="tests">
+  <div class="modal-dialog"    >
+    <div class="modal-content"  >
+    
+      <div class="modal-header">
+        <h4 class="modal-title">Tests Mentales</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <div class="modal-body" >
+        
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre Test</th>
+                  
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  {% for item in tests %}
+                      <tr>
+                          <th scope="row">{{item.title}}</th>
+                         
+                          <td><button type="button" name="tests" id="{{item.title}},{{item.name}}" onclick="add(this, 'addedTest')" class="btn btn-outline-primary">Añadir</button></td>
+                      </tr>
+                  {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal" id="addedTests">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Tests añadidos</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Test</th>
+
+            </tr>
+          </thead>
+          <tbody id="addedTest" >
+
+            
+          </tbody>
+        </table>
+
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
       </div>
       
     </div>
@@ -98,6 +184,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="modal" id="addedPatients">
   <div class="modal-dialog">
@@ -168,9 +255,9 @@
 
                   {% for item in activities %}
                       <tr>
-                          <th scope="row">{{item.name}}</th>
-                          <td>{{item.category}}</td>
-                          <td><button type="button" id="{{item.name}}" onclick="add(this, 'addedActivity')" class="btn btn-outline-primary">Añadir</button></td>
+                          <th scope="row">{{item.title}}</th>
+                          <td>{{item.category | category}}</td>
+                          <td><button type="button" id="{{item.title}},{{item.name}}" onclick="add(this, 'addedActivity')" class="btn btn-outline-primary">Añadir</button></td>
                       </tr>
                   {% endfor %}
                 
@@ -233,6 +320,16 @@
                     <span style="color: red;">{{error}}</span>
                   {% endfor %}
 
+                  {{form.inputTests}}
+                  {% for error in form.inputTests.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    
+                  <script>
+                    var error = "{{error}}"
+                  </script>
+                  {% endfor %}
+
+
                   <table class="table">
                     
                     <tbody>
@@ -249,6 +346,12 @@
                             Añadir Pacientes
                             </button>
                         </td>
+
+                        <td>
+                          <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#tests">
+                              Añadir Test Mental
+                          </button>
+                      </td>
                         <td>
                             <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#activities">
                                 Añadir Actividades
@@ -266,7 +369,15 @@
                                 Pacientes añadidos <p id="totalPatients">0</p>
                           </button>
                          
+                      </td>
+
+                      <td>
+                        <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedTests">
+                              Tests añadidos <p id="totalTests">0</p>
+                        </button>
+                       
                     </td>
+                   
                     </tr>
                  
                     </tbody>

@@ -1,0 +1,98 @@
+{% extends 'base_patient.html' %}
+
+{% load static %}
+
+{% block css %}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="{% static 'assets/js/isaac_test.js' %}"></script>
+
+
+
+
+{% endblock %}
+
+{% block contenido %}
+
+
+
+  <section id="pricing" class="pricing">
+
+    <div class="container" data-aos="fade-down" style="position: relative; top: 80px;">
+
+
+      <div class="row gy-4" data-aos="fade-up" style="position: relative; top: 60px;">
+
+        <div  data-aos="zoom-in" data-aos-delay="100">
+          <div class="box">
+            <form method="POST" action="{% url 'load_mental_test' %}">
+                <fieldset>
+                  <legend>Conteste a las siguientes preguntas</legend>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">¿Cuál es tu edad?</label>
+                    <input type="text" class="form-control" name="answer1"  placeholder="Ejemplo: 21" required value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">¿En qué año nos encontramos?</label>
+                    <input type="text" class="form-control" name="answer2" placeholder="Ejemplo: 2021" required value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleTextarea">¿En qué lugar nació usted?</label>
+                    <input class="form-control" name="answer3" placeholder="Ejemplo: Dos Hermanas" required value=""></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">¿En que año nació usted?</label>
+                    <input type="text" class="form-control" name="answer4" placeholder="Ejemplo: 1999" required value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">¿Cuál es su dirección?</label>
+                    <input type="text" class="form-control" name="answer5" placeholder="Ejemplo: C\Alegría" required value="">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Nombre del rey actual</label>
+                    <input type="text" class="form-control" name="answer6" required value="" placeholder="Ejemplo: Antonio">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Escriba del 10 al 1</label>
+                    <input type="text" class="form-control" name="answer7" placeholder="Ejemplo: 19, 18, 17" required value="">
+                  </div>
+
+             
+    
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- End Pricing Section -->
+  
+      
+      <section id="pricing" class="pricing"  style="position: relative; bottom: 150px;">
+  
+        <div class="container">
+    
+          <header class="section-header">
+          
+              {% csrf_token %}
+              
+              <input type="hidden" name="patient_training" value="{{patient_training}}">
+              <input type="hidden" name="test_mental" value="{{test_pk}}">
+
+              <button type="  submit" class="btn-buy">Continuar</button>
+          
+     
+  
+  
+  
+          </header>
+    
+        
+    
+        </div>
+    
+      </section>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+{% block contenido %}
+ <!-- ======= Mobile nav toggle button ======= -->
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+<main id="main" data-aos="fade-up">
+  
+    <section id="admin"  style="position: relative; ">
+        <div class="container">
+    
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                {%for item in trainings %}  
+                <tr>
+                    <td>{{item.training.name}}</td>
+                    <td>{{item.training.description}}</td>
+                    <td><a href="{% url 'training_stats' %}?patient_training={{item.pk}}"class="btn btn-outline-primary">Estadísticas</a></td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+              </table>
+    
+        </div>
+    
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}
