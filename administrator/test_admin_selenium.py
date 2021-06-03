@@ -76,14 +76,16 @@ class AdminTestCreatePatient(StaticLiveServerTestCase):
         element =  self.driver.find_element(By.ID, "id_doctor")
         self.driver.execute_script("arguments[0].click();", element)
         self.driver.find_element(By.ID, "id_doctor").send_keys("test_doctor")
-        self.driver.find_element(By.ID, "id_comments").click()
+        element =  self.driver.find_element(By.ID, "id_comments")
+        self.driver.execute_script("arguments[0].click();", element)
+        
         self.driver.find_element(By.ID, "id_comments").send_keys("test comments")
         time.sleep(3)      
 
         element = self.driver.find_element(By.CSS_SELECTOR, ".btn")
         self.driver.execute_script("arguments[0].click();", element)
         
-        time.sleep(3)
+        time.sleep(5)
         assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").text == "test patient"
 
 
