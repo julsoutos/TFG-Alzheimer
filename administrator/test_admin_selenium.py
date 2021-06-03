@@ -242,10 +242,10 @@ class AdminTestEditPatient(StaticLiveServerTestCase):
         self.driver.execute_script("arguments[0].click();", element)
         time.sleep(3)
         #Funciona en local
-        # self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").click()
-        # assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").text == "patient2"
-        # self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(2)").click()
-        # assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(2)").text == "patient2"
+        self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").click()
+        assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").text == "patient2"
+        self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(2)").click()
+        assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(2)").text == "patient2"
 
 
 
@@ -320,10 +320,13 @@ class AdminTestEditDoctor(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_last_name").click()
         self.driver.find_element(By.ID, "id_last_name").send_keys("2")
 
-        self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1) > .btn").click()
+        element =  self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1) > .btn")
+        self.driver.execute_script("arguments[0].click();", element)
         time.sleep(3)
 
-        self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").click()
+        element =   self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)")
+        self.driver.execute_script("arguments[0].click();", element)
+
         assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").text == "doctor2 doctor2"
      
 
@@ -454,7 +457,7 @@ class AdminTestDeletePatient(StaticLiveServerTestCase):
         time.sleep(3)
         self.driver.find_element(By.CSS_SELECTOR, ".bx-user").click()
         time.sleep(3)
-    
+
         self.driver.find_element(By.CSS_SELECTOR, ".list-group-item:nth-child(1) .mb-1").click()
        
         time.sleep(3)
@@ -479,4 +482,4 @@ class AdminTestDeletePatient(StaticLiveServerTestCase):
 
 
 
-#         super().tearDown()
+        super().tearDown()
