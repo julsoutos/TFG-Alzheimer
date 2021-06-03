@@ -74,19 +74,15 @@ class AdminTestCreatePatient(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_birth_date").send_keys("29-03-1977")
         self.driver.find_element(By.ID, "id_email").click()
         self.driver.find_element(By.ID, "id_email").send_keys("prodriguezgarrido11@gmail.com")
-        element =  self.driver.find_element(By.ID, "id_doctor")
-        self.driver.execute_script("arguments[0].click();", element)
+     
         self.driver.find_element(By.ID, "id_doctor").send_keys("test_doctor")
-        element =  self.driver.find_element(By.ID, "id_comments")
-        self.driver.execute_script("arguments[0].click();", element)
-        
+
         self.driver.find_element(By.ID, "id_comments").send_keys("test comments")
         time.sleep(3)      
 
-        element = self.driver.find_element(By.CSS_SELECTOR, ".btn")
-        self.driver.execute_script("arguments[0].click();", element)
+        self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
         
-        time.sleep(8)
+        time.sleep(3)
         logging.warning(self.driver.current_url)
         assert self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1)").text == "test patient"
 
