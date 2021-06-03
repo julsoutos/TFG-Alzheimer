@@ -7,11 +7,11 @@ $(document).ready(function(){
     if(document.getElementById("load").innerHTML == "False"){
 
     var audio1 = new Audio('../../static/assets/audios/letter.mp3');
-    
+    var audio2 = new Audio('../../static/assets/audios/continuar.mp3');
 
     audio1.play();
 
-
+    setTimeout(() => {audio2.play()}, 3500)
     }
 
     if(document.getElementById("load").innerHTML == "True"){
@@ -43,8 +43,16 @@ function list() {
 
 function set(element){
 
-    id = element.id
-    document.getElementById(id).style.background = "#81D3D4"
+    
+    elements = document.getElementsByName("letter")
+    for (let index = 0; index < elements.length; index++) {
+        const l = elements[index];
+        l.style.background = "white"
+        l.disabled=false
+    }
+    console.log(element)
+    element.style.background = "#81D3D4"
+    element.disabled = true
     document.getElementById("answer").value = element.innerHTML   
 
 }

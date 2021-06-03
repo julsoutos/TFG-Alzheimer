@@ -1,11 +1,20 @@
 $(document).ready(function(){
 
+    
+if(document.getElementById("load").innerHTML == "False"){
+    var audio1 = new Audio('../../static/assets/audios/sentence.mp3');
+    var audio2 = new Audio('../../static/assets/audios/continuar.mp3');
+
+    audio1.play();
+
+    setTimeout(() => {audio2.play()}, 3600)
+}
+
    var initialSolution = s
 
    var sentence = s
 
    var variant = shuffle(sentence, initialSolution)
-   console.log(variant) 
 
     var section = document.getElementById("solutions") 
 
@@ -16,7 +25,7 @@ $(document).ready(function(){
 
         var button = document.createElement("button")
                         section.appendChild(button)
-                        button.innerHTML = element
+                        button.innerHTML = element.trim()
                         button.setAttribute("name", "word")
                         button.setAttribute("type", "button")
                         button.onclick = function() { add( this )}

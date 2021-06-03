@@ -3,14 +3,15 @@ from django.contrib.auth.models import AbstractUser
 import datetime
 # Create your models here.
 
-class User(AbstractUser):
 
+class User(AbstractUser):
+    username = models.CharField(max_length=50, unique=True)
     is_medic = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    birth_date = models.DateField(max_length=100, null=True)
-    comments = models.TextField(max_length=400)
+    birth_date = models.DateField(max_length=100, default=datetime.date.today() - datetime.timedelta(days=1))
+    comments = models.TextField(max_length=400, blank=True)
     save_session = models.BooleanField(default=False)
 
     def __str__(self):
@@ -26,8 +27,8 @@ class Doctor(models.Model):
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    address = models.CharField(max_length=200, blank=True)
-    city = models.CharField(max_length=200, blank=True)
+    address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
     sickness = models.CharField(max_length=300)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True)
 

@@ -6,10 +6,11 @@ $(document).ready(function(){
 
     
         var audio1 = new Audio('../../static/assets/audios/secuencia.mp3');
+        var audio2 = new Audio('../../static/assets/audios/continuar.mp3');
 
         audio1.play();
+        setTimeout(() => {audio2.play()}, 3800)
 
-        console.log(document.getElementById("continue"))
 
 
     }
@@ -24,8 +25,7 @@ $(document).ready(function(){
             setTimeout(() => {changeColor("1", colors[0], 1000), 
                             changeColor("6", colors[5], 3000),
                             changeColor("6", colors[5], 5000),
-                            changeColor("3", colors[2], 7000),
-                            changeColor("1", colors[0], 9000)}, 1000)
+                            changeColor("3", colors[2], 7000)}, 1000)
         
 
     }
@@ -36,8 +36,7 @@ $(document).ready(function(){
         setTimeout(() => {changeColor("3", colors[2], 1000), 
                         changeColor("1", colors[0], 3000),
                         changeColor("1", colors[0], 5000),
-                        changeColor("5", colors[4], 7000),
-                        changeColor("2", colors[1], 9000)}, 1000)
+                        changeColor("5", colors[4], 7000)}, 1000)
     
         setTimeout(() => {enableButtons()}, 11000)
 
@@ -49,8 +48,7 @@ $(document).ready(function(){
         setTimeout(() => {changeColor("2", colors[1], 1000), 
                         changeColor("4", colors[3], 3000),
                         changeColor("5", colors[4], 5000),
-                        changeColor("1", colors[0], 7000),
-                        changeColor("2", colors[1], 9000)}, 1000)
+                        changeColor("1", colors[0], 7000)}, 1000)
     
         setTimeout(() => {enableButtons()}, 11000)
 

@@ -51,8 +51,18 @@ class Interceptor:
                 response = redirect(to="/authentication/logout")
                 return response
 
-        
-        
+        # #Si un paciente quiere entrar en módulos que no le está permitido el acceso, es redirigido a la página de inicio del paciente
+        # if isLogged(request)["logged"] == True:
+        #     user = get_object_or_404(Token, key=request.COOKIES.get("cognitya")).user
+        #     if path and not "principal" in path and not "patient" in path and not "authentication" in path and user.is_patient:        
+        #         response = redirect(to="patient_home")
+        #         return response
+        #     if path and not "principal" in path and not "doctor" in path and not "authentication" in path and user.is_medic:        
+        #         response = redirect(to="doctor_home")
+        #         return response
+        #     if path and not "principal" in path and not "admin" in path and not "administrator" in path and not "authentication" in path and user.is_staff:        
+        #         response = redirect(to="admin_home")
+        #         return response
 
      
         

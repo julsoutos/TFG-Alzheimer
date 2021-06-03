@@ -32,7 +32,8 @@
 
         <div class="container">
           <header id="init" class="section-header" >
-         
+            <p id="load" style="display: none;" >{{load}}</p>
+
             {% if training == False  %}
               <a id="continue" href="{% url 'load_activity' %}?activity={{solution.name}}&&name={{activity.name}}" class="btn-buy">Continuar</a>
 

@@ -22,13 +22,17 @@
     $(document).ready(function(){
 
         if(document.getElementById("load").innerHTML == "False"){
+
     
-        // var audio1 = new Audio('../../static/assets/audios/letter.mp3');   
-        // audio1.play();
+            var audio1 = new Audio('../../static/assets/audios/soup.mp3');
+            var audio2 = new Audio('../../static/assets/audios/continuar.mp3');
+    
+            audio1.play();
+            setTimeout(() => {audio2.play()}, 3000)
+    
     
     
         }
-    
         if(document.getElementById("load").innerHTML == "True"){
            
             puzzle = createPuzzle(document.getElementById("variant"))
@@ -59,7 +63,7 @@ function createPuzzle(value){
         height: 5,
         width:  6,
         //Orientaciones posibles de las palabras
-        orientations: ["horizontal","horizontalBack","vertical","verticalUp","diagonal","diagonalUp","diagonalBack","diagonalUpBack"],
+        orientations: ["horizontal","vertical","diagonal","diagonalUp","verticalUp"],
         // Establecer un carácter aleatorio los espacios vacíos
         fillBlanks: true,
         preferOverlap: false
@@ -78,6 +82,7 @@ function set(element){
     
     element.style.background = "#81D3D4"
     document.getElementById("answer").value = document.getElementById("answer").value != undefined ? document.getElementById("answer").value + element.innerHTML : element.innerHTML
+    element.disabled = true
 }
 
 
@@ -86,7 +91,8 @@ function reset(){
     document.getElementById("answer").value = ""    
     letters = document.getElementsByName('letter')
     for (let index = 0; index < letters.length; index++) {
-        letters[index].style.background = "white"        
+        letters[index].style.background = "white"
+        letters[index].disabled = false        
     }
 
 }

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .utils import isLogged
 # Create your views here.
 
@@ -7,3 +7,6 @@ def inicio(request):
 
 def about(request):
     return render(request, 'about.html', isLogged(request))
+
+def error_404(request, exception):
+    return render(request, 'index.html')

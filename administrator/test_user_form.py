@@ -128,7 +128,7 @@ class CreatePatientFormCase(TestCase):
     #Formato válido campos doctor
     def test_create_patient_form(self):
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertTrue(form.is_valid())
@@ -142,7 +142,7 @@ class CreatePatientFormCase(TestCase):
         u.save()
 
         form_data = {'username': 'user1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -155,7 +155,7 @@ class CreatePatientFormCase(TestCase):
         u.save()
 
         form_data = {'username': 'user2', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -170,7 +170,7 @@ class CreatePatientFormCase(TestCase):
         date = datetime.datetime.strftime(today + day, '%Y-%m-%d')
 
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': date, 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': date, 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -179,7 +179,7 @@ class CreatePatientFormCase(TestCase):
     def test_create_patient_incorrect_password(self):
 
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': '123',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -187,7 +187,7 @@ class CreatePatientFormCase(TestCase):
     #Username vacío
     def test_create_patient_incorrect_username_blank(self):
         form_data = {'username': '', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -196,7 +196,7 @@ class CreatePatientFormCase(TestCase):
     #Password vacío
     def test_create_patient_incorrect_password_blank(self):
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': '',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -204,7 +204,7 @@ class CreatePatientFormCase(TestCase):
     #First_name vacío
     def test_create_patient_incorrect_first_name_blank(self):
         form_data = {'username': 'test1', 'first_name': '', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -212,7 +212,7 @@ class CreatePatientFormCase(TestCase):
     #Last_name vacío
     def test_create_patient_incorrect_last_name_blank(self):
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': '', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -220,7 +220,7 @@ class CreatePatientFormCase(TestCase):
     #Sickness vacío
     def test_create_patient_incorrect_specialty_blank(self):
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': '', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': '', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -228,7 +228,7 @@ class CreatePatientFormCase(TestCase):
     #Birth_date vacío
     def test_create_patient_incorrect_birth_date_blank(self):
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -236,7 +236,7 @@ class CreatePatientFormCase(TestCase):
     #email vacío
     def test_create_patient_incorrect_email_blank(self):
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -244,7 +244,7 @@ class CreatePatientFormCase(TestCase):
     #address vacío
     def test_create_patient_incorrect_address_blank(self):
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "", 'comments': 'Test comments', 'city': 'Test city', 'address': ''}
+                    'sickness': 'sickness test', 'birth_date': "", 'comments': 'Test comments', 'city': 'Test city', 'address': '', 'doctor': 'doctor test'}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())
@@ -252,7 +252,15 @@ class CreatePatientFormCase(TestCase):
     #city vacío
     def test_create_patient_incorrect_city_blank(self):
         form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'', 'password': 'hola1234',
-                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': '', 'address': 'Test address'}
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': '', 'address': 'Test address', 'doctor': 'doctor test'}
+        form = CreatePatientForm(data=form_data)
+
+        self.assertFalse(form.is_valid())
+
+    #doctor vacío
+    def test_create_patient_incorrect_doctor_blank(self):
+        form_data = {'username': 'test1', 'first_name': 'Test1', 'last_name': 'Test1', 'email':'test1@gmail.com', 'password': 'hola1234',
+                    'sickness': 'sickness test', 'birth_date': "1999-05-19", 'comments': 'Test comments', 'city': 'Test city', 'address': 'Test address', 'doctor': ''}
         form = CreatePatientForm(data=form_data)
 
         self.assertFalse(form.is_valid())

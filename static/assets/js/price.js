@@ -1,17 +1,24 @@
 
 $(document).ready(function(){
     
+
+
+    
     money = ["0.1", "0.2", "0.5" , "0.1", "1", "2", "5","10", "20", "50"]
 
     money  = money.sort(() => Math.random() - 0.5)
     console.log(money)
 
+    
     if(document.getElementById("load").innerHTML == "False"){
 
-    // var audio1 = new Audio('../../static/assets/audios/letter.mp3');
     
+        var audio1 = new Audio('../../static/assets/audios/price.mp3');
+        var audio2 = new Audio('../../static/assets/audios/continuar.mp3');
 
-    // audio1.play();
+        audio1.play();
+        setTimeout(() => {audio2.play()}, 3000)
+
 
 
     }

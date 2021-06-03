@@ -12,5 +12,8 @@ urlpatterns = [
       path('all_patients', views.all_patients, name="all_patients"),
       path('all_doctors', views.all_doctors, name="all_doctors"),         
       path('delete_user', views.delete_user, name="delete_user"),         
+      path('update_patient', views.update_patient, name="update_patient"),         
+      path('update_doctor', views.update_doctor, name="update_doctor"),         
+      path('update_password', views.update_password, name="update_password"),         
 
 ]

@@ -2456,7 +2456,7 @@ section {
   bottom: 400px;
   max-width: 50vw;
   width:  40vw;
-  left: 320px;
+  left: 540px;
 }
 
 .price-btn{
@@ -2480,7 +2480,15 @@ section {
 
 .sentence-words{
   margin: auto;
-  width: 50%;
+  width: 55%;
+  border: 1px solid rgb(128, 168, 228);
+  padding: 10px;
+  position: relative;
+  bottom: 460px;
+}
+.cwords{
+  margin: auto;
+  width: 55%;
   border: 1px solid rgb(128, 168, 228);
   padding: 10px;
   position: relative;
@@ -2507,7 +2515,7 @@ section {
   background-color: #83b4e8;
   border: 1px solid #4154f1;
   margin: 10px;
-  width:  120px;
+  width:  150px;
   text-align: center;
 }
 
@@ -2535,14 +2543,17 @@ section {
 }
 
 .similar{
+  position: relative;
   max-width: 300vw; 
   width: 300vw;
+  left: 290px;
 }
 @media (max-width: 1500px) {
   .similar{
     max-width: 100vw; 
     width: 70vw;
   }
+
 }
 
 
@@ -2574,11 +2585,18 @@ section {
   .prices{
     position: relative;
     bottom: 400px;
-    max-width: 100vw;
+    max-width: 50vw;
     width:  40vw;
-    left: 200px;
+    left: 340px;
   }
 
+  .cwords{
+    position: relative;
+    bottom: 440px;
+    max-width: 100vw;
+    width:  40vw;
+    left: 20px;
+  }
   .sentence-words{
     position: relative;
     bottom: 440px;
@@ -2589,7 +2607,8 @@ section {
 
   .reorder{
     position: relative; 
-    left: 10px;
+    right:  40px;
+    left: 0px;
   }
   
 
@@ -2633,6 +2652,16 @@ section {
     border:   #012970;
 
 }
+.cwords{
+  border: none;
+  position: relative;
+  bottom: 440px;
+  max-width: none;
+  width: 90vw;
+  left: 10px;
+  border:   #012970;
+
+}
 
 
 .words-container{
@@ -2659,8 +2688,8 @@ section {
   background-color: #83b4e8;
   border: 1px solid #4154f1;
   margin: 10px;
-  width:  115px;
-  text-align: center;
+  width:  120px;
+  text-align:  center;
 }
 
 .price-btn{
@@ -2683,10 +2712,16 @@ section {
 }
 
 .similar{
+  position: relative;
   max-width: 100vw; 
   width: 100vw;
+  left: 40px;
 }
-
+.reorder{
+  position: relative; 
+  left: 1px;
+  right: 0px;
+}
 }
 
 

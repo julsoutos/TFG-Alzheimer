@@ -1,5 +1,18 @@
 $(document).ready(function(){
 
+    if(document.getElementById("load").innerHTML == "False"){
+
+    
+        var audio1 = new Audio('../../static/assets/audios/category.mp3');
+        var audio2 = new Audio('../../static/assets/audios/continuar.mp3');
+
+        audio1.play();
+        setTimeout(() => {audio2.play()}, 4600)
+
+
+
+    }
+
     if(variant == "Word Category 1"){
         title = "Herramienta de metal que se usa para apalancar y abrir"
         words = ["palanca", "pinza", "palo", "plomo"]

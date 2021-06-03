@@ -3,7 +3,9 @@
 {% load static %}
 
 {% block css %}
+ç<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="{% static 'assets/js/activities.js' %}"></script>
+<script src="{% static 'assets/js/images_order.js' %}"></script>
 
 {% endblock %}
 
@@ -32,19 +34,26 @@
             <div class="portfolio-wrap">
               {% if solution.name == 'Image Order 1'%}
               <img src="{% static 'assets/img/portfolio/shiba.png' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Shiba</h4>
+              </div>
               {% endif %}
 
               {% if solution.name == 'Image Order 2'%}
               <img src="{% static 'assets/img/portfolio/cat1.png' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Gato 1</h4>
+              </div>
               {% endif %}
 
               {% if solution.name == 'Image Order 3'%}
               <img src="{% static 'assets/img/portfolio/boat2.png' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Barca 2</h4>
+              </div>
               {% endif %}
 
-              <div class="portfolio-info">
-                <h4>Shiba</h4>
-              </div>
+              
             </div>
           </div>
          
@@ -52,19 +61,25 @@
             <div class="portfolio-wrap">
               {% if solution.name == 'Image Order 1'%}
               <img src="{% static 'assets/img/portfolio/husky.png' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Husky</h4>
+              </div>
               {% endif %}
 
               {% if solution.name == 'Image Order 2'%}
               <img src="{% static 'assets/img/portfolio/cat3.png' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Gato 3</h4>
+              </div>
               {% endif %}
 
               {% if solution.name == 'Image Order 3'%}
               <img src="{% static 'assets/img/portfolio/boat3.png' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Barca 3</h4>
+              </div>
               {% endif %}
 
-              <div class="portfolio-info">
-                <h4>Husky</h4>                
-              </div>
             </div>
           </div>
   
@@ -73,18 +88,26 @@
             <div class="portfolio-wrap">
               {% if solution.name == 'Image Order 1'%}
               <img src="{% static 'assets/img/portfolio/wolf.png' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Lobo</h4>
+              </div>
               {% endif %}
 
               {% if solution.name == 'Image Order 2'%}
               <img src="{% static 'assets/img/portfolio/cat2.png' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Gato 2</h4>
+              </div>
               {% endif %}
               
               {% if solution.name == 'Image Order 3'%}
               <img src="{% static 'assets/img/portfolio/boat1.png' %}" class="img-fluid" alt="">
-              {% endif %}
               <div class="portfolio-info">
-                <h4>Lobo</h4>       
+                <h4>Barca 1</h4>
               </div>
+              {% endif %}
+             
+              
             </div>
           </div>
 
@@ -128,7 +151,7 @@
     <div class="row" data-aos="fade-up" data-aos-delay="100">
       <div class="col-lg-12 d-flex justify-content-center">
         <ul id="portfolio-flters">
-          <li data-filter=".opcion-1" id="1"  onclick="setOption(this)">Opción 1</li>
+          <li data-filter=".opcion-1" class="filter-active" id="1"  onclick="setOption(this)">Opción 1</li>
           <li data-filter=".opcion-2" id="2" onclick="setOption(this)">Opción 2</li>
           <li data-filter=".opcion-3" id="3" onclick="setOption(this)">Opción 3</li>
         </ul>
@@ -143,20 +166,26 @@
         <div class="portfolio-wrap">
           {% if solution.name == 'Image Order 1'%}
           <img src="{% static 'assets/img/portfolio/wolf.png' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Lobo</h4>
+          </div>
           {% endif %}
 
           {% if solution.name == 'Image Order 2'%}
           <img src="{% static 'assets/img/portfolio/cat1.png' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Gato 1</h4>
+          </div>
           {% endif %}
 
           {% if solution.name == 'Image Order 3'%}
           <img src="{% static 'assets/img/portfolio/boat2.png' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Barca 2</h4>
+          </div>
           {% endif %}
          
 
-          <div class="portfolio-info">
-            <h4>Lobo</h4>
-          </div>
         </div>
       </div>
 
@@ -165,18 +194,25 @@
         <div class="portfolio-wrap">
           {% if solution.name == 'Image Order 1'%}
           <img src="{% static 'assets/img/portfolio/husky.png' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Husky</h4>
+          </div>
           {% endif %}
 
           {% if solution.name == 'Image Order 2'%}
           <img src="{% static 'assets/img/portfolio/cat3.png' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Gato 3</h4>
+          </div>
           {% endif %}
 
           {% if solution.name == 'Image Order 3'%}
           <img src="{% static 'assets/img/portfolio/boat3.png' %}" class="img-fluid" alt="">
-          {% endif %}
           <div class="portfolio-info">
-            <h4>Husky</h4>                
+            <h4>Barca 3</h4>
           </div>
+          {% endif %}
+        
         </div>
       </div>
 
@@ -185,19 +221,26 @@
         <div class="portfolio-wrap">
           {% if solution.name == 'Image Order 1'%}
           <img src="{% static 'assets/img/portfolio/shiba.png' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Shiba</h4>
+          </div>
           {% endif %}
 
           {% if solution.name == 'Image Order 2'%}
           <img src="{% static 'assets/img/portfolio/cat2.png' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Gato 2</h4>
+          </div>
           {% endif %}
 
           {% if solution.name == 'Image Order 3'%}
           <img src="{% static 'assets/img/portfolio/boat1.png' %}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Barca 1</h4>
+          </div>
           {% endif %}
 
-          <div class="portfolio-info">
-            <h4>Shiba</h4>       
-          </div>
+        
         </div>
       </div>
   
@@ -209,18 +252,25 @@
           <div class="portfolio-wrap">
             {% if solution.name == 'Image Order 1'%}
             <img src="{% static 'assets/img/portfolio/husky.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Husky</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 2'%}
             <img src="{% static 'assets/img/portfolio/cat3.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Gato 3</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 3'%}
             <img src="{% static 'assets/img/portfolio/boat2.png' %}" class="img-fluid" alt="">
-            {% endif %}
             <div class="portfolio-info">
-              <h4>Husky</h4>
+              <h4>Barca 2</h4>
             </div>
+            {% endif %}
+            
           </div>
         </div>
         
@@ -229,18 +279,25 @@
           <div class="portfolio-wrap">
             {% if solution.name == 'Image Order 1'%}
             <img src="{% static 'assets/img/portfolio/shiba.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Shiba</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 2'%}
             <img src="{% static 'assets/img/portfolio/cat2.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Gato 2</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 3'%}
             <img src="{% static 'assets/img/portfolio/boat1.png' %}" class="img-fluid" alt="">
-            {% endif %}
             <div class="portfolio-info">
-              <h4>Shiba</h4>                
+              <h4>Barco 1</h4>
             </div>
+            {% endif %}
+            
           </div>
         </div>
         
@@ -249,18 +306,25 @@
           <div class="portfolio-wrap">
             {% if solution.name == 'Image Order 1'%}
             <img src="{% static 'assets/img/portfolio/wolf.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Lobo</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 2'%}
             <img src="{% static 'assets/img/portfolio/cat1.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Gato 1</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 3'%}
             <img src="{% static 'assets/img/portfolio/boat3.png' %}" class="img-fluid" alt="">
-            {% endif %}
             <div class="portfolio-info">
-              <h4>Lobo</h4>       
+              <h4>Barca 3</h4>
             </div>
+            {% endif %}
+           
           </div>
         </div>
 
@@ -273,18 +337,25 @@
           <div class="portfolio-wrap">
             {% if solution.name == 'Image Order 1'%}
             <img src="{% static 'assets/img/portfolio/shiba.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Shiba</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 2'%}
             <img src="{% static 'assets/img/portfolio/cat1.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Gato 1</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 3'%}
             <img src="{% static 'assets/img/portfolio/boat3.png' %}" class="img-fluid" alt="">
-            {% endif %}
             <div class="portfolio-info">
-              <h4>Shiba</h4>
+              <h4>Barca 3</h4>
             </div>
+            {% endif %}
+          
           </div>
         </div>
         
@@ -292,18 +363,25 @@
           <div class="portfolio-wrap">
             {% if solution.name == 'Image Order 1'%}
             <img src="{% static 'assets/img/portfolio/husky.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Husky</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 2'%}
             <img src="{% static 'assets/img/portfolio/cat2.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Gato 2</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 3'%}
             <img src="{% static 'assets/img/portfolio/boat2.png' %}" class="img-fluid" alt="">
-            {% endif %}
             <div class="portfolio-info">
-              <h4>Husky</h4>                
+              <h4>Barca 2</h4>
             </div>
+            {% endif %}
+         
           </div>
         </div>
 
@@ -312,18 +390,25 @@
           <div class="portfolio-wrap">
             {% if solution.name == 'Image Order 1'%}
             <img src="{% static 'assets/img/portfolio/wolf.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Lobo</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 2'%}
             <img src="{% static 'assets/img/portfolio/cat3.png' %}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Gato 3</h4>
+            </div>
             {% endif %}
 
             {% if solution.name == 'Image Order 3'%}
             <img src="{% static 'assets/img/portfolio/boat1.png' %}" class="img-fluid" alt="">
-            {% endif %}
             <div class="portfolio-info">
-              <h4>Lobo</h4>       
+              <h4>Barca 1</h4>
             </div>
+            {% endif %}
+            
           </div>
         </div>
 
@@ -338,13 +423,13 @@
           {% if training == False %}
           <form method="POST">
             {% csrf_token %}
-            <input type="hidden" id="answer" name="answer" value="">
+            <input type="hidden" id="answer" name="answer" value="1">
             <button type="  submit" class="btn-buy">Continuar</button>
           </form>
           {% else %}
           <form action="" method="POST">
             {% csrf_token %}
-            <input type="hidden" id="answer" name="answer" value="">
+            <input type="hidden" id="answer" name="answer" value="1">
             <input type="hidden"  name="activity" value="{{activity_training.pk}}">
             <button type="  submit" class="btn-buy">Continuar</button>
           </form>

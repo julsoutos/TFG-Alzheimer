@@ -16,7 +16,7 @@
               <thead>
                 <tr>
                   <th scope="col">Nombre</th>
-                  <th scope="col">Apelidos</th>
+                  <th scope="col">Apellidos</th>
                   <th scope="col">Edad</th>
                   <th scope="col"></th>
                   </th>
@@ -30,7 +30,7 @@
                   <td>{{item.user.first_name}}</td>
                   <td>{{item.user.last_name}}</td>
                   <td></td>
-                  <td><a href="admin_patient_detail.html"class="btn btn-outline-primary">Editar</a> <a href="{% url 'delete_user' %}?user={{item.user.pk}}" class="btn btn-outline-primary">Eliminar</a></td>
+                  <td><a href="{% url 'update_patient' %}?patient={{item.pk}}" class="btn btn-outline-primary">Editar</a> <a href="{% url 'delete_user' %}?user={{item.user.pk}}" class="btn btn-outline-primary">Eliminar</a></td>
                 </tr>
             
                  
