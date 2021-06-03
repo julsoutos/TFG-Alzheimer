@@ -2,6 +2,7 @@
 
 {% load static %}
 
+{% load filters %}
 {% block contenido %}
  <!-- ======= Mobile nav toggle button ======= -->
 
@@ -12,8 +13,6 @@
 
  
 <main id="main">
-
-
 
     <section id="admin"  style="position: relative; " data-aos="fade-up">
         <div class="container">
@@ -36,7 +35,7 @@
                  
                   <div class="form-group">
                     <label for="exampleTextarea">Categoria</label>
-                    <input type="text" class="form-control"  value="{{activity.category}}" disabled>
+                    <input type="text" class="form-control"  value="{{activity.category | category}}" disabled>
                   </div>
                  
               </form>

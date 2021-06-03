@@ -315,7 +315,6 @@ class UpdatePasswordForm(forms.Form):
 
     def clean_password2(self):
         res = ""
-        print(self)
         data1 = self.data['password1']
         data2 = self.data['password2']
 

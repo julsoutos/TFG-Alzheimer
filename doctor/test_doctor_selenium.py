@@ -25,7 +25,7 @@ class DoctorTest(StaticLiveServerTestCase):
         date1 = datetime.datetime.today().date()
         date2 = date1 - datetime.timedelta(days=20)
 
-        self.user2 = User(username="test_patient", first_name="patient", is_patient=True, birth_date=date2)
+        self.user2 = User(username="test_patient", first_name="patient", last_name="patient", is_patient=True, birth_date=date2)
         self.user2.set_password("test_patient")
         self.user2.save()
         
@@ -39,7 +39,7 @@ class DoctorTest(StaticLiveServerTestCase):
 
     def create_mental_test(self):
 
-        self.test = Mental_Test(name="Isaac Test")
+        self.test = Mental_Test(name="Isaac Test", title="Test de Isaac")
         self.test.save()
 
                   
@@ -80,16 +80,17 @@ class DoctorTest(StaticLiveServerTestCase):
         self.driver.find_element(By.ID, "id_description").click()
         self.driver.find_element(By.ID, "id_description").send_keys("training test")
         self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(2) > .create").click()
-       
-        self.driver.find_element(By.ID, "test_patient").click()
+
+        time.sleep(2)
+        self.driver.find_element(By.ID, "patient patient,test_patient").click()
         
         self.driver.find_element(By.CSS_SELECTOR, "#patients .modal-footer > .btn").click()
         self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(3) > .create").click()
-        self.driver.find_element(By.ID, "Isaac Test").click()
+        self.driver.find_element(By.ID, "Test de Isaac,Isaac Test").click()
         self.driver.find_element(By.CSS_SELECTOR, "#tests .modal-footer > .btn").click()
 
         self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(4) > .create").click()
-        self.driver.find_element(By.ID, "Image Order").click()
+        self.driver.find_element(By.ID, "Recuerda el orden de las imágenes,Image Order").click()
         self.driver.find_element(By.CSS_SELECTOR, "#activities .modal-footer > .btn").click()
         
         self.driver.find_element(By.CSS_SELECTOR, "td:nth-child(1) > .create").click()
@@ -106,7 +107,7 @@ class DoctorTest(StaticLiveServerTestCase):
         time.sleep(3)
         self.driver.find_element(By.CSS_SELECTOR, "li:nth-child(2) .bx").click()
         time.sleep(3)
-        assert self.driver.find_element(By.CSS_SELECTOR, "tbody th").text == "PATIENT"
+        assert self.driver.find_element(By.CSS_SELECTOR, "tbody th").text == "PATIENT PATIENT"
     
     def test_patient_details(self):
         self.driver.get(f'{self.live_server_url}/authentication/login_form')
@@ -121,7 +122,7 @@ class DoctorTest(StaticLiveServerTestCase):
         self.driver.find_element(By.CSS_SELECTOR, ".btn").click()
         time.sleep(3)
         self.driver.find_element(By.CSS_SELECTOR, "legend").click()
-        assert self.driver.find_element(By.CSS_SELECTOR, "legend").text == "patient"
+        assert self.driver.find_element(By.CSS_SELECTOR, "legend").text == "patient patient"
 
     def tearDown(self):
         self.driver.quit()

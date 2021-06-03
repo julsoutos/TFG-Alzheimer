@@ -2,6 +2,7 @@
 
 {% load static %}
 
+{% load filters %}
 
 {% block css %}
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -44,8 +45,8 @@
                   {% for item in patients %}
                       <tr>
                           <th scope="row">{{item.user.first_name}} {{item.user.last_name}}</th>
-                          <td>{{age}} años</td>
-                          <td><button type="button" id="{{item.user.username}}" onclick="add(this, 'addedPatient')" class="btn btn-outline-primary">Añadir</button></td>
+                          <td>{{item.user.birth_date | age}} años</td>
+                          <td><button type="button" id="{{item.user.first_name}} {{item.user.last_name}},{{item.user.username}}" onclick="add(this, 'addedPatient')" class="btn btn-outline-primary">Añadir</button></td>
                       </tr>
                   {% endfor %}
                 
@@ -87,9 +88,9 @@
 
                   {% for item in tests %}
                       <tr>
-                          <th scope="row">{{item.name}}</th>
+                          <th scope="row">{{item.title}}</th>
                          
-                          <td><button type="button" name="tests" id="{{item.name}}" onclick="add(this, 'addedTest')" class="btn btn-outline-primary">Añadir</button></td>
+                          <td><button type="button" name="tests" id="{{item.title}},{{item.name}}" onclick="add(this, 'addedTest')" class="btn btn-outline-primary">Añadir</button></td>
                       </tr>
                   {% endfor %}
                 
@@ -255,8 +256,8 @@
                   {% for item in activities %}
                       <tr>
                           <th scope="row">{{item.title}}</th>
-                          <td>{{item.category}}</td>
-                          <td><button type="button" id="{{item.name}}" onclick="add(this, 'addedActivity')" class="btn btn-outline-primary">Añadir</button></td>
+                          <td>{{item.category | category}}</td>
+                          <td><button type="button" id="{{item.title}},{{item.name}}" onclick="add(this, 'addedActivity')" class="btn btn-outline-primary">Añadir</button></td>
                       </tr>
                   {% endfor %}
                 
