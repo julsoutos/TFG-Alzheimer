@@ -27,7 +27,7 @@
                     {% for item in patients %}
                         <tr>
                             <th scope="row">{{item.user.first_name}} {{item.user.last_name}}</th>
-                            <td>{{user.birth_date | age}} años</td>
+                            <td>{{item.user.birth_date | age}} años</td>
                             <td><a href="{% url 'patient_details' %}?patient={{item.pk}}"class="btn btn-outline-primary">Expediente</a></td>
                         </tr>
                   {% endfor %}

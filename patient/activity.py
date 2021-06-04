@@ -4,6 +4,7 @@ from principal.utils import get_user_by_token
 from .utils import get_solution, evaluate
 import json
 from datetime import date
+from .views import patient_home
 # Create your views here.
 
 path_activity = 'activities/'
@@ -32,22 +33,22 @@ def activity(request):
 #Pantalla inicio actividad (explicación)
 def init_activity(request):
 
-    
-    activity = Activity.objects.get(name = request.GET['activity'])
+    try:
+        activity = Activity.objects.get(pk = request.GET['activity'])
 
-    context = { 'load': False, 'solution':get_solution(request,activity), 'activity': activity, 'training': False}
+        context = { 'load': False, 'solution':get_solution(request,activity), 'activity': activity, 'training': False}
 
-    return render(request,  path_activity+ '/' +  activity.name + '.html', context)
-
+        return render(request,  path_activity+ '/' +  activity.name + '.html', context)
+    except:
+        return redirect(to=patient_home)
 
 #Carga de los elementos que componen la actividad
 def load_activity(request):
 
 
-    activity = Activity.objects.get(name = request.GET['name'])
-    solution = Solution.objects.get(name = request.GET['activity'])
+    activity = Activity.objects.get(pk = request.GET['name'])
+    solution = Solution.objects.get(pk = request.GET['activity'])
 
-    json_c = {"hola":json.dumps([1,2,3])}
 
     if request.method  == 'POST':
         user = User.objects.get(username=get_user_by_token(request))
@@ -61,7 +62,7 @@ def load_activity(request):
 
 
     
-    context = { 'load': True, 'solution': solution, 'training': False, 'prueba': json_c }
+    context = { 'load': True, 'solution': solution, 'training': False}
 
     return render(request,  path_activity+ '/' +  activity.name + '.html', context)
 

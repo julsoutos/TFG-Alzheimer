@@ -63,7 +63,7 @@ def load_training(request):
 
         a = Activity_Training.objects.get(pk = request.POST['activity'])
         a.is_completed = True
-        solution = Solution.objects.get(name = request.GET['activity'])
+        solution = Solution.objects.get(pk = request.GET['activity'])
         answer = evaluate(request, solution, 'answer')
         a.is_correct = answer
         a.save()
@@ -77,8 +77,8 @@ def load_training(request):
 
     else:
     
-        activity = Activity.objects.get(name = request.GET['name'])
-        solution = Solution.objects.get(name = request.GET['activity'])
+        activity = Activity.objects.get(pk = request.GET['name'])
+        solution = Solution.objects.get(pk = request.GET['activity'])
         
         
         context = { 'page': path_activity + activity.name + '.html', 'activity': activity, 'solution': solution, 'activity_training':  activities[0] ,  'training': True, 'load': True }
