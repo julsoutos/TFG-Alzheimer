@@ -44,8 +44,9 @@ function add(value, type){
 
                 }
 
-
-                head1.innerHTML = value.id
+                values = value.id.split(",")
+                head1.innerHTML = values[0]
+                head1.setAttribute("id", values[1])
                 fila.appendChild(head1);
 
                 var td = document.createElement("td")
@@ -108,19 +109,19 @@ function send(){
 
     for (let index = 0; index < patients.length; index++) {
 
-        inputPatients.value =   inputPatients.value == ""? patients[index].innerHTML : inputPatients.value  + ","  +  patients[index].innerHTML
+        inputPatients.value =   inputPatients.value == ""? patients[index].id : inputPatients.value  + ","  +  patients[index].id
 
     }
 
     for (let index = 0; index < activities.length; index++) {
     
-        inputActivities.value  = inputActivities.value == ""? activities[index].innerHTML : inputActivities.value  + ","  +  activities[index].innerHTML
+        inputActivities.value  = inputActivities.value == ""? activities[index].id : inputActivities.value  + ","  +  activities[index].id
         
     }
 
     for (let index = 0; index < tests.length; index++) {
     
-        inputTests.value  = inputTests.value == ""? tests[index].innerHTML : inputTests.value  + ","  +  tests[index].innerHTML
+        inputTests.value  = inputTests.value == ""? tests[index].id : inputTests.value  + ","  +  tests[index].id
         
     }
 

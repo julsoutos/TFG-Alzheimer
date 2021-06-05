@@ -47,10 +47,10 @@ def evaluate_test(request, test):
         animal = request.POST['answer1']
         color = request.POST['answer2']
         fruit = request.POST['answer3']
-        
-       
 
-        return int(animal) if animal != "" else 0 + int(color) if color != "" else 0 + int(fruit) if fruit != "" else 0 
+        res = (int(animal) if animal != "" else 0) + (int(color) if color != "" else 0) + (int(fruit) if fruit != "" else 0)
+
+        return  res
 
     if(test.mental_Test.name == 'Hodkinson Test'):
         count = 0

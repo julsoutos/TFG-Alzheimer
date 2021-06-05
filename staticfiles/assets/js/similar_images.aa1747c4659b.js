@@ -1,5 +1,7 @@
 
 $(document).ready(function(){
+    host = window.location.hostname
+
     if(document.getElementById("load").innerHTML == "False"){
         var audio1 = new Audio('../../static/assets/audios/similar.mp3');
         var audio2 = new Audio('../../static/assets/audios/continuar.mp3');
@@ -8,7 +10,7 @@ $(document).ready(function(){
     
         setTimeout(() => {audio2.play()}, 3800)
     }
-    path = "../../static/assets/img/figures/"
+        path = "../../static/assets/img/figures/"
 
     
 
@@ -54,11 +56,9 @@ $(document).ready(function(){
 function getImages(path, variant){
 
     images = []
-
     for (let index = 1; index < 5; index++) {
-
-        images.push(index + " , " + path  + variant + "/" + index + ".png")
-        
+        setTimeout(() => {imagesLoad(path, variant, index)}, 2000)
+       
     }
 
     return images
@@ -91,4 +91,26 @@ function reset(){
         element.disabled = false
         element.style.background = "#83b4e8"
     }
+}
+
+function imagesLoad(path, variant){
+    if(host != 'localhost'){
+
+            
+        if(variant + "/" + index == "triangles/1"){
+
+            images.push(index + " , " + path  + variant + "/" + index + ".png")
+
+        }else{
+
+            images.push(index + " , " + path  + variant + "/" + index + ".PNG")
+
+        }
+
+    
+    }else{
+        images.push(index + " , " + path  + variant + "/" + index + ".png")
+
+    }
+    
 }

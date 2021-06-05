@@ -61,10 +61,10 @@
             <p id="variant" style="display: none;" >{{solution.solution}}</p>
 
             {% if training == False  %}
-              <a id="continue" href="{% url 'load_activity' %}?activity={{solution.name}}&&name={{activity.name}}" class="btn-buy">Continuar</a>
+              <a id="continue" href="{% url 'load_activity' %}?activity={{solution.pk}}&&name={{activity.pk}}" class="btn-buy">Continuar</a>
 
            {% else %}
-              <a id="continue"  href="{% url 'load_training' %}?activity={{solution.name}}&&name={{activity.name}}&&training={{pk}}" class="btn-buy">Continuar</a>
+              <a id="continue"  href="{% url 'load_training' %}?activity={{solution.pk}}&&name={{activity.pk}}&&training={{pk}}" class="btn-buy">Continuar</a>
            {% endif %}
           
           </header>

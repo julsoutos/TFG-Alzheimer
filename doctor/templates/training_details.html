@@ -5,12 +5,8 @@
 {% load filters %}
 
 {% block contenido %}
- <!-- ======= Mobile nav toggle button ======= -->
-
 
  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
-
 
  
 <main id="main">
@@ -33,14 +29,10 @@
 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Descripción:</label>
-                    <input type="text" class="form-control"  value="{{training.description}}" disabled>
+                    <textarea class="form-control"   disabled>{{training.description}}</textarea>
                   </div>
                  
-                  <div class="form-group">
-                    <label for="exampleTextarea">Observaciones</label>
-                    <textarea class="form-control" id="exampleTextarea" rows="3" disabled ></textarea>
-                  </div>
-                 
+            
               </form>
 
 

@@ -119,9 +119,9 @@
           <p id="load" style="display: none;" >{{load}}</p>
           <header class="section-header">
            {% if training == False %}
-            <a id="continue" href="{% url 'load_activity' %}?activity={{solution.name}}&&name={{activity.name}}&&category={{activity.category}}" class="btn-buy">Continuar</a>
+            <a id="continue" href="{% url 'load_activity' %}?activity={{solution.pk}}&&name={{activity.pk}}&&category={{activity.category}}" class="btn-buy">Continuar</a>
            {% else %}
-            <a id="continue" href="{% url 'load_training' %}?activity={{solution.name}}&&name={{activity.name}}&&category={{activity.category}}&&training={{pk}}" class="btn-buy">Continuar</a>
+            <a id="continue" href="{% url 'load_training' %}?activity={{solution.pk}}&&name={{activity.pk}}&&category={{activity.category}}&&training={{pk}}" class="btn-buy">Continuar</a>
            {% endif %}
           </header>
     

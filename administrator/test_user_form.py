@@ -447,7 +447,7 @@ class UpdatePasswordTest(TestCase):
 
         self.assertTrue(form.is_valid())
 
-    #Formato inválido contraseñas
+    #Formato inválido contraseñas (menos de 6 caracteres)
     def test_update_password_invalid_format(self):
         form_data = {'password1': 'test1', 'password2': 'test1'}
         form = UpdatePasswordForm(data=form_data)
@@ -468,7 +468,7 @@ class UpdatePasswordTest(TestCase):
 
         self.assertFalse(form.is_valid())
 
-        #Contraseña 2 vacia
+    #La contraseña de confirmación es diferente
     def test_update_different_password(self):
         form_data = {'password1': 'test12', 'password2': 'test13'}
         form = UpdatePasswordForm(data=form_data)

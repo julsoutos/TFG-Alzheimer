@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load filters %}
+
 {%block contenido%}
 
 {% if not start %}
@@ -27,7 +29,7 @@
             <a href="{% url 'list_trainings' %}?training={{item.pk}}" class="list-group-item list-group-item-action flex-column align-items-start training">
               <div class="d-flex w-100 justify-content-between">
                 <h2 class="mb-1">{{item.training.name}}</h2>
-                <small class="text-muted">Actividades completadas {{completed_activities}} / {{num_activities}}</small>
+                <small class="text-muted">Actividades completadas {{item.pk | activities_pending}} / {{item.pk | activities_all}}</small>
               </div>
               <p class="mb-1">{{item.training.description}}</p>
             </a>

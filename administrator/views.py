@@ -2,7 +2,7 @@ from django.core.files.base import ContentFile
 import administrator
 from datetime import datetime
 from django.shortcuts import redirect, render
-from principal.models import Activity_Result, Patient_training, Training, User, Doctor, Patient
+from principal.models import Activity_Result, Activity_Training, Patient_training, Training, User, Doctor, Patient
 from .forms import CreateDoctorForm, CreatePatientForm, UpdateDoctorForm, UpdatePasswordForm, UpdatePatientForm
 from principal.utils import get_user_by_token
 from principal.views    import inicio
@@ -14,7 +14,8 @@ def admin_home(request):
     try:
         user = User.objects.get(username=get_user_by_token(request))
         context = {'admin': user, 'trainings': Patient_training.objects.filter(is_completed=True).count(), 
-        'activities': Activity_Result.objects.filter(is_completed=True).count(), 'num_doctors': Doctor.objects.all().count(), 'num_patients': Patient.objects.all().count()}
+        'activities': (Activity_Result.objects.filter(is_completed=True).count()) + (Activity_Training.objects.filter(is_completed=True).count()), 
+        'num_doctors': Doctor.objects.all().count(), 'num_patients': Patient.objects.all().count()}
         return render(request, "admin_home.html", context)
     except:
         return redirect(to=inicio)

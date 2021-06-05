@@ -3,7 +3,7 @@ $(document).ready(function(){
     animal =["perro", "gato", "león", "lobo", "oso", "ciervo", "erizo", "zorro", "vaca", "abeja", "águila", "elefante", "rinoceronte", "serpiente", "ardilla", "ballena", "tiburón", "zorro", "buitre"]
     animal = animal.sort(() => Math.random() - 0.5)
 
-    color = ["rojo", "verde", "azul", "amarillo", "violeta", "turquesa", "cian", "dorado", "púrpura", "naranja", "blanco", "negro", "celeste", "rosa"]
+    color = ["rojo", "verde", "azul", "amarillo", "violeta", "turquesa", "cian", "dorado", "púrpura", "fucsia", "blanco", "negro", "celeste", "rosa"]
     color = color.sort(() => Math.random() - 0.5)
 
     fruit = ["aguacate", "manzana", "plátano", "melocotón", "kiwi", "frambuesa", "arándano", "mandarina", "pomelo", "fresa", "melón", "sandía", "limón", "coco", "piña", "mango", "dátil", "cereza"]

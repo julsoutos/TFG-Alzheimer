@@ -46,3 +46,9 @@ function sign(operation){
     }
 
 }
+
+function reset(){
+
+    document.getElementById("answer").value = ""
+   
+}
