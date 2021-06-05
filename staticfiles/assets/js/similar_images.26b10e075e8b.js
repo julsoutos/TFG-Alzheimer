@@ -8,7 +8,7 @@ $(document).ready(function(){
     
         setTimeout(() => {audio2.play()}, 3800)
     }
-    path = "../../static/assets/img/figures/"
+        path = "../../static/assets/img/figures/"
 
     
 

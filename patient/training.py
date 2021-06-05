@@ -45,7 +45,8 @@ def init_training(request):
         return render(request, "mental_test.html", context)
 
 
-    context = { 'page': path_activity + activities[0].activity.name + '.html', 'activity': activities[0].activity, 'solution': get_solution(request, activities[0].activity), 'training': True, 'load': False, 'pk':  patient_training.pk  }
+    context = { 'page': path_activity + activities[0].activity.name + '.html', 'activity': activities[0].activity, 'solution': get_solution(request, activities[0].activity), 'training': True, 'load': False, 'pk':  patient_training.pk,
+                'base': 'base_training.html'  }
 
     return render(request, path_activity + 'training.html', context)
 
@@ -71,7 +72,7 @@ def load_training(request):
     
         all_activities = Activity_Training.objects.filter(patient_training=patient_training)
 
-        context = {'training': patient_training.pk, 'num_activities': all_activities.count(), 'next': True, 'activities': all_activities.count() - activities.count()}
+        context = {'training': patient_training.pk, 'num_activities': all_activities.count(), 'next': True, 'activities': all_activities.count() - activities.count(), 'base':'base_patient.html'}
 
         return render(request, path_activity + 'training.html', context)    
 
@@ -81,7 +82,7 @@ def load_training(request):
         solution = Solution.objects.get(pk = request.GET['activity'])
         
         
-        context = { 'page': path_activity + activity.name + '.html', 'activity': activity, 'solution': solution, 'activity_training':  activities[0] ,  'training': True, 'load': True }
+        context = { 'page': path_activity + activity.name + '.html', 'activity': activity, 'solution': solution, 'activity_training':  activities[0] ,  'training': True, 'load': True, 'base': 'base_training.html' }
 
     
         return render(request, path_activity + 'training.html', context)

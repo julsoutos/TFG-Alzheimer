@@ -63,7 +63,9 @@ function reset(){
     document.getElementById("answer").value = ""    
     letters = document.getElementsByName('letter')
     for (let index = 0; index < letters.length; index++) {
-        letters[index].style.background = "white"        
+        letters[index].style.background = "white" 
+        letters[index].disabled = false
+
     }
 
 }

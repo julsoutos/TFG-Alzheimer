@@ -2,18 +2,12 @@
 
 
 
-{% extends base %}
+{% extends 'base_patient.html' %}
 
 
 {% load static %}
 
 {% block contenido %}
-
-{% if not next %}
-
-     {% include page %}
-
-{% else %}
 
 
 <section id="pricing" class="pricing">
@@ -47,7 +41,6 @@
 
   </section><!-- End Pricing Section -->
 
-{% endif %}
 {% endblock %}
 
 
