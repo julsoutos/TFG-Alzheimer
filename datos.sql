@@ -4,10 +4,10 @@ INSERT INTO public.principal_user ("password",last_login,is_superuser,username,e
 	 ('pbkdf2_sha256$216000$5gpFAhB414jN$/4ikZ0w+2p3+pCyGcd81cBH4kkamccYhdrXiM7q4p0Q=','2021-06-05 11:28:17.98581+02',true,'admin','admin@gmail.com',true,true,'2021-06-02 18:29:38+02',false,false,'Pablo','Rodriguez','1999-08-06','',false);
 
 INSERT INTO public.principal_doctor (user_id,specialty) VALUES
-	 (0,'Neurología');
+	 (1,'Neurología');
 
 INSERT INTO public.principal_patient (user_id,sickness,doctor_id,address,city) VALUES
-	 (1,'Alzheimer',0,'C/Lope de Vega','Dos Hermanas');
+	 (2,'Alzheimer',1,'C/Lope de Vega','Dos Hermanas');
 
 INSERT INTO public.principal_activity (name,category,title,description) VALUES
 	 ('Math Operations','Calculus','Sumas y restas','En esta actividad el paciente deberá de realizar diferentes operaciones simples de suma y resta.'),
@@ -22,43 +22,43 @@ INSERT INTO public.principal_activity (name,category,title,description) VALUES
 	 ('Image Order','Memory','Recuerda el orden de las imágenes','En esta actividad el paciente deberá de indicar cuál es el orden correcto indicado al inicio de una serie de 3 imágenes.');
 
 INSERT INTO public.principal_solution (solution,activity_id,name) VALUES
-	 ('1',9,'Image Order 2'),
-	 ('1',9,'Image Order 3'),
-	 ('3',9,'Image Order 1'),
-	 ('e',7,'Locate a letter 1'),
-	 ('o',7,'Locate a letter 2'),
-	 ('z',7,'Locate a letter 3'),
-	 ('n',7,'Locate a letter 4'),
-	 ('c',7,'Locate a letter 5'),
-	 ('otoño',6,'Letter Soup 1'),
-	 ('nata',6,'Letter Soup 2');
+	 ('1',10,'Image Order 2'),
+	 ('1',10,'Image Order 3'),
+	 ('3',10,'Image Order 1'),
+	 ('e',8,'Locate a letter 1'),
+	 ('o',8,'Locate a letter 2'),
+	 ('z',8,'Locate a letter 3'),
+	 ('n',8,'Locate a letter 4'),
+	 ('c',8,'Locate a letter 5'),
+	 ('otoño',7,'Letter Soup 1'),
+	 ('nata',7,'Letter Soup 2');
 INSERT INTO public.principal_solution (solution,activity_id,name) VALUES
-	 ('kiosco',6,'Letter Soup 3'),
-	 ('agua',6,'Letter Soup 4'),
-	 ('coche',6,'Letter Soup 5'),
-	 ('perro',6,'Letter Soup 6'),
-	 ('lata',6,'Letter Soup 7'),
-	 ('papel',6,'Letter Soup 8'),
-	 ('12.20',5,'Calculate Price 1'),
-	 ('32.10',5,'Calculate Price 2'),
-	 ('20.50',5,'Calculate Price 3'),
-	 ('Está lloviendo mucho en la calle',4,'Sentence Order 2');
+	 ('kiosco',7,'Letter Soup 3'),
+	 ('agua',7,'Letter Soup 4'),
+	 ('coche',7,'Letter Soup 5'),
+	 ('perro',7,'Letter Soup 6'),
+	 ('lata',7,'Letter Soup 7'),
+	 ('papel',7,'Letter Soup 8'),
+	 ('12.20',6,'Calculate Price 1'),
+	 ('32.10',6,'Calculate Price 2'),
+	 ('20.50',6,'Calculate Price 3'),
+	 ('Está lloviendo mucho en la calle',5,'Sentence Order 2');
 INSERT INTO public.principal_solution (solution,activity_id,name) VALUES
-	 ('¿A qué hora llegas mañana?',4,'Sentence Order 3'),
-	 ('Ese perro es muy bonito',4,'Sentence Order 1'),
-	 ('palanca',3,'Word Category 1'),
-	 ('mentón',3,'Word Category 2'),
-	 ('comercial',3,'Word Category 3'),
-	 ('metro',3,'Word Category 4'),
-	 ('1',1,'Similar Image'),
-	 ('123456',2,'Reorder Image'),
-	 ('1663',8,'Color Order 1'),
-	 ('3115',8,'Color Order 2');
+	 ('¿A qué hora llegas mañana?',5,'Sentence Order 3'),
+	 ('Ese perro es muy bonito',5,'Sentence Order 1'),
+	 ('palanca',4,'Word Category 1'),
+	 ('mentón',4,'Word Category 2'),
+	 ('comercial',4,'Word Category 3'),
+	 ('metro',4,'Word Category 4'),
+	 ('1',2,'Similar Image'),
+	 ('123456',3,'Reorder Image'),
+	 ('1663',9,'Color Order 1'),
+	 ('3115',9,'Color Order 2');
 INSERT INTO public.principal_solution (solution,activity_id,name) VALUES
-	 ('2451',8,'Color Order 3'),
-	 ('17',0,'Math Operations 1'),
-	 ('51',0,'Math Operations 2'),
-	 ('19',0,'Math Operations 3');
+	 ('2451',9,'Color Order 3'),
+	 ('17',1,'Math Operations 1'),
+	 ('51',1,'Math Operations 2'),
+	 ('19',1,'Math Operations 3');
 
 
 INSERT INTO public.principal_mental_test (name,description,title) VALUES
