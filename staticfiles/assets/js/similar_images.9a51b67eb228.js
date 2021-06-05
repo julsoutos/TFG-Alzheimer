@@ -54,11 +54,25 @@ $(document).ready(function(){
 function getImages(path, variant){
 
     images = []
+    console.log(window.location.hostname != 'localhost')
 
     for (let index = 1; index < 5; index++) {
 
-        images.push(index + " , " + path  + variant + "/" + index + ".png")
+        if(window.location.hostname != 'localhost'){
+
+            
+            if(variant + "/" + index == "triangles/1"){
+
+                images.push(index + " , " + path  + variant + "/" + index + ".png")
+
+            }
+
+            images.push(index + " , " + path  + variant + "/" + index + ".PNG")
         
+        }else{
+            images.push(index + " , " + path  + variant + "/" + index + ".png")
+
+        }
     }
 
     return images
