@@ -3,10 +3,10 @@ INSERT INTO public.principal_user ("password",last_login,is_superuser,username,e
 	 ('pbkdf2_sha256$216000$f6uYG560Aq18$rqjnhoF0PN1L+0R9o9jnJAPXlu9YluRlnhrYFA4vo08=','2021-06-05 11:05:04.77753+02',false,'patient','patient@alum.us.es',false,true,'2021-06-04 00:03:42+02',false,true,'patient','patient','1946-01-10','Estado de no demencia',false),
 	 ('pbkdf2_sha256$216000$5gpFAhB414jN$/4ikZ0w+2p3+pCyGcd81cBH4kkamccYhdrXiM7q4p0Q=','2021-06-05 11:28:17.98581+02',true,'admin','admin@gmail.com',true,true,'2021-06-02 18:29:38+02',false,false,'Pablo','Rodriguez','1999-08-06','',false);
 
-INSERT INTO public.principal_doctor (username,specialty) VALUES
-	 ('doctor','Neurología');
+INSERT INTO public.principal_doctor (user_id,specialty) VALUES
+	 (0,'Neurología');
 
-INSERT INTO public.principal_patient (username_patient,sickness,username_doctor,address,city) VALUES
+INSERT INTO public.principal_patient (user_id,sickness,doctor_id,address,city) VALUES
 	 (1,'Alzheimer',0,'C/Lope de Vega','Dos Hermanas');
 
 INSERT INTO public.principal_activity (name,category,title,description) VALUES
