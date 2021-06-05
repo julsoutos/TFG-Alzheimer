@@ -57,7 +57,7 @@ function getImages(path, variant){
 
     for (let index = 1; index < 5; index++) {
 
-        images.push(index + " , " + path  + variant + "/" + index + ".png")
+        images.push(index + " , " + path  + variant + "/" + index + ".PNG")
         
     }
 
