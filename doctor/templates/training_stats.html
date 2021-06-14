@@ -1,0 +1,211 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+<main id="main">
+
+
+    <section id="portfolio" class="portfolio"  style="position: relative; top: 30px;">
+
+      <div class="container" data-aos="fade-up">
+  
+       
+  
+  
+        <div class="row gy-4 portfolio-container"  data-aos="fade-right"  data-aos-delay="50" style="position: relative; bottom: 180px;">
+  
+            
+            {{ diary_stats|json_script:"diary_stats" }}
+            
+
+            <script>
+                
+
+                var diary = JSON.parse(document.getElementById('diary_stats').textContent)
+               
+
+                console.log(diary)
+              
+
+            </script>
+
+
+
+
+            <section id="pricing" class="pricing portfolio-item filter-card  opcion-1" style="margin-bottom:600px; margin-top: 200px;">
+                <header class="section-header">
+                  
+                    <h5>Resultados obtenidos</h5>
+                  </header>
+            
+              <div class="container" style="margin-top: 100px;"  >
+          
+                
+                  <div class="row gy-4" style="position: relative; bottom:100px;">        
+                    <div  data-aos="zoom-in" >
+                      <div class="box">
+  
+                        <form>
+  
+                          <fieldset>
+                            <legend>Memoria</legend>
+                            <div class="chart-container" style="width: 100%; height: 53vh;" >
+  
+                            <canvas id="memoria" ></canvas>
+  
+                          </div>
+  
+                           
+                        </form>                  
+                      </div>
+                    </div>
+  
+            
+                  </div>
+
+
+
+
+                <div class="row gy-4" style="position: relative; bottom: 200px;">        
+                  <div  data-aos="zoom-in">
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Atención</legend>
+                          <div class="chart-container" style="width: 100%; height: 53vh;" >
+
+                          <canvas id="atencion" ></canvas>
+                        </div>
+
+
+                         
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+
+
+                <div class="row gy-4" style="position: relative; bottom: 300px;">        
+                  <div  data-aos="zoom-in" >
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Cálculo</legend>
+                          <div class="chart-container" style="width: 100%; height: 53vh;" >
+
+                          <canvas id="calculo" ></canvas>
+                        </div>
+
+
+                         
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+
+                <div class="row gy-4" style="position: relative; bottom: 400px;">        
+                  <div  data-aos="zoom-in" >
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Percepción</legend>
+                          <div class="chart-container" style="width: 100%; height: 53vh;" >
+
+                          <canvas id="percepcion" ></canvas>
+                        </div>
+
+
+                         
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+
+                <div class="row gy-4" style="position: relative; bottom: 500px;">        
+                  <div  data-aos="zoom-in" >
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Lenguaje</legend>
+                          <div class="chart-container" style="width: 100%; height: 53vh;" >
+
+                          <canvas id="lenguaje" ></canvas>
+
+                        </div>
+
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+          
+              </div>
+
+
+
+             
+        
+              <div class="row gy-4" data-aos="fade-up" id="isaac" style="position: relative; bottom: 500px;">
+                <header class="section-header">
+              
+                    <h5>Test Isaac</h5>
+                  </header>        
+                <div  data-aos="zoom-in" data-aos-delay="50">
+                  <div class="box">
+                    <div class="chart-container" style="width: 100%; height: 53vh;" >
+                    <canvas id="test_isaac"></canvas>
+                </div>
+                    
+                  </div>
+                </div>
+        
+              
+        
+              </div>
+
+              <div class="row gy-4" data-aos="fade-up" id="hodkinson" style="position: relative; bottom: 500px;">
+                <header class="section-header">
+              
+                    <h5>Test Hodkinson</h5>
+                  </header>        
+                <div  data-aos="zoom-in" data-aos-delay="50">
+                  <div class="box">
+                    <div class="chart-container" style="width: 100%; height: 53vh;" >
+                    <canvas id="test_hodkinson" ></canvas>
+                </div>
+                    
+                  </div>
+                </div>
+        
+              
+        
+              </div>
+              
+          </section>
+
+
+   
+   
+  </main><!-- End #main -->
+
+
+{% endblock %}

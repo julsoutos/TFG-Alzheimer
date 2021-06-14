@@ -1,0 +1,42 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+{% load filters %}
+
+{% block contenido %}
+ <!-- ======= Mobile nav toggle button ======= -->
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+<main id="main" data-aos="fade-up">
+  
+    <section id="admin"  style="position: relative; ">
+        <div class="container">
+    
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {%for item in activities %}  
+                <tr>
+                    <td>{{item.title}}</td>
+                    <td>{{item.category | category}}</td>
+                    <td><a href="{% url 'activity_details' %}?activity={{item.pk}}"class="btn btn-outline-primary">Detalles</a></td>
+                </tr>
+                {% endfor %}
+                  
+                </tbody>
+              </table>
+    
+        </div>
+    
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}

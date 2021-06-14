@@ -1,0 +1,204 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+{% load filters %}
+
+{% block contenido %}
+
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+ 
+<main id="main">
+
+
+
+    <section id="admin"  style="position: relative; " data-aos="fade-up">
+        <div class="container">
+
+    
+
+            <form>
+                <fieldset>
+                  <legend>Detalles del entrenamiento</legend>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre entrenamiento:</label>
+                    <input type="text" class="form-control"  value="{{training.name}}" disabled>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Descripción:</label>
+                    <textarea class="form-control"   disabled>{{training.description}}</textarea>
+                  </div>
+                 
+            
+              </form>
+
+
+                  <table class="table">
+                    
+                          <tbody>
+                          
+                          <tr>
+
+                            
+                              <td>
+                                    <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#activities">
+                                      Actividades del entrenamiento
+                                    </button>
+                                  
+                              </td>
+                              <td>
+
+                                    <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#patients">
+                                          Pacientes asignados
+                                    </button>
+                              
+                              </td>
+                              <td>
+
+                                <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#tests">
+                                      Tests asignados
+                                </button>
+                          
+                          </td>
+                          </tr>
+                      
+                          </tbody>
+
+                  </table>
+        </div>
+    
+    </section>
+
+
+   
+
+         
+
+
+
+
+
+  </main>
+
+
+
+
+ 
+
+  <div class="modal " id="patients">
+    <div class="modal-dialog"    >
+      <div class="modal-content"  >
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Pacientes asignados</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body" >
+          
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre Paciente</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                    {% for item in patients %}
+                        <tr>
+                            <th scope="row">{{item.patient.user.first_name}} {{item.patient.user.last_name}}</th>
+                            <td>{{item.patient.user.birth_date | age}} años</td>
+                            <td><a href="{% url 'patient_details' %}?patient={{item.patient.pk}}"class="btn btn-outline-primary">Expediente</a></td>
+                          </tr>
+                    {% endfor %}
+                  
+                </tbody>
+              </table>
+
+
+            </div>
+          </div> 
+        </div>
+      </div>
+        
+ <div class="modal " id="activities">
+  <div class="modal-dialog"    >
+    <div class="modal-content"  >
+    
+      <div class="modal-header">
+        <h4 class="modal-title">Actividades asignadas</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <div class="modal-body" >
+        
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre actividad</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  {% for item in activities %}
+                      <tr>
+                          <th scope="row">{{item.activity.title}}</th>
+                          <td>{{item.activity.category | category}}</td>
+                          <td><a href="{% url 'activity_details' %}?activity={{item.activity.pk}}"class="btn btn-outline-primary">Detalles</a></td>
+                        </tr>
+                  {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal " id="tests">
+  <div class="modal-dialog"    >
+    <div class="modal-content"  >
+    
+      <div class="modal-header">
+        <h4 class="modal-title">Tests mentales asignados</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <div class="modal-body" >
+        
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre del test</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  {% for item in mental_tests %}
+                      <tr>
+                          <th scope="row">{{item.mental_Test.title}}</th>
+                          <td>{{item.mental_Test.description}}</td>
+                        </tr>
+                  {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

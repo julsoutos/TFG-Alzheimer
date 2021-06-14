@@ -1,0 +1,61 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+{% load filters %}
+{% block contenido %}
+ <!-- ======= Mobile nav toggle button ======= -->
+
+
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+
+
+ 
+<main id="main">
+
+    <section id="admin"  style="position: relative; " data-aos="fade-up">
+        <div class="container">
+
+    
+
+            <form>
+                <fieldset>
+                  <legend>Detalles de la actividad</legend>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre actividad:</label>
+                    <input type="text" class="form-control"  value="{{activity.title}}" disabled>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Descripción:</label>
+                    <textarea class="form-control"  disabled>{{activity.description}}</textarea>
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="exampleTextarea">Categoría:</label>
+                    <input type="text" class="form-control"  value="{{activity.category | category}}" disabled>
+                  </div>
+                 
+              </form>
+
+        </div>
+    
+    </section>
+
+
+   
+
+         
+
+
+
+
+
+  </main>
+
+
+
+
+{% endblock %}

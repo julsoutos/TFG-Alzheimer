@@ -1,0 +1,396 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+{% load filters %}
+
+{% block css %}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script src="{% static 'assets_profile/js/create_training.js' %}"></script>
+
+{% endblock %}
+
+
+{% block contenido %}
+
+
+ <!-- ======= Mobile nav toggle button ======= -->
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+
+
+ 
+ <div class="modal " id="patients">
+  <div class="modal-dialog"    >
+    <div class="modal-content"  >
+    
+      <div class="modal-header">
+        <h4 class="modal-title">Mis pacientes</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <div class="modal-body" >
+        
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre Paciente</th>
+                  <th scope="col">Edad</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  {% for item in patients %}
+                      <tr>
+                          <th scope="row">{{item.user.first_name}} {{item.user.last_name}}</th>
+                          <td>{{item.user.birth_date | age}} años</td>
+                          <td><button type="button" id="{{item.user.first_name}} {{item.user.last_name}},{{item.user.username}}" onclick="add(this, 'addedPatient')" class="btn btn-outline-primary">Añadir</button></td>
+                      </tr>
+                  {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal " id="tests">
+  <div class="modal-dialog"    >
+    <div class="modal-content"  >
+    
+      <div class="modal-header">
+        <h4 class="modal-title">Tests Mentales</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <div class="modal-body" >
+        
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre Test</th>
+                  
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  {% for item in tests %}
+                      <tr>
+                          <th scope="row">{{item.title}}</th>
+                         
+                          <td><button type="button" name="tests" id="{{item.title}},{{item.name}}" onclick="add(this, 'addedTest')" class="btn btn-outline-primary">Añadir</button></td>
+                      </tr>
+                  {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal" id="addedTests">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Tests añadidos</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Test</th>
+
+            </tr>
+          </thead>
+          <tbody id="addedTest" >
+
+            
+          </tbody>
+        </table>
+
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="addedActivities">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Actividades añadidas</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Actividad</th>
+
+            </tr>
+          </thead>
+          <tbody id="addedActivity" >
+
+            
+          </tbody>
+        </table>
+
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="addedPatients">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Pacientes añadidos</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre Paciente</th>
+
+            </tr>
+          </thead>
+          <tbody id="addedPatient" >
+
+            
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="activities" >
+  <div class="modal-dialog"   >
+    <div class="modal-content"  >
+    
+ 
+
+
+      <div class="modal-header">
+        <h4 class="modal-title">Lista de actividades</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+  
+        
+      </div>
+      
+      <div class="modal-body" >
+          <header class="section-header">
+
+          
+            
+            </header>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre Actividad</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  {% for item in activities %}
+                      <tr>
+                          <th scope="row">{{item.title}}</th>
+                          <td>{{item.category | category}}</td>
+                          <td><button type="button" id="{{item.title}},{{item.name}}" onclick="add(this, 'addedActivity')" class="btn btn-outline-primary">Añadir</button></td>
+                      </tr>
+                  {% endfor %}
+                
+              </tbody>
+            </table>
+
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<main id="main" data-aos="fade-up">
+
+    
+         
+        
+
+          
+
+
+
+    <section id="admin"  style="position: relative; ">
+        <div class="container">
+    
+            <form method="POST" action="">
+                <fieldset>
+                  <legend>Nuevo entrenamiento</legend>
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre:</label>
+                    {{form.name}}
+                    {% for error in form.name.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Descripción:</label>
+                    {{form.description}}
+                    {% for error in form.description.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    {% endfor %}
+                  </div>
+
+                  {{form.inputPatients}}
+                  {% for error in form.error.errors %}
+                    <span style="color: red;">{{error}}</span>
+                  {% endfor %}
+
+                  {{form.inputActivities}}
+                  {% for error in form.inputActivities.errors %}
+                    <span style="color: red;">{{error}}</span>
+                  {% endfor %}
+
+                  {{form.inputTests}}
+                  {% for error in form.inputTests.errors %}
+                    <span style="color: red;">{{error}}</span>
+                    
+                  <script>
+                    var error = "{{error}}"
+                  </script>
+                  {% endfor %}
+
+
+                  <table class="table">
+                    
+                    <tbody>
+                    
+                    <tr>
+
+                        <td>
+                            
+                            <button type="submit" class="btn btn-outline-primary create" style="color: rgb(182, 66, 66); border-color:rgb(182, 66, 66);" onclick="send()">Confirmar</button>  
+                            
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#patients">
+                            Añadir Pacientes
+                            </button>
+                        </td>
+
+                        <td>
+                          <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#tests">
+                              Añadir Test Mental
+                          </button>
+                      </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#activities">
+                                Añadir Actividades
+                              </button>
+
+                        </td>
+                        <td>
+                              <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedActivities">
+                                Actividades añadidas <p id="totalActivities">0</p>
+                              </button>
+                             
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedPatients">
+                                Pacientes añadidos <p id="totalPatients">0</p>
+                          </button>
+                         
+                      </td>
+
+                      <td>
+                        <button type="button" class="btn btn-outline-primary create" data-toggle="modal" data-target="#addedTests">
+                              Tests añadidos <p id="totalTests">0</p>
+                        </button>
+                       
+                    </td>
+                   
+                    </tr>
+                 
+                    </tbody>
+                  </table>
+
+              </form>
+    
+        </div>
+    
+    </section>
+
+  </main>
+
+ 
+
+{% endblock %}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'na#ke*=cbkm!tl_n6o)7f&a*5bnohj+kaa&&4p*mp#)qa@8i4y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+AUTH_USER_MODEL = 'principal.User'
 
 # Application definition
 
@@ -37,15 +39,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'principal',
+    'authentication',
+    'administrator',
+    'doctor',
+    'patient',
+    'rest_framework.authtoken'
 ]
 
 
 MODULES = [
     'principal',
-    
+    'authentication',
+    'administrator',
+    'doctor',
+    'patient'
+
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ]
+}
+
 MIDDLEWARE = [
+    'principal.middleware.Interceptor',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,6 +156,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+
 try:
     from local_settings import *
 except ImportError:
@@ -145,7 +169,9 @@ except ImportError:
 BASEURL = 'https://cognitya-app.herokuapp.com/'
 
 APIS = {
-    'principal': BASEURL
+    'principal': BASEURL,
+    'authentication': BASEURL,
+    'administrator': BASEURL
 }
 
 

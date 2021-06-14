@@ -1,0 +1,49 @@
+{% extends 'base_admin.html' %}
+
+{% load static %}
+
+{% block contenido %}
+ <!-- ======= Mobile nav toggle button ======= -->
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+ 
+ <main id="main">
+    <section id="admin"  style="position: relative; ">
+
+    <section  class="d-flex flex-column justify-content-center" style="align-items: center; text-align: center;" >
+    
+        <div class="container" data-aos="fade-left">
+    
+            
+          <header class="section-header">
+            <h2>Tipos de usuario</h2>
+          </header>
+            <div class="list-group">
+                
+                <a href="{% url 'all_patients' %}" class="list-group-item list-group-item-action flex-column align-items-start training">
+                    
+                  <div class="d-flex w-100 justify-content-between">
+                    <h2 class="mb-1">Pacientes</h2>
+   
+                  </div>
+              
+                </a>
+    
+                <a href="{% url 'all_doctors' %}" class="list-group-item list-group-item-action flex-column align-items-start training">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h2 class="mb-1">Médicos</h2>
+     
+                  </div>
+           
+                </a>
+               
+              </div>
+              
+    
+    </div>
+    </section>
+</section>
+
+  </main><!-- End #main -->
+
+{% endblock %}

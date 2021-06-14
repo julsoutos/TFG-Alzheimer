@@ -1,0 +1,384 @@
+{% extends 'base_doctor.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+<main id="main">
+
+
+    <section id="portfolio" class="portfolio"  style="position: relative; top: 30px;">
+
+      <div class="container" data-aos="fade-up">
+  
+       
+  
+        <div class="row" >
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+
+              {% if day %}
+
+              <li class="filter-active">Todo</li>
+              <li data-filter=".opcion-1" >Diario</li>
+              <li data-filter=".opcion-2" >Últimos 7 días</li>
+              <li data-filter=".opcion-3">Últimos 28 días</li>
+
+              {% endif %}
+
+            </ul>
+          </div>
+        </div>
+  
+        <div class="row gy-4 portfolio-container"  data-aos="fade-right"  data-aos-delay="200" style="position: relative; bottom: 180px;">
+  
+          <!-- Diario -->
+
+            <section id="pricing" class="pricing portfolio-item filter-card  opcion-1" style="margin-bottom: -200px; ">
+    
+                <div class="container" data-aos="fade-down">
+            
+                  <header class="section-header">
+                  
+                    <h5>Selecciona un día</h5>
+                  </header>
+            
+                  <div class="row gy-4" data-aos="fade-up" >        
+                    <div  data-aos="zoom-in" >
+                      <div class="box">
+                        
+                    <form method="POST" action="">
+                       {% csrf_token %}
+                      <input onchange="setDay(this)" type="date" class="" id="day" name="day" value="{{day}}">
+                      <button type="submit" style="display: none;" id="sendDay"></button>
+
+                    </form>
+                    
+                      </div>
+                    </div>
+            
+                  
+            
+                  </div>
+            
+                </div>
+                
+            </section>
+
+
+            {% if day %}
+            
+            
+            {{ diary_stats|json_script:"diary_stats" }}
+            {{ weekly_stats|json_script:"weekly_stats" }}
+            {{ monthly_stats|json_script:"monthly_stats" }}
+
+            <script>
+                
+
+                var diary = JSON.parse(document.getElementById('diary_stats').textContent)
+                var week = JSON.parse(document.getElementById('weekly_stats').textContent)
+                var month = JSON.parse(document.getElementById('monthly_stats').textContent)
+
+
+                console.log(diary)
+                console.log(week)
+                console.log(month)
+
+            </script>
+
+
+
+
+            <section id="pricing" class="pricing portfolio-item filter-card  opcion-1" style="margin-bottom: -590px;">
+    
+              <div class="container"   >
+          
+                <header class="section-header">
+                
+                  <h5>Actividades</h5>
+                </header>
+          
+                <div class="row gy-4" style="position: relative; bottom:100px;">        
+                  <div  data-aos="zoom-in" >
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Memoria</legend>
+                          <div class="chart-container" style="width: 100%; height: 40vh;" >
+
+                          <canvas id="memoria" ></canvas>
+
+                        </div>
+
+                         
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+
+
+
+
+                <div class="row gy-4" style="position: relative; bottom: 200px;">        
+                  <div  data-aos="zoom-in">
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Atención</legend>
+                          <div class="chart-container" style="width: 100%; height: 40vh;" >
+
+                          <canvas id="atencion" ></canvas>
+                        </div>
+
+
+                         
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+
+
+                <div class="row gy-4" style="position: relative; bottom: 300px;">        
+                  <div  data-aos="zoom-in" >
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Cálculo</legend>
+                          <div class="chart-container" style="width: 100%; height: 40vh;" >
+
+                          <canvas id="calculo" ></canvas>
+                        </div>
+
+
+                         
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+
+                <div class="row gy-4" style="position: relative; bottom: 400px;">        
+                  <div  data-aos="zoom-in" >
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Percepción</legend>
+                          <div class="chart-container" style="width: 100%; height: 40vh;" >
+
+                          <canvas id="percepcion" ></canvas>
+                        </div>
+
+
+                         
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+
+                <div class="row gy-4" style="position: relative; bottom: 500px;">        
+                  <div  data-aos="zoom-in" >
+                    <div class="box">
+
+                      <form>
+
+                        <fieldset>
+                          <legend>Lenguaje</legend>
+                          <div class="chart-container" style="width: 100%; height: 40vh;" >
+
+                          <canvas id="lenguaje" ></canvas>
+
+                        </div>
+
+                      </form>                  
+                    </div>
+                  </div>
+
+          
+                </div>
+          
+              </div>
+              
+          </section>
+
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Semanal -->
+      
+
+   
+      <section id="pricing" class="pricing portfolio-item filter-card opcion-2" style="margin-bottom: -200px;">
+    
+        <header class="section-header">
+                
+          <h4>Semanal</h4>
+
+        </header>
+        <div class="container" >
+    
+          <header class="section-header">
+          
+            <h5>Comparativa semanal</h5>
+          </header>
+    
+          <div class="row gy-4" >        
+           
+            <div class="box" style="padding-left: auto; padding-right: auto;">
+
+              <div class="chart-container" style="width: 100%; height: 40vh;" >
+                <canvas id="comparativaSemanal" ></canvas>
+              </div>
+
+            
+              </div>
+           
+    
+          
+    
+          </div>
+
+
+
+          <div class="row gy-4"  >        
+         
+            <div class="box" style="padding-left: auto; padding-right: auto;">
+
+              <div class="chart-container" style="width: 100%; height: 40vh;" >
+                <canvas id="comparativaSemana2" ></canvas>
+              </div>
+
+            
+              </div>
+        
+    
+          
+    
+          </div>
+
+
+
+
+               
+         
+           
+        
+    </section>
+
+
+    
+
+
+
+
+
+
+
+
+
+      <!-- Mensual -->
+  
+      <section id="pricing" class="pricing portfolio-item filter-card opcion-3" style="margin-bottom: -200px; padding-left: auto; padding-right: auto;">
+        <header class="section-header">
+                
+          <h4>Mensual</h4>
+
+        </header>
+        <div class="container" >
+    
+          <header class="section-header">
+          
+            <h5>Comparativa Mensual</h5>
+          </header>
+    
+          <div class="row gy-4"  >        
+           
+            <div class="box" style="padding-left: auto; padding-right: auto;">
+
+              <div class="chart-container" style="width: 100%; height: 40vh;" >
+                <canvas id="comparativaMensual1" ></canvas>
+              </div>
+
+            
+              </div>
+           
+    
+          
+    
+          </div>
+
+
+
+          <div class="row gy-4" >        
+         
+            <div class="box" style="padding-left: auto; padding-right: auto;">
+
+              <div class="chart-container" style="width: 100%; height: 40vh;" >
+                <canvas id="comparativaMensual2" ></canvas>
+              </div>
+
+            
+              </div>
+        
+    
+          
+    
+          </div>
+
+
+
+
+               
+         
+    
+            {% endif %}
+
+    
+        </div>
+        
+    </section>
+        
+  
+      </div>
+  
+    </section><!-- End Portfolio Section -->
+
+
+   
+   
+  </main><!-- End #main -->
+
+
+{% endblock %}

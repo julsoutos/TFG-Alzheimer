@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block contenido %}
+
+
+
+  <section id="about" class="about" style="position: relative; top: 150px; ">
+
+    <div class="container">
+      <div class="row gx-0">
+
+        <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="content">
+            <h3>¿Quiénes somos?</h3>
+            <h2>Cognitya es nuestro Trabajo de Fin de Grado sobre el desarrollo de una aplicación móvil para la estimulación cognitiva de pacientes con Alzheimer.</h2>
+            <p>
+                Esta aplicación multiplataforma consiste en un desarrollo que integra y propone nuevos métodos para ayudar a la estimulación
+                cognitiva de pacientes que sufren Alzheimer a través de distintos entrenamientos y actividades que potencian el trabajo de una
+                área del cerebro concreta. Además, permite a los médicos llevar a cabo un control y seguimiento de sus pacientes afectados por esta enfermedad,
+                proporcionánoles la oportunidad de crear entrenamientos personalizados para ellos.  </p>         
+           
+          </div>
+      
+        </div>
+
+          
+        <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{% static 'assets/img/pexels-fauxels-3183197.jpg' %}" class="img-fluid" alt="">
+          </div>
+
+      </div>
+    </div>
+
+  </section><!-- End About Section -->
+
+  
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Cognitya</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+
+
+{% endblock %}
