@@ -94,7 +94,7 @@ function reset(){
 }
 
 function imagesLoad(path, variant, index){
-    if(host != 'localhost'){
+    
 
             
         if(variant + "/" + index == "triangles/1"){
@@ -108,9 +108,6 @@ function imagesLoad(path, variant, index){
         }
 
     
-    }else{
-        images.push(index + " , " + path  + variant + "/" + index + ".png")
-
-    }
+    
     
 }

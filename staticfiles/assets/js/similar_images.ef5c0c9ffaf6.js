@@ -57,7 +57,7 @@ function getImages(path, variant){
 
     images = []
     for (let index = 1; index < 5; index++) {
-        setTimeout(() => {imagesLoad(path, variant, index)}, 2000)
+        imagesLoad(path, variant, index)
        
     }
 
@@ -93,8 +93,8 @@ function reset(){
     }
 }
 
-function imagesLoad(path, variant){
-    if(host != 'localhost'){
+function imagesLoad(path, variant, index){
+    
 
             
         if(variant + "/" + index == "triangles/1"){
@@ -108,9 +108,6 @@ function imagesLoad(path, variant){
         }
 
     
-    }else{
-        images.push(index + " , " + path  + variant + "/" + index + ".png")
-
-    }
+    
     
 }
